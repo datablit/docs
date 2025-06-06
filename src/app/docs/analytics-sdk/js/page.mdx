@@ -1,0 +1,178 @@
+# Datablit analytics library
+
+A JavaScript analytics library for event tracking and user identification.
+
+## Installation
+
+Install the package using npm:
+
+```sh
+npm install @datablit/analytics-js
+```
+
+Or using yarn:
+
+```sh
+yarn add @datablit/analytics-js
+```
+
+## Usage
+
+### Importing the Library
+
+In a React project, import `Analytics` from "`@datablit/analytics-js`"
+
+```react
+"use client";
+import React, { useEffect } from "react";
+import Analytics from "@datablit/analytics-js";
+
+function AnalyticsTest() {
+  useEffect(() => {
+    Analytics.init({
+      writeKey: "your-write-key",
+      endpoint: "http://api.datablit.com/v1/batch",
+      batchSize: 10,
+      flushInterval: 2000,
+    });
+  }, []);
+
+  return (
+    <div className="flex gap-4">
+      <button
+        onClick={() => {
+          Analytics.track("test_event", { name: "John Doe", value: 42 });
+        }}
+      >
+        Track Event
+      </button>
+      <button
+        onClick={() => {
+          Analytics.identify("user_123", {
+            name: "John Doe",
+            email: "john.doe@example.com",
+            age: 30,
+          });
+        }}
+      >
+        Identify User
+      </button>
+    </div>
+  );
+}
+
+export default AnalyticsTest;
+```
+
+## APIs
+
+## Analytics.init(config)
+
+Initializes the analytics library. User should initialize this libary once.
+
+#### Parameters:
+
+- `config.writeKey` (string, required) – Your analytics Write key. Get this from `http://datablit.com/events`
+- `config.endpoint` (string, optional) – API endpoint to send data. Default: `http://api.datablit.com/v1/batch`
+- `config.batchSize` (number, optional) – Number of events to batch before sending. Default: `20`
+- `config.flushInterval` (number, optional) – Interval (in milliseconds) to flush events. Default: `30000`
+- `config.enablePageTracking` (boolean, optional) – Enables automatic page tracking. Default: `false`
+
+## Analytics.track(eventName, properties)
+
+Tracks an event with associated properties.
+
+#### Parameters:
+
+- `eventName` (string, required) – Name of the event.
+- `properties` (object, optional) – Key-value pairs of event properties.
+
+#### Example:
+
+```javascript
+Analytics.track("button_click", { button: "subscribe", user: "user_123" });
+```
+
+## Analytics.identify(userId, traits)
+
+Identifies a user with optional traits.
+
+#### Parameters:
+
+- `userId` (string, required) – Unique user ID.
+- `traits` (object, optional) – Additional user attributes.
+
+#### Example:
+
+```javascript
+Analytics.identify("user_123", {
+  name: "John Doe",
+  email: "john.doe@example.com",
+  age: 30,
+});
+```
+
+## Auto track events
+
+## Page tracking
+
+if `config.enablePageTracking` is `true`, sdk will track all page navigations.
+
+eg. if user redirected to `http://localhost:3001/test` sdk will send following track event
+
+```json
+{
+  "anonymousId": "3c42f2ca-d237-4acc-b9ce-773bd26f99e1",
+  "userId": "user_123",
+  "messageId": "228c9a87-891c-4ab2-9732-eddedc391f69",
+  "type": "track",
+  "context": {
+    "userAgentData": {
+      "architecture": "arm",
+      "bitness": "64",
+      "brands": [
+        {
+          "brand": "Chromium",
+          "version": "136"
+        },
+        {
+          "brand": "Google Chrome",
+          "version": "136"
+        },
+        {
+          "brand": "Not.A/Brand",
+          "version": "99"
+        }
+      ],
+      "mobile": false,
+      "model": "",
+      "platform": "macOS",
+      "platformVersion": "15.4.1",
+      "uaFullVersion": "136.0.7103.114"
+    },
+    "library": {
+      "name": "@datablit/analytics-js",
+      "version": "1.0.3"
+    },
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+    "timezone": "Asia/Calcutta",
+    "locale": "en-GB",
+    "page": {
+      "path": "/test",
+      "referrer": "",
+      "search": "",
+      "title": "",
+      "url": "http://localhost:3001/test"
+    }
+  },
+  "originalTimestamp": "2025-05-30T21:45:30.186Z",
+  "event": "Page View",
+  "properties": {
+    "url": "http://localhost:3001/test",
+    "title": "",
+    "referrer": ""
+  }
+}
+```
+
+For more information, examples, and contributions, visit the [Datablit Analytics js GitHub repository](https://github.com/datablit/analytics-js).

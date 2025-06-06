@@ -31,7 +31,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
-      <body className=" min-h-screen ">
+      {/* <body className="min-h-screen">
         <div className="fixed top-0 left-0 right-0 z-60 h-16">
           <Header />
         </div>
@@ -44,6 +44,20 @@ export default function RootLayout({
           <ContentRightSidebar />
         </div>
         <Footer />
+      </body> */}
+      <body className="h-screen grid grid-rows-[4rem_calc(100vh-4rem)]">
+        <div className="">
+          <Header />
+        </div>
+
+        <div className="flex">
+          <Sidebar />
+          <main className="flex-1 px-12 overflow-y-auto hide-scrollbar">
+            {children}
+          </main>
+          <ContentRightSidebar />
+        </div>
+        {/* <Footer /> */}
       </body>
     </html>
   );

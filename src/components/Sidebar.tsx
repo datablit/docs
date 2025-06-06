@@ -48,22 +48,25 @@ const sections = [
     ),
   },
   {
-    title: "Started two lala",
+    title: "Analytics SDK",
     content: (
       <ul className="space-y-1">
         <li>
-          <Link href="#" className="hover:text-gray-900">
-            Productfour
+          <Link href="/docs/analytics-sdk/js" className="hover:text-gray-900">
+            Analytics js
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/docs/analytics-sdk/kotlin"
+            className="hover:text-gray-900"
+          >
+            Analytics kotlin
           </Link>
         </li>
         <li>
           <Link href="#" className="hover:text-gray-900">
-            Getting Startedthree
-          </Link>
-        </li>
-        <li>
-          <Link href="#" className="hover:text-gray-900">
-            SDKtwo
+            Analytics ios
           </Link>
         </li>
       </ul>

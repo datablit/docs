@@ -1,0 +1,140 @@
+# Datablit Analytics Android SDK
+
+A lightweight Kotlin-based analytics library for Android applications, enabling event tracking and user identification with customizable batching and context enrichment.
+
+## Installation
+
+Add the following dependency to your project's `build.gradle` file:
+
+```groovy
+dependencies {
+    implementation("com.datablit.analytics:kotlin:1.0.1")
+}
+```
+
+_Note: Replace `'1.0.1'` with the latest version available._
+
+## Usage
+
+## Initialization
+
+Initialize the `Analytics` instance in your application's `onCreate` method or at the appropriate entry point:
+
+```kotlin
+val analytics = Analytics("your-write-key", context) {
+    endpoint = "http://api.datablit.com/v1/batch" // Optional: Custom endpoint
+    flushAt = 20 // Optional: Number of events to batch before sending
+    flushInterval = 30000L // Optional: Interval (in milliseconds) to flush events
+    trackApplicationLifecycleEvents = true // Optional: Track app lifecycle events
+    enableDebugLogs = true // Optional: Enable debug logging
+}
+```
+
+_Note: Replace `"your-write-key"` with your actual Datablit write key._
+
+## Identify Users
+
+Identify a user with a unique ID and optional traits:
+
+```kotlin
+analytics.identify("user_123", mapOf(
+    "name" to "John Doe",
+    "email" to "john.doe@example.com",
+    "age" to 30
+))
+```
+
+## Track Events
+
+Track custom events with optional properties:
+
+```kotlin
+analytics.track("button_click", mapOf(
+    "button" to "subscribe",
+    "user" to "user_123"
+))
+```
+
+## Configuration Options
+
+The `Analytics` class provides several configurable options:
+
+- `writeKey` (String, required): Your Datablit write key.
+- `endpoint` (String, optional): API endpoint to send data. Default: `http://api.datablit.com/v1/batch`.
+- `flushAt` (Int, optional): Number of events to batch before sending. Default: `20`.
+- `flushInterval` (Long, optional): Interval (in milliseconds) to flush events. Default: `30000L`.
+- `trackApplicationLifecycleEvents` (Boolean, optional): Enables automatic tracking of application lifecycle events. Default: `false`.
+- `enableDebugLogs` (Boolean, optional): Enables debug logging for development purposes. Default: `false`.
+
+## Auto-Tracked Events
+
+If `trackApplicationLifecycleEvents` is set to `true`, the SDK will automatically track the following events:
+
+- `Application Opened`
+- `Application Backgrounded`
+- `Application Foregrounded`
+
+These events include contextual information such as device details, OS version, screen dimensions, locale, timezone, and more.
+
+## Event Structure
+
+Each event sent by the SDK follows this structure:
+
+```json
+{
+  "anonymousId": "3c42f2ca-d237-4acc-b9ce-773bd26f99e1",
+  "userId": "user_123",
+  "messageId": "228c9a87-891c-4ab2-9732-eddedc391f69",
+  "type": "track",
+  "context": {
+    "library": {
+      "name": "analytics-kotlin",
+      "version": "1.0.0"
+    },
+    "app": {
+      "name": "YourAppName",
+      "version": "1.0.0",
+      "namespace": "com.yourcompany.yourapp",
+      "build": "100"
+    },
+    "device": {
+      "id": "android-device-id",
+      "manufacturer": "Google",
+      "model": "Pixel 5",
+      "name": "redfin",
+      "type": "android"
+    },
+    "os": {
+      "name": "Android",
+      "version": "12"
+    },
+    "screen": {
+      "density": 2.5,
+      "height": 2400,
+      "width": 1080
+    },
+    "locale": "en-US",
+    "userAgent": "Dalvik/2.1.0 (Linux; U; Android 12; Pixel 5 Build/SP1A.210812.015)",
+    "timezone": "America/Los_Angeles"
+  },
+  "originalTimestamp": "2025-05-30T21:45:30.186Z",
+  "event": "Button Click",
+  "properties": {
+    "button": "subscribe",
+    "user": "user_123"
+  }
+}
+```
+
+## Permissions
+
+Ensure that the following permissions are declared in your `AndroidManifest.xml` if you intend to collect network state or other sensitive information:
+
+```xml
+<uses-permission android:name="android.permission.INTERNET"/>
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+```
+
+_Note: Always adhere to Android's permission guidelines and request runtime permissions when necessary._
+
+For more information, examples, and contributions, visit the [Datablit Analytics Android SDK GitHub repository](https://github.com/datablit/analytics-kotlin).
