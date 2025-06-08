@@ -1,6 +1,5 @@
 "use client";
 import Button from "@/app/ui-components/Button";
-import CustomButton from "@/app/ui-components/Button";
 import { Input } from "@/app/ui-components/Input";
 import { Menu, Search, X } from "lucide-react";
 import Link from "next/link";

@@ -1,0 +1,118 @@
+# Datablit Analytics Swift SDK
+
+A lightweight Swift-based analytics SDK for iOS applications that enables event tracking, user identification, and lifecycle event monitoring with automatic batching and rich context.
+
+## Installation
+
+You can integrate the SDK by directly including the source code in your project or by creating a Swift Package if desired.
+
+## Usage
+
+## Initialization
+
+Initialize the SDK in your `AppDelegate` or SwiftUI `@main` app:
+
+```swift
+Analytics.shared.initialize(
+    writeKey: "YOUR_WRITE_KEY",
+    apiURL: "http://api.datablit.com:30081/v1/batch", // Optional: Custom endpoint
+    flushAt: 20, // Optional: Number of events to batch before sending
+    flushInterval: 30, // Optional: Flush interval in seconds
+    trackApplicationLifecycleEvents: true // Optional: Track app lifecycle events
+)
+```
+
+_Note: Replace `"YOUR_WRITE_KEY"` with your actual Datablit write key._
+
+## Identify User
+
+Identify a user with a unique ID and optional traits:
+
+```swift
+Analytics.shared.identify(userId: "user_123", traits: [
+    "email": "jane@acme.com",
+    "plan": "enterprise"
+])
+```
+
+Or using an `Encodable` struct:
+
+```swift
+struct Traits: Codable {
+    let email: String
+    let plan: String
+}
+
+Analytics.shared.identify(userId: "user_123", traits: Traits(email: "jane@acme.com", plan: "enterprise"))
+```
+
+## Track Events
+
+Track custom events with optional properties:
+
+```swift
+Analytics.shared.track(eventName: "Item Purchased", properties: [
+    "item": "iPhone 15",
+    "price": 1099
+])
+```
+
+Or using an `Encodable` struct:
+
+```swift
+struct Purchase: Codable {
+    let item: String
+    let price: Double
+}
+
+Analytics.shared.track(eventName: "Item Purchased", properties: Purchase(item: "iPhone 15", price: 1099))
+```
+
+## Configuration Options
+
+- `writeKey` (String, required): Your Datablit write key.
+- `endpoint` (String, optional): API endpoint to send data. Default: `http://api.datablit.com/v1/batch`.
+- `flushAt` (Int, optional): Number of events to batch before sending. Default: `20`.
+- `flushInterval` (Double, optional): Interval (in seconds) to flush events. Default: `30`.
+- `trackApplicationLifecycleEvents` (Bool, optional): Enables automatic tracking of application lifecycle events. Default: `false`.
+
+## Auto-Tracked Events
+
+If `trackApplicationLifecycleEvents` is enabled, the SDK will automatically track:
+
+- `Application Launched`
+- `Application Active`
+- `Application Foreground`
+- `Application Backgrounded`
+
+These include rich contextual data such as device and app info, locale, and network type.
+
+## Event Context
+
+Each event includes contextual data like:
+
+- Device (model, manufacturer, type)
+- Screen (dimensions)
+- App (version, build, bundle ID)
+- OS (name and version)
+- Locale and timezone
+- Network type (WiFi, Cellular)
+- User agent
+
+## Manual Flushing
+
+You can manually trigger a flush using:
+
+```swift
+Analytics.shared.flush()
+```
+
+## Example
+
+```swift
+Analytics.shared.initialize(writeKey: "YOUR_WRITE_KEY", trackApplicationLifecycleEvents: true)
+Analytics.shared.identify(userId: "user_42", traits: ["email": "user@example.com"])
+Analytics.shared.track(eventName: "Video Played", properties: ["title": "WWDC Highlights"])
+```
+
+For more details, visit the [Datablit Analytics Swift SDK GitHub repository](https://github.com/datablit/analytics-swift).

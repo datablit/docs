@@ -65,7 +65,10 @@ const sections = [
           </Link>
         </li>
         <li>
-          <Link href="#" className="hover:text-gray-900">
+          <Link
+            href="/docs/analytics-sdk/swift"
+            className="hover:text-gray-900"
+          >
             Analytics ios
           </Link>
         </li>

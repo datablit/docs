@@ -1,10 +1,9 @@
 "use client";
 import React, { useState } from "react";
-import { MDXComponents } from "mdx/types";
 import { Copy } from "lucide-react"; // Optional icon
 
 function CodeBlock({ children }: any) {
-  const [copied, setCopied] = useState(false);
+  const [copied, setCopied] = useState<boolean>(false);
 
   const codeElement = children.props;
   const language = codeElement.className?.replace("language-", "") || "text";
