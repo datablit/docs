@@ -28,20 +28,6 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
       <body>{children}</body>
-      {/* <body className="h-screen grid grid-rows-[4rem_calc(100vh-4rem)]">
-        <div className="">
-          <Header />
-        </div>
-
-        <div className="flex">
-          <Sidebar />
-          <main className="flex-1 px-12 overflow-y-auto hide-scrollbar">
-            {children}
-          </main>
-          <ContentRightSidebar />
-        </div>
-        <Footer />
-      </body> */}
     </html>
   );
 }

@@ -8,10 +8,10 @@ import React, { useState } from "react";
 const Header = () => {
   const [open, setOpen] = useState(false);
   return (
-    <header className="flex items-center justify-between p-4 bg-white border-[#D9D9D9] border-b-[0.5px] ">
+    <header className="flex items-center justify-between px-4 py-2 bg-white border-[#D9D9D9] border-b-[0.5px] ">
       <div className="justify-between flex space-x-12">
         {/* Logo */}
-        <Link href="/" className="">
+        <Link href="/docs" className="">
           <span className="text-xl font-bold text-[#4747AD]">Datablit</span>
         </Link>
         {/* Desktop tab Links */}
