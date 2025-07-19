@@ -1,15 +1,22 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 const HomeFooter = () => {
+  const [currentYear, setCurrentYear] = useState<number>(2024);
+
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear());
+  }, []);
+
   return (
     <footer className="w-full  bg-black text-gray-400 ">
       <div className=" mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center text-sm ">
         <div className="flex items-center space-x-3">
           <span className=" text-gray-400 ">
             {" "}
-            &copy; {new Date().getFullYear()} Proto Clone. All rights reserved.
+            &copy; {currentYear} Datablit. All rights reserved.
           </span>
         </div>
         <div className="flex flex-wrap items-center gap-6 text-gray-400">

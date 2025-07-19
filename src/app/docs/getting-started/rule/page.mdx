@@ -1,0 +1,113 @@
+import { Table } from "../../../../components/Table";
+
+# Getting Started with Rules
+
+- A Rule is a logical expression of signals.
+- It is evaluated at runtime using an API call.
+- It returns either true or false.
+
+## Steps to create a Rule
+
+1. Click on the Rules tab.
+2. Click on "Create Rule".
+3. Fill in the following properties:
+
+<Table
+  columns={[
+    { header: "PROPERTY", width: "20%" },
+    { header: "TYPE", width: "15%" },
+    { header: "REQUIRED", width: "10%" },
+    { header: "DESCRIPTION", width: "50%" },
+  ]}
+  data={[
+    [
+      "Key",
+      "String",
+      "Yes",
+      `Rule identifier. Use snake_case format. 
+      Example: high_value_customer`,
+    ],
+    [
+      "Description",
+      "String",
+      "No",
+      `Description to help understand this rule's purpose`,
+    ],
+    [
+      "Tags",
+      "Dropdown",
+      "No",
+      <>
+        Tags to categorize rules. You can manage tags in the{" "}
+        <a
+          href={process.env.NEXT_PUBLIC_DATABLIT_CONSOLE_URL}
+          className="text-blue-600 hover:text-blue-800 underline"
+        >
+          company profile section
+        </a>
+      </>,
+    ],
+    [
+      "Expression",
+      "String",
+      "Yes",
+      <>
+        Rule expression. For example, if the number of orders in the last 24
+        hours is {">"} 10, we consider it a high-value customer. The rule
+        expression would be:{" "}
+        <b>
+          {" "}
+          no_of_orders_24h {">"}
+          10{" "}
+        </b>
+        See <a
+          href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/getting-started/logical-expression`}
+        >
+          Logical Expression
+        </a> for syntax details.
+      </>,
+    ],
+  ]}
+/>
+
+## Evaluate a Rule
+
+To evaluate a rule, click on the three dots in the rule list and select "Evaluate."
+Next, enter the user_id and submit. This will return the rule evaluation result (true or false) for the specified user.
+
+You can pass optional parameters in JSON format and reference them inside the rule:
+
+```json
+{
+  "os_name": "android"
+}
+```
+
+Inside the rule, you can reference these parameters:
+
+```go
+no_of_orders_24h > 10 && os_name == 'android'
+```
+
+## Evaluate Rule API
+
+To use the rule in your code, you need to call the following API:
+
+```sh
+curl --location 'localhost:8080/api/1.0/rule/eval' \
+--header 'project_id: 023ac' \
+--header 'Content-Type: application/json' \
+--data '{
+    "key" : "high_value_customer",
+    "user_id" : "1",
+    "params" : {
+        "os_name" : "android"
+    }
+}'
+```
+
+**Parameters:**
+
+- `key`: The rule key
+- `project_id`: A mandatory header that you can extract from the URL: https://console.datablit.com/events/023ac/rule
+- `023ac` is your project_id

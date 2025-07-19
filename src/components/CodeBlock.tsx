@@ -6,8 +6,8 @@ function CodeBlock({ children }: any) {
   const [copied, setCopied] = useState<boolean>(false);
 
   const codeElement = children.props;
-  const language = codeElement.className?.replace("language-", "") || "text";
-  const code = codeElement.children.trim();
+  const language = codeElement?.className?.replace("language-", "") || "text";
+  const code = codeElement?.children.trim();
 
   const handleCopy = () => {
     navigator.clipboard.writeText(code);
@@ -27,7 +27,7 @@ function CodeBlock({ children }: any) {
         {copied ? "Copied" : <Copy size={14} />}
       </button>
       <pre className="mt-6 text-sm text-gray-800 whitespace-pre-wrap">
-        <code className={codeElement.className}>{code}</code>
+        <code className={codeElement?.className}>{code}</code>
       </pre>
     </div>
   );

@@ -1,15 +1,162 @@
-import Button from "@/app/ui-components/Button";
+# Getting Started with Event Ingestion
 
-# Getting Started
+Welcome to DataBlit! This guide will walk you through the process of setting up event ingestion for your applications.
 
-Welcome to your docs! 🎉
+## Overview
 
-You can use **Markdown**, or embed directly.
+Event ingestion is the process of collecting and sending user interaction data from your applications (Android, iOS, or web) to DataBlit for analysis. This data helps you understand user behavior and make data-driven decisions.
 
-```ts
-console.log("This is code");
-```
+## Prerequisites
 
-# gogo
+Before you begin, make sure you have:
 
-<Button />
+- Access to your application's codebase
+- Basic understanding of your development platform
+
+## Step-by-Step Setup
+
+### 1. Create Your DataBlit Account
+
+First, you'll need to access the <a href={`${process.env.NEXT_PUBLIC_DATABLIT_CONSOLE_URL}`} className="underline font-medium" > DataBlit Console</a>
+
+### 2. Create or Select an existing project
+
+Once logged in, you'll need to work within a Project
+
+- **New Project**: Create a new project to organize your data collection
+- **Existing Project**: Select an existing project if you're adding another data source <br/>
+
+### 3. Set Up Data Sources
+
+A data source represents where your events are coming from. We recommend creating separate sources for different applications:
+
+<div className="bg-gray-50 rounded-lg p-6 my-6">
+  <h4 className="font-semibold text-gray-900 mb-3">
+    📱 Source Configuration Examples
+  </h4>
+  <div className="space-y-3">
+    <div className="flex items-center">
+      <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+        <span className="text-blue-600 font-semibold text-sm">A</span>
+      </div>
+      <span className="text-gray-700">Android App → Source: "app-android"</span>
+    </div>
+    <div className="flex items-center">
+      <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+        <span className="text-blue-600 font-semibold text-sm">I</span>
+      </div>
+      <span className="text-gray-700">iOS App → Source: "app-ios"</span>
+    </div>
+    <div className="flex items-center">
+      <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center mr-3">
+        <span className="text-purple-600 font-semibold text-sm">W</span>
+      </div>
+      <span className="text-gray-700">Website → Source: "app-web"</span>
+    </div>
+  </div>
+</div>
+
+**Why separate sources?** This allows you to:
+
+- Track data independently for each platform
+- Apply different configurations per source
+- Maintain clean data organization
+- Scale your analytics as you grow
+
+### 4. Copy Write Key
+
+After creating a source, you'll will see a unique **Write Key** in sources table. This key is essential for authenticating your SDK with DataBlit.
+
+<div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 my-4">
+  <div className="flex">
+    <div className="flex-shrink-0">
+      <svg
+        className="h-5 w-5 text-yellow-400"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+      >
+        <path
+          fillRule="evenodd"
+          d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+          clipRule="evenodd"
+        />
+      </svg>
+    </div>
+    <div className="ml-3">
+      <div className="text-sm text-yellow-700">
+        <strong>Security Note:</strong> Keep your write key secure and never
+        expose it in client-side code that's publicly accessible.
+      </div>
+    </div>
+  </div>
+</div>
+
+### 5. Integrate the SDK
+
+Now you're ready to integrate the DataBlit SDK into your application. Choose your platform and follow the integration guide:
+
+<div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
+  <a
+    href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/analytics-sdk/js`}
+    className="block p-4 border border-gray-200 rounded-lg hover:border-blue-300 hover:shadow-md transition-all"
+  >
+    <div className="flex items-center mb-2">
+      <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+        <span className="text-blue-600 font-bold">JS</span>
+      </div>
+      <h3 className="font-semibold text-gray-900">JavaScript</h3>
+    </div>
+    <div className="text-sm text-gray-600">
+      Web applications and browser-based tracking
+    </div>
+  </a>
+
+{" "}
+
+<a
+  href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/analytics-sdk/swift`}
+  className="block p-4 border border-gray-200 rounded-lg hover:border-blue-300 hover:shadow-md transition-all"
+>
+  <div className="flex items-center mb-2">
+    <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center mr-3">
+      <span className="text-orange-600 font-bold">S</span>
+    </div>
+    <h3 className="font-semibold text-gray-900">Swift</h3>
+  </div>
+  <div className="text-sm text-gray-600">
+    iOS applications and Apple ecosystem
+  </div>
+</a>
+
+  <a
+    href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/analytics-sdk/kotlin`}
+    className="block p-4 border border-gray-200 rounded-lg hover:border-blue-300 hover:shadow-md transition-all"
+  >
+    <div className="flex items-center mb-2">
+      <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mr-3">
+        <span className="text-green-600 font-bold">K</span>
+      </div>
+      <h3 className="font-semibold text-gray-900">Kotlin</h3>
+    </div>
+    <div className="text-sm text-gray-600">
+      Android applications and mobile development
+    </div>
+  </a>
+</div>
+
+## What's Next?
+
+After completing the setup:
+
+1. **Test Your Integration**: Send test events to verify everything is working
+2. **Configure Events**: Set up the specific events you want to track
+3. **Explore Analytics**: Visit your dashboard to see your data in action
+4. **Scale Up**: Add more sources and events as your needs grow
+
+## Need Help?
+
+If you encounter any issues during setup:
+
+- Check our <a href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/analytics-sdk`} className="underline">SDK documentation</a> for detailed integration guides
+- Review the troubleshooting section in each SDK guide
+- Contact our support team for additional assistance

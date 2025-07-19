@@ -63,7 +63,10 @@ const Header = () => {
           </div>
 
           <li>
-            <Link href="/api" className="text-white hover:underline">
+            <Link
+              href="/docs/getting-started"
+              className="text-white hover:underline"
+            >
               Docs
             </Link>
           </li>

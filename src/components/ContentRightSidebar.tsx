@@ -1,5 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+
 type Heading = {
   id: string;
   text: string;
@@ -7,8 +9,16 @@ type Heading = {
 
 const ContentRightSidebar = () => {
   const [headings, setHeadings] = useState<Heading[]>([]);
+  const [isClient, setIsClient] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isClient) return;
+
     const main = document.querySelector("main");
     if (!main) return;
 
@@ -34,7 +44,19 @@ const ContentRightSidebar = () => {
     });
 
     setHeadings(parsed);
-  }, []);
+  }, [pathname, isClient]); // Add isClient as dependency
+
+  if (!isClient) {
+    return (
+      <aside className=" hidden md:flex md:flex-col px-10 h-[calc(100vh-4rem)] ">
+        <nav className="flex flex-col py-2 ">
+          <h2 className="text-sm font-semibold mb-2">On this page</h2>
+          <ul className="space-y-1">{/* Empty state while loading */}</ul>
+        </nav>
+      </aside>
+    );
+  }
+
   return (
     <aside className=" hidden md:flex md:flex-col px-10 h-[calc(100vh-4rem)] ">
       <nav className="flex flex-col py-2 ">

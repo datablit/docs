@@ -1,81 +1,7 @@
 import CustomAccordion from "@/app/ui-components/Accordion";
 import { Home } from "lucide-react";
 import Link from "next/link";
-
-const sections = [
-  {
-    title: "Documentation",
-    content: (
-      <ul className="space-y-1">
-        <li>
-          <Link href="#" className="hover:text-gray-900">
-            Introduction
-          </Link>
-        </li>
-        <li>
-          <Link href="#" className="hover:text-gray-900">
-            Getting Started
-          </Link>
-        </li>
-        <li>
-          <Link href="#" className="hover:text-gray-900">
-            API Reference
-          </Link>
-        </li>
-      </ul>
-    ),
-  },
-  {
-    title: "Getting Started",
-    content: (
-      <ul className="space-y-1">
-        <li>
-          <Link href="#" className="hover:text-gray-900">
-            Product
-          </Link>
-        </li>
-        <li>
-          <Link href="#" className="hover:text-gray-900">
-            Getting Started
-          </Link>
-        </li>
-        <li>
-          <Link href="#" className="hover:text-gray-900">
-            SDK
-          </Link>
-        </li>
-      </ul>
-    ),
-  },
-  {
-    title: "Analytics SDK",
-    content: (
-      <ul className="space-y-1">
-        <li>
-          <Link href="/docs/analytics-sdk/js" className="hover:text-gray-900">
-            Analytics js
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/docs/analytics-sdk/kotlin"
-            className="hover:text-gray-900"
-          >
-            Analytics kotlin
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/docs/analytics-sdk/swift"
-            className="hover:text-gray-900"
-          >
-            Analytics ios
-          </Link>
-        </li>
-      </ul>
-    ),
-  },
-];
+import { sidebarItems } from "./SidebarItems";
 
 const Sidebar = () => {
   return (
@@ -112,7 +38,7 @@ const Sidebar = () => {
       </div>
 
       <nav className="px-4 py-4 overflow-y-auto">
-        <CustomAccordion sections={sections} />
+        <CustomAccordion sections={sidebarItems} />
       </nav>
     </div>
   );

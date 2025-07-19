@@ -1,0 +1,61 @@
+# Getting started with event properties conversion
+
+- All event property will be converted into flat snake_case string
+- Nested object will be flatten and key will combined with parent key except fields inside context, properties and traits
+
+**Sample event**
+
+```json
+{
+  "anonymousId": "b67cd1a3-9ad1-4df8-8ceb-cfc7e542b56e",
+  "messageId": "b5f60cba-7f30-4d41-9901-589601e1e539",
+  "type": "track",
+  "userId": "1",
+  "context": {
+    "library": {
+      "name": "analytics-kotlin",
+      "version": "1.19.1"
+    },
+    "instanceId": "54e25ce3-e14c-4c51-8bd6-eaea9ab4bc66",
+    "app": {
+      "name": "Test app",
+      "build": "602"
+    },
+    "device": {
+      "id": "b67cd1a3-9ad1-4df8-8ceb-cfc7e542b56e"
+    }
+  },
+  "receivedAt": null,
+  "timestamp": "2025-02-24T05:13:03.708Z",
+  "originalTimestamp": "2025-02-24T05:13:03.708Z",
+  "event": "Test",
+  "properties": {
+    "User Id": "1892906071887585300",
+    "User Bucket": "0"
+  },
+  "traits": null
+}
+```
+
+**after conversion**
+
+```json
+{
+  "anonymous_id": "b67cd1a3-9ad1-4df8-8ceb-cfc7e542b56e",
+  "message_id": "b5f60cba-7f30-4d41-9901-589601e1e539",
+  "type": "track",
+  "user_id": "1",
+  "library_name": "analytics-kotlin",
+  "library_version": "1.19.1",
+  "instance_id": "54e25ce3-e14c-4c51-8bd6-eaea9ab4bc66",
+  "app_name":"Test app",
+  "app_build": "602",
+  "device_id" : "b67cd1a3-9ad1-4df8-8ceb-cfc7e542b56e"
+  "received_at": null,
+  "timestamp": "2025-02-24T05:13:03.708Z",
+  "original_timestamp": "2025-02-24T05:13:03.708Z",
+  "user_id" : "1892906071887585300",
+  "user_bucket": "0",
+  "traits": null
+}
+```
