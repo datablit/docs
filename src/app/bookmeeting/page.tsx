@@ -12,13 +12,8 @@ const page = () => {
       }}
     >
       <div>
-        <h1 className="text-2xl text-white font-semibold ">
-          <span>Building the future of</span>
-
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-800 to-cyan-500">
-            {" "}
-            bitcoin mining{" "}
-          </span>
+        <h1 className="text-3xl text-white font-semibold justify-center items-center ">
+          Contact Our Sales Team
         </h1>
       </div>
 

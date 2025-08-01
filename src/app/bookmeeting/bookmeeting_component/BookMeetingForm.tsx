@@ -205,192 +205,34 @@ const BookMeetingForm = () => {
   };
 
   return (
-    <div className="flex flex-col">
-      <div className="flex flex-row gap-8 ">
-        <div className="flex flex-col justify-center ">
-          <form
-            className=" items-start "
-            noValidate
-            onSubmit={handleSubmit(onSubmit)}
-          >
-            <div className=" mb-4 flex flex-col m-4 ">
-              <label
-                htmlFor="name"
-                className="mb-2 block text-md font-medium text-white"
-              >
-                Name
-              </label>
-              <input
-                placeholder="name"
-                {...register("name", {
-                  required: {
-                    value: true,
-                    message: "name is required",
-                  },
-                  maxLength: {
-                    value: 100,
-                    message: "maximum 100 characters allowed",
-                  },
-                  pattern: {
-                    value: /^[A-Za-z]+( [A-Za-z]+)?$/,
-                    message: "Enter one or two words using only A-Z and a-z",
-                  },
-                })}
-                className="p-1.5  placeholder:text-sm focus:border-[#4747AD] focus:border-2 focus:outline-none w-sm bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition  placeholder:text-gray-400 text-white"
-              />
-              <p className="text-red-700 text-sm align-text-bottom mt-1">
-                {errors.name?.message}
-              </p>
-            </div>
-            <div className="  flex flex-col m-4 ">
-              <label
-                htmlFor="comp_name"
-                className="mb-2 block text-md font-medium text-white"
-              >
-                Company Name
-              </label>
-              <input
-                placeholder="company name"
-                {...register("comp_name", {
-                  required: {
-                    value: true,
-                    message: "company name is required",
-                  },
-                  maxLength: {
-                    value: 100,
-                    message: "maximum 100 characters allowed",
-                  },
-                  pattern: {
-                    value: /^[A-Za-z]+( [A-Za-z]+)?$/,
-                    message: "Enter one or two words using only A-Z and a-z",
-                  },
-                })}
-                className="p-1.5  placeholder:text-sm focus:border-[#4747AD] focus:border-2 focus:outline-none w-sm bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition  placeholder:text-gray-400 text-white"
-              />
-              <p className="text-red-700 text-sm align-text-bottom mt-1">
-                {errors.name?.message}
-              </p>
-            </div>
-            <div className="  flex flex-col m-4 ">
-              <label
-                htmlFor="email"
-                className="mb-2 block text-md font-medium text-white"
-              >
-                Business Email
-              </label>
-              <input
-                placeholder="business email"
-                {...register("email", {
-                  required: "Business email is required",
-                  pattern: {
-                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                    message: "Invalid email format",
-                  },
-                })}
-                className="p-1.5  placeholder:text-sm focus:border-[#4747AD] focus:border-2 focus:outline-none w-sm bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition  placeholder:text-gray-400 text-white"
-              />
-              <p className="text-red-700 text-sm align-text-bottom mt-1">
-                {errors.name?.message}
-              </p>
-            </div>
-            <div className="m-4 flex flex-col">
-              <label
-                htmlFor="emp_count"
-                className="mb-2 block text-md font-medium text-white"
-              >
-                Company size
-              </label>{" "}
-              <Controller
-                name="emp_count"
-                control={control}
-                rules={{ required: "Company size is required" }}
-                render={({ field }) => (
-                  <CustomPopout
-                    options={companySizeOptions}
-                    value={field.value}
-                    onChange={(val) => field.onChange(val)}
-                    placeholder="Please select one"
-                    size="formsize"
-                    className="placeholder:text-xs w-sm bg-black  border border-white/10 hover:bg-white/10 transition placeholder:text-gray-400 text-white"
-                  />
-                )}
-              />
-              <p className="text-red-700 text-sm align-text-bottom mt-1">
-                {errors.emp_count?.message}
-              </p>
-            </div>
-            <div className="  flex flex-col m-4 ">
-              <label
-                htmlFor="role"
-                className="mb-2 block text-md font-medium text-white"
-              >
-                Role
-              </label>
-              <input
-                placeholder="role"
-                {...register("role", {
-                  maxLength: {
-                    value: 100,
-                    message: "maximum 100 characters allowed",
-                  },
-                  pattern: {
-                    value: /^[A-Za-z]+( [A-Za-z]+)?$/,
-                    message: "Enter one or two words using only A-Z and a-z",
-                  },
-                })}
-                className="p-1.5  placeholder:text-sm focus:border-[#4747AD] focus:border-2 focus:outline-none w-sm bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition  placeholder:text-gray-400 text-white"
-              />
-              <p className="text-red-700 text-sm align-text-bottom mt-1">
-                {errors.role?.message}
-              </p>
-            </div>
-            <div className="m-4 flex flex-col">
-              <label
-                htmlFor="event_count"
-                className="mb-2 block text-md font-medium text-white"
-              >
-                Estimated Event Volume
-              </label>{" "}
-              <Controller
-                name="event_count"
-                control={control}
-                rules={{
-                  required: "Estimated event count is required",
-                }}
-                render={({ field }) => (
-                  <CustomPopout
-                    options={eventCountOptions}
-                    value={field.value}
-                    onChange={(val) => field.onChange(val)} // val is a string
-                    placeholder="Please select one"
-                    size="formsize"
-                    className="placeholder:text-xs w-sm bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition placeholder:text-gray-400 text-white"
-                  />
-                )}
-              />
-              <p className="text-red-700 text-sm align-text-bottom mt-1">
-                {errors.event_count?.message}
-              </p>
-            </div>
-            <div className="flex justify-end m-4">
-              <button
-                type="submit"
-                className="bg-blue-600 text-white px-4 py-2 rounded"
-              >
-                Submit
-              </button>
-            </div>
-          </form>
-        </div>
-        <div className="flex flex-col justify-center text-white space-y-2">
-          <h1>avatar</h1>
-          <h2>We look forward connecting with you</h2>
-          <p className="flex items-center gap-1">
-            <Timer size={16} /> 30 min
+    <div className="flex flex-col h-full hide-scrollbar">
+      <div className="flex flex-col lg:flex-row gap-8 ">
+        <div className="flex flex-col justify-center text-white space-y-3 w-full ">
+          <p className="text-gray-200">
+            We are happy to answer questions and get you acquainted with
+            Datablit.
           </p>
           <p>
-            Select date and time to schedule a <br /> meeting
+            <span className="text-[#4747ad] m-2">✓</span>
+            <span className="text-gray-200">Schedule a demo</span>
           </p>
+          <p>
+            <span className="text-[#4747ad] m-2">✓</span>
+            <span className="text-gray-200">Get billing and tech support</span>
+          </p>
+          <p>
+            <span className="text-[#4747ad] m-2">✓</span>
+            <span className="text-gray-200">
+              Explore use cases for your team
+            </span>
+          </p>
+          <p>
+            <span className="text-gray-200 m-2 flex items-center gap-1.5 ">
+              <Timer size={16} /> Duration: 30 min
+            </span>
+            <span className="text-sm text-gray-400"> Select date and time</span>
+          </p>
+
           <div className="flex flex-row gap-2">
             <CustomPopout
               options={monthOptions}
@@ -432,7 +274,7 @@ const BookMeetingForm = () => {
                   <div
                     key={date.toISOString()}
                     onClick={() => setSelectedDay(date)}
-                    className={`p-3 text-center rounded-md border cursor-pointer border-white/10 bg-white/5 backdrop-blur-sm shadow-sm ${
+                    className={`p-3 text-center rounded-md border cursor-pointer border-white/10 bg-white/5 shadow-sm ${
                       isSelected ? "border-blue-400 bg-blue-600" : ""
                     }`}
                   >
@@ -458,8 +300,8 @@ const BookMeetingForm = () => {
           </div>
           {selectedDay && (
             <div>
-              <h3 className="mb-2 text-lg font-semibold text-white">
-                Available times on {format(selectedDay, "MMMM d, yyyy")}
+              <h3 className="mb-2 text-sm font-semibold text-gray-400">
+                Availability on {format(selectedDay, "MMMM d, yyyy")}
               </h3>
               <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2">
                 {timeSlots.map((timeSlot) => {
@@ -489,6 +331,181 @@ const BookMeetingForm = () => {
               </div>
             </div>
           )}
+        </div>
+        <div className="flex flex-col justify-center w-full lg:w-1/2 ">
+          <form
+            className=" items-start "
+            noValidate
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            <div className=" mb-4 flex flex-col m-4 ">
+              <label
+                htmlFor="name"
+                className="mb-2 block text-md font-medium text-white"
+              >
+                Name
+              </label>
+              <input
+                placeholder=""
+                {...register("name", {
+                  required: {
+                    value: true,
+                    message: "name is required",
+                  },
+                  maxLength: {
+                    value: 100,
+                    message: "maximum 100 characters allowed",
+                  },
+                  pattern: {
+                    value: /^[A-Za-z]+( [A-Za-z]+)?$/,
+                    message: "Enter one or two words using only A-Z and a-z",
+                  },
+                })}
+                className="p-1.5  placeholder:text-sm focus:border-[#4747AD] focus:border-2 focus:outline-none w-sm bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition  placeholder:text-gray-400 text-white"
+              />
+              <p className="text-red-700 text-sm align-text-bottom mt-1">
+                {errors.name?.message}
+              </p>
+            </div>
+            <div className="  flex flex-col m-4 ">
+              <label
+                htmlFor="comp_name"
+                className="mb-2 block text-md font-medium text-white"
+              >
+                Company Name
+              </label>
+              <input
+                placeholder=""
+                {...register("comp_name", {
+                  required: {
+                    value: true,
+                    message: "company name is required",
+                  },
+                  maxLength: {
+                    value: 100,
+                    message: "maximum 100 characters allowed",
+                  },
+                  pattern: {
+                    value: /^[A-Za-z]+( [A-Za-z]+)?$/,
+                    message: "Enter one or two words using only A-Z and a-z",
+                  },
+                })}
+                className="p-1.5  placeholder:text-sm focus:border-[#4747AD] focus:border-2 focus:outline-none w-sm bg-white/5  border border-white/10 hover:bg-white/10 transition  placeholder:text-gray-400 text-white"
+              />
+              <p className="text-red-700 text-sm align-text-bottom mt-1">
+                {errors.name?.message}
+              </p>
+            </div>
+            <div className="  flex flex-col m-4 ">
+              <label
+                htmlFor="email"
+                className="mb-2 block text-md font-medium text-white"
+              >
+                Business Email
+              </label>
+              <input
+                placeholder=""
+                {...register("email", {
+                  required: "Business email is required",
+                  pattern: {
+                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                    message: "Invalid email format",
+                  },
+                })}
+                className="p-1.5  placeholder:text-sm focus:border-[#4747AD] focus:border-2 focus:outline-none w-sm bg-white/5 border border-white/10 hover:bg-white/10 transition  placeholder:text-gray-400 text-white"
+              />
+              <p className="text-red-700 text-sm align-text-bottom mt-1">
+                {errors.name?.message}
+              </p>
+            </div>
+            <div className="m-4 flex flex-col">
+              <label
+                htmlFor="emp_count"
+                className="mb-2 block text-md font-medium text-white"
+              >
+                Company size
+              </label>{" "}
+              <Controller
+                name="emp_count"
+                control={control}
+                rules={{ required: "Company size is required" }}
+                render={({ field }) => (
+                  <CustomPopout
+                    options={companySizeOptions}
+                    value={field.value}
+                    onChange={(val) => field.onChange(val)}
+                    placeholder="Please select one"
+                    size="formsize"
+                    className="placeholder:text-xs w-sm bg-black  border border-white/10 hover:bg-white/10 transition placeholder:text-gray-400 text-white"
+                  />
+                )}
+              />
+              <p className="text-red-700 text-sm align-text-bottom mt-1">
+                {errors.emp_count?.message}
+              </p>
+            </div>
+            <div className="  flex flex-col m-4 ">
+              <label
+                htmlFor="role"
+                className="mb-2 block text-md font-medium text-white"
+              >
+                Role
+              </label>
+              <input
+                placeholder=""
+                {...register("role", {
+                  maxLength: {
+                    value: 100,
+                    message: "maximum 100 characters allowed",
+                  },
+                  pattern: {
+                    value: /^[A-Za-z]+( [A-Za-z]+)?$/,
+                    message: "Enter one or two words using only A-Z and a-z",
+                  },
+                })}
+                className="p-1.5  placeholder:text-sm focus:border-[#4747AD] focus:border-2 focus:outline-none w-sm bg-white/5 border border-white/10 hover:bg-white/10 transition  placeholder:text-gray-400 text-white"
+              />
+              <p className="text-red-700 text-sm align-text-bottom mt-1">
+                {errors.role?.message}
+              </p>
+            </div>
+            <div className="m-4 flex flex-col">
+              <label
+                htmlFor="event_count"
+                className="mb-2 block text-md font-medium text-white"
+              >
+                Estimated Event Volume
+              </label>{" "}
+              <Controller
+                name="event_count"
+                control={control}
+                rules={{
+                  required: "Estimated event count is required",
+                }}
+                render={({ field }) => (
+                  <CustomPopout
+                    options={eventCountOptions}
+                    value={field.value}
+                    onChange={(val) => field.onChange(val)} // val is a string
+                    placeholder="Please select one"
+                    size="formsize"
+                    className="placeholder:text-xs w-sm bg-white/5 border border-white/10 hover:bg-white/10 transition placeholder:text-gray-400 text-white"
+                  />
+                )}
+              />
+              <p className="text-red-700 text-sm align-text-bottom mt-1">
+                {errors.event_count?.message}
+              </p>
+            </div>
+            <div className="flex justify-end m-4">
+              <button
+                type="submit"
+                className="bg-blue-600 text-white px-4 py-2 rounded"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

@@ -10,11 +10,12 @@ const Recommendation = () => {
             Recommendation
           </div>
           <h1 className="text-2xl text-white font-semibold mt-6">
-            Data Ingestion from multiple sources
+            Contextual Nudges that Drive Action
           </h1>
           <p className="text-lg md:text-xl text-gray-400 mt-4">
-            Update sales proposals, set team reminders, resolve IT issues and so
-            much more with always-on, action-taking AI agents in Slack.
+            Prompt users to explore new features, offers or advanced workflow
+            based on behavioral insights and gather feedback without disrupting
+            in product experience.
           </p>
           <a
             href="#"

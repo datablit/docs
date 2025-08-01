@@ -7,14 +7,14 @@ const DataIntelligence = () => {
         {/* left side */}
         <div>
           <div className="bg-white/10 text-xs text-white px-3 py-1.5 rounded-full border border-white/20 backdrop-blur-md w-fit">
-            Data Intelligence
+            Data
           </div>
           <h1 className="text-2xl text-white font-semibold mt-6">
-            Analyse Customer Data
+            Data Intelligence that Drives Growth
           </h1>
           <p className="text-lg md:text-xl text-gray-400 mt-4">
-            Build chart and analyse customer data to take longterm business
-            decision
+            Track, analyze, and visualize customer data to uncover insights and
+            support strategic business decision.
           </p>
           <a
             href="#"

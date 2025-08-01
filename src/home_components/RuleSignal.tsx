@@ -7,14 +7,14 @@ const RuleSignal = () => {
         {/* left side */}
         <div>
           <div className="bg-white/10 text-xs text-white px-3 py-1.5 rounded-full border border-white/20 backdrop-blur-md w-fit">
-            Rule and Signal
+            Rule & Signal
           </div>
           <h1 className="text-2xl text-white font-semibold mt-6">
             Trigger Realtime Action
           </h1>
           <p className="text-lg md:text-xl text-gray-400 mt-4">
-            Save months of time with data driven decision and trigger immediate
-            action faster than ever with logical expression and metrics.
+            Save months of time with fast, personalised data driven decisions
+            and scalable automation powered by logical expression and metrics.
           </p>
           <a
             href="#"

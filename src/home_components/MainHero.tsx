@@ -5,7 +5,7 @@ const MainHero = () => {
     <section className="pt-16 text-white flex flex-col justify-center items-center relative px-4">
       <div className="absolute top-28">
         <button className="bg-white/10 text-sm text-white px-4 py-2 rounded-full border border-white/20 backdrop-blur-md">
-          🎉 Download our latest report on productivity and AI
+          🎉 Check our industry specific use cases
         </button>
       </div>
 
@@ -15,21 +15,21 @@ const MainHero = () => {
             Customer Data Platform for Strategic Decisions
           </span>
           <br />
-          <span>and Real-Time Personalized Actions</span>
+          <span>& Real-Time Personalized Actions</span>
         </h2>
 
         <p className="text-lg md:text-xl text-gray-400 mt-6">
           A unified platform for real-time data ingestion, rule-based actioning,
           <br />
           and persistent event intelligence—empowering your business to react
-          faster and plan smarter
+          faster and plan smarter.
         </p>
       </div>
       <div className="mt-10 text-center space-x-4">
-        <button className=" px-6 py-3 bg-[#4747AD] text-white font-semibold rounded-md hover:opacity-90 transition">
+        <button className=" px-6 py-3 bg-[#4f65d7] text-white font-semibold rounded-md hover:opacity-90 transition">
           Try Datablit
         </button>
-        <button className=" px-6 py-3 bg-black border-[0.5px] border-[#4747AD] hover:bg-[#4747AD] text-white font-semibold rounded-md hover:opacity-90 transition">
+        <button className=" px-6 py-3 bg-black border-[0.5px] border-[#4f65d7] hover:bg-[#4747AD] text-white font-semibold rounded-md hover:opacity-90 transition">
           Watch Demo
         </button>
       </div>

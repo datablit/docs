@@ -1,20 +1,21 @@
 import React from "react";
 
-const Experiment = () => {
+const Connect = () => {
   return (
     <section className="px-4">
       <div className="mx-auto flex flex-col lg:flex-row items-center justify-between gap-12">
         {/* left side */}
         <div>
           <div className="bg-white/10 text-xs text-white px-3 py-1.5 rounded-full border border-white/20 backdrop-blur-md w-fit">
-            Experiment
+            Connect
           </div>
           <h1 className="text-2xl text-white font-semibold mt-6">
-            Launch & Optimize Features at Lightning Speed
+            Work Alongside Your Team Live
           </h1>
           <p className="text-lg md:text-xl text-gray-400 mt-4">
-            Run and validate new features, targeted experiments for user flow
-            and A/B testing faster than ever.
+            Instantly connect over audio or video, share screens, easily record
+            your screen and camera so that you can get more done where you’re
+            already working.
           </p>
           <a
             href="#"
@@ -22,6 +23,13 @@ const Experiment = () => {
           >
             Learn more →
           </a>
+          <h1
+            className="text-xl bg-clip-text
+          text-purple-500 
+  font-semibold mt-3"
+          >
+            COMING SOON
+          </h1>
         </div>
         {/* right side */}
         <div className="w-full max-w-xl rounded-xl overflow-hidden shadow-xl border border-gray-200">
@@ -44,4 +52,4 @@ const Experiment = () => {
   );
 };
 
-export default Experiment;
+export default Connect;

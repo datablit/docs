@@ -7,13 +7,14 @@ const DataIngestionSection = () => {
         {/* left side */}
         <div>
           <div className="bg-white/10 text-xs text-white px-3 py-1.5 rounded-full border border-white/20 backdrop-blur-md w-fit">
-            Data Ingestion
+            Events
           </div>
           <h1 className="text-2xl text-white font-semibold mt-6">
-            Data Ingestion from multiple sources
+            Data Ingestion from Multiple Sources
           </h1>
           <p className="text-xl md:text-md text-gray-400 mt-4">
-           Capture events from any source(web, mobile & backend server). Events will be ingested to the warehouse in realtime.
+            Capture events from any source (web, mobile & backend server).
+            Events will be ingested to the warehouse in real time.
           </p>
           <a
             href="#"

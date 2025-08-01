@@ -1,20 +1,20 @@
 import React from "react";
 
-const Experiment = () => {
+const Dashboard = () => {
   return (
     <section className="px-4">
       <div className="mx-auto flex flex-col lg:flex-row items-center justify-between gap-12">
         {/* left side */}
         <div>
           <div className="bg-white/10 text-xs text-white px-3 py-1.5 rounded-full border border-white/20 backdrop-blur-md w-fit">
-            Experiment
+            Dashboard
           </div>
           <h1 className="text-2xl text-white font-semibold mt-6">
-            Launch & Optimize Features at Lightning Speed
+            Data Storytelling
           </h1>
           <p className="text-lg md:text-xl text-gray-400 mt-4">
-            Run and validate new features, targeted experiments for user flow
-            and A/B testing faster than ever.
+            Create dashboard with charts and see realtime changes in customer
+            data as they happen in your product.
           </p>
           <a
             href="#"
@@ -44,4 +44,4 @@ const Experiment = () => {
   );
 };
 
-export default Experiment;
+export default Dashboard;

@@ -1,16 +1,19 @@
 import Collaboration from "@/home_components/Collaboration";
+import Connect from "@/home_components/Connect";
+import Dashboard from "@/home_components/Dashboard";
 import DataIngestionSection from "@/home_components/DataIngestionSection";
 import DataIntelligence from "@/home_components/DataIntelligence";
-import Engagement from "@/home_components/Engagement";
 import Experiment from "@/home_components/Experiment";
 import Header from "@/home_components/Header";
 import Hero from "@/home_components/Hero";
+import Highlight from "@/home_components/Highlight";
 import HomeFooter from "@/home_components/HomeFooter";
 import MainHero from "@/home_components/MainHero";
 import Newsletter from "@/home_components/Newsletter";
 import PointerGlow from "@/home_components/PointerGlow";
 import Recommendation from "@/home_components/Recommendation";
 import RuleSignal from "@/home_components/RuleSignal";
+import Workflow from "@/home_components/Workflow";
 
 export default function Home() {
   return (
@@ -36,6 +39,9 @@ export default function Home() {
             <MainHero />
           </section>
           <section>
+            <Highlight />
+          </section>
+          <section>
             <DataIngestionSection />
           </section>
           <section>
@@ -45,23 +51,29 @@ export default function Home() {
             <DataIntelligence />
           </section>
           <section>
-            <Collaboration />
+            <Dashboard />
           </section>
           <section>
             <Experiment />
           </section>
           <section>
-            <Recommendation />
+            <Collaboration />
+          </section>
+          {/* <section>
+            <Connect />
+          </section> */}
+          {/* <section>
+            <Workflow />
           </section>
           <section>
-            <Engagement />
-          </section>
+            <Recommendation />
+          </section> */}
           <section>
             <Newsletter />
           </section>
-          <section>
+          {/* <section>
             <Hero />
-          </section>
+          </section> */}
         </main>
       </div>
     </div>

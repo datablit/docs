@@ -1,20 +1,20 @@
 import React from "react";
 
-const Engagement = () => {
+const Workflow = () => {
   return (
     <section className="px-4">
       <div className="mx-auto flex flex-col lg:flex-row items-center justify-between gap-12">
         {/* left side */}
         <div>
           <div className="bg-white/10 text-xs text-white px-3 py-1.5 rounded-full border border-white/20 backdrop-blur-md w-fit">
-            Engagement
+            Workflow
           </div>
           <h1 className="text-2xl text-white font-semibold mt-6">
-            Data Ingestion from multiple sources
+            Hyper Personalisation at Scale
           </h1>
           <p className="text-lg md:text-xl text-gray-400 mt-4">
-            Update sales proposals, set team reminders, resolve IT issues and so
-            much more with always-on, action-taking AI agents in Slack.
+            Respond to user behavior as it happens. Create automated realtime
+            response or action based on trigger, action and logic.
           </p>
           <a
             href="#"
@@ -51,4 +51,4 @@ const Engagement = () => {
   );
 };
 
-export default Engagement;
+export default Workflow;

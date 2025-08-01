@@ -7,15 +7,15 @@ const Collaboration = () => {
         {/* left side */}
         <div>
           <div className="bg-white/10 text-xs text-white px-3 py-1.5 rounded-full border border-white/20 backdrop-blur-md w-fit">
-            Collaboration
+            Space
           </div>
           <h1 className="text-2xl text-white font-semibold mt-6">
-            Collaborate teammates and partner
+            Collaborate Seamlessly with Teams & Partners
           </h1>
           <p className="text-lg md:text-xl text-gray-400 mt-4">
-            Connect with your teammates and invite external organisation in the
-            conversation. Discuss tasks, share ideas and stay connected brings
-            every piece of work together from start to finish
+            Connect with teammates and invite external organizations into the
+            conversation. Share ideas, manage tasks, and stay aligned, from
+            start to finish.
           </p>
           <a
             href="#"
