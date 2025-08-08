@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Datablit doc",
-  description: "Datablit doc",
+  title: "Datablit",
+  description: "CRM platform",
 };
 
 export default function RootLayout({

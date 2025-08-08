@@ -4,6 +4,8 @@ import createMDX from '@next/mdx'
 const nextConfig = {
   // Configure `pageExtensions` to include markdown and MDX files
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+  // Enable standalone output for Docker builds
+  output: 'standalone' as const,
   // Optionally, add any other Next.js config below
 }
 

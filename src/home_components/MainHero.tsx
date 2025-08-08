@@ -1,6 +1,20 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
+import YouTubePopup from "../components/YouTubePopup";
 
 const MainHero = () => {
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+
+  const videoId = "nemguR2GBh8";
+
+  const handleWatchVideo = () => {
+    setIsVideoOpen(true);
+  };
+
+  const handleCloseVideo = () => {
+    setIsVideoOpen(false);
+  };
+
   return (
     <section className="pt-16 text-white flex flex-col justify-center items-center relative px-4">
       <div className="absolute top-28">
@@ -29,18 +43,21 @@ const MainHero = () => {
         <button className=" px-6 py-3 bg-[#4f65d7] text-white font-semibold rounded-md hover:opacity-90 transition">
           Try Datablit
         </button>
-        <button className=" px-6 py-3 bg-black border-[0.5px] border-[#4f65d7] hover:bg-[#4747AD] text-white font-semibold rounded-md hover:opacity-90 transition">
+        <button
+          onClick={handleWatchVideo}
+          className=" px-6 py-3 bg-black border-[0.5px] border-[#4f65d7] hover:bg-[#4747AD] text-white font-semibold rounded-md hover:opacity-90 transition"
+        >
           Watch Demo
         </button>
       </div>
+
+      <YouTubePopup
+        isOpen={isVideoOpen}
+        onClose={handleCloseVideo}
+        videoId={videoId}
+      />
     </section>
   );
 };
 
 export default MainHero;
-
-{
-  /* <button className=" px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-500 text-white font-semibold rounded-md hover:opacity-90 transition">
-Try Datablit
-</button> */
-}

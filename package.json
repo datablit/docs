@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
+    "dev": "dotenv -e conf/.env.${ENV_NAME:-local} -- next dev --turbopack",
+    "build": "dotenv -e conf/.env.${ENV_NAME:-local} -- next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -32,6 +32,7 @@
     "eslint": "9.31.0",
     "eslint-config-next": "15.4.2",
     "tailwindcss": "4.1.11",
-    "typescript": "5.8.3"
+    "typescript": "5.8.3",
+    "dotenv-cli": "10.0.0"
   }
 }

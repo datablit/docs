@@ -127,16 +127,17 @@ const BookMeetingForm = () => {
 
       const updatedSlots = defaultSlots.map((time) => {
         const [timePart, meridian] = time.split(" ");
-        let [hour, minute] = timePart.split(":").map(Number);
+        const [hour, minute] = timePart.split(":").map(Number);
 
         // Convert to 24-hour format
-        if (meridian === "PM" && hour !== 12) hour += 12;
-        if (meridian === "AM" && hour === 12) hour = 0;
+        let adjustedHour = hour;
+        if (meridian === "PM" && adjustedHour !== 12) adjustedHour += 12;
+        if (meridian === "AM" && adjustedHour === 12) adjustedHour = 0;
 
         // Create naive date from selectedDay and time
         const naiveDate = setHours(
           setMinutes(new Date(selectedDay), minute),
-          hour
+          adjustedHour
         );
 
         // Convert local time in selected timezone to UTC
@@ -180,11 +181,15 @@ const BookMeetingForm = () => {
     }
 
     const [timePart, meridian] = selectedTime.split(" ");
-    let [hour, minute] = timePart.split(":").map(Number);
-    if (meridian === "PM" && hour !== 12) hour += 12;
-    if (meridian === "AM" && hour === 12) hour = 0;
+    const [hour, minute] = timePart.split(":").map(Number);
+    let adjustedHour = hour;
+    if (meridian === "PM" && adjustedHour !== 12) adjustedHour += 12;
+    if (meridian === "AM" && adjustedHour === 12) adjustedHour = 0;
 
-    const localDate = setHours(setMinutes(new Date(selectedDay), minute), hour);
+    const localDate = setHours(
+      setMinutes(new Date(selectedDay), minute),
+      adjustedHour
+    );
     const startDateTime = fromZonedTime(localDate, selectedTimeZone);
 
     const payload: DemoBooking = {

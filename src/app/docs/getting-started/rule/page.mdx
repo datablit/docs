@@ -94,8 +94,8 @@ no_of_orders_24h > 10 && os_name == 'android'
 To use the rule in your code, you need to call the following API:
 
 ```sh
-curl --location 'localhost:8080/api/1.0/rule/eval' \
---header 'project_id: 023ac' \
+curl --location 'https://api.datablit.com/api/1.0/rule/eval' \
+--header 'projectId: 023ac' \
 --header 'Content-Type: application/json' \
 --data '{
     "key" : "high_value_customer",
@@ -109,5 +109,5 @@ curl --location 'localhost:8080/api/1.0/rule/eval' \
 **Parameters:**
 
 - `key`: The rule key
-- `project_id`: A mandatory header that you can extract from the URL: https://console.datablit.com/events/023ac/rule
-- `023ac` is your project_id
+- `projectId`: A mandatory header that you can extract from the URL: https://console.datablit.com/events/023ac/rule
+- `023ac` is your projectId
