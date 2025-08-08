@@ -23,7 +23,7 @@ const HomeFooter = () => {
           <button className="text-xs border border-white/30 rounded-full px-2 py-1 hover:text-white hover:border-white transition">
             Your Privacy Choices
           </button>
-          <Link href="#" passHref>
+          <Link href="https://www.linkedin.com/company/datablit/" passHref>
             <span className="cursor-pointer hover:brightness-200 transition">
               <Image
                 src="/crmlinkedin.svg"
@@ -33,12 +33,12 @@ const HomeFooter = () => {
               />
             </span>
           </Link>
-          <Link href="#" passHref>
+          <Link href="https://x.com/Datablit_cdp" passHref>
             <span className="cursor-pointer hover:brightness-200 transition">
               <Image src="/crmx.svg" alt="x logo" width={16} height={16} />
             </span>
           </Link>
-          <Link href="#" passHref>
+          <Link href="https://www.youtube.com/@datablit" passHref>
             <span className="cursor-pointer hover:brightness-200 transition">
               <Image
                 src="/crmyoutube.svg"

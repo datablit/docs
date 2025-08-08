@@ -36,7 +36,7 @@ const ProductDropdown = () => {
               className="block px-2 py-2 rounded-md hover:bg-[#4747ad] transition"
             >
               <span className="font-semibold text-gray-400">Signal</span>
-              <p className="text-gray-200">Track metrics realtime</p>
+              <p className="text-gray-200">Track custom metrics </p>
             </Link>
           </li>
           <li>

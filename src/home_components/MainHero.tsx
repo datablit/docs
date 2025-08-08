@@ -1,9 +1,11 @@
 "use client";
 import React, { useState } from "react";
 import YouTubePopup from "../components/YouTubePopup";
+import { useRouter } from "next/navigation";
 
 const MainHero = () => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const router = useRouter();
 
   const videoId = "nemguR2GBh8";
 
@@ -40,7 +42,14 @@ const MainHero = () => {
         </p>
       </div>
       <div className="mt-10 text-center space-x-4">
-        <button className=" px-6 py-3 bg-[#4f65d7] text-white font-semibold rounded-md hover:opacity-90 transition">
+        <button
+          className=" px-6 py-3 bg-[#4f65d7] text-white font-semibold rounded-md hover:opacity-90 transition"
+          onClick={() =>
+            router.push(
+              (process.env.NEXT_PUBLIC_DATABLIT_CONSOLE_URL || "") + "/signup"
+            )
+          }
+        >
           Try Datablit
         </button>
         <button

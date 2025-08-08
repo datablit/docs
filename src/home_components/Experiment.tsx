@@ -32,10 +32,7 @@ const Experiment = () => {
             playsInline
             className="w-full h-auto object-cover"
           >
-            <source
-              src="https://a.slack-edge.com/d20cf6d/marketing/img/features/ai/lp/df/ui/video-ui-ai-03.IN.mp4"
-              type="video/mp4"
-            />
+            <source src="/experimentmain.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>

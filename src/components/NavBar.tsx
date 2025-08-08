@@ -26,12 +26,10 @@ const NavBar = () => {
             </Link>
           </li>
           <li>
-            <Link href="/api" className="hover:text-[#4747AD]  text-gray-700">
-              API
-            </Link>
-          </li>
-          <li>
-            <Link href="/sdk" className="hover:text-[#4747AD]  text-gray-700">
+            <Link
+              href="/docs/analytics-sdk"
+              className="hover:text-[#4747AD]  text-gray-700"
+            >
               SDK
             </Link>
           </li>
