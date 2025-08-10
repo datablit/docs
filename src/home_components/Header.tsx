@@ -43,8 +43,13 @@ const Header = () => {
             </Link>
           </li>
           <li>
+            <Link href="/blog" className="text-white hover:underline">
+              Blog
+            </Link>
+          </li>
+          <li>
             <Link href="/sdk" className="text-white hover:underline">
-              Join Community
+              Community
             </Link>
           </li>
           <li>

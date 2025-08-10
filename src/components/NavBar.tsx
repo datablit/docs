@@ -35,6 +35,19 @@ const NavBar = () => {
           </li>
           <li>
             <Link
+              href="/docs/getting-started"
+              className="hover:text-[#4747AD]  text-gray-700"
+            >
+              Docs
+            </Link>
+          </li>
+          <li>
+            <Link href="/blog" className="hover:text-[#4747AD]  text-gray-700">
+              Blog
+            </Link>
+          </li>
+          <li>
+            <Link
               href="/community"
               className="hover:text-[#4747AD] text-gray-700"
             >
