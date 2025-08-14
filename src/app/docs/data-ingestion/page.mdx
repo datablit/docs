@@ -1,0 +1,149 @@
+# Event Ingestion with Datablit
+
+This doc will guide you how to ingest customer data from source to Datablit server.
+
+## Step-by-Step Setup
+
+### 1. Create DataBlit Account
+
+Signup and get access to the <a href={`${process.env.NEXT_PUBLIC_DATABLIT_CONSOLE_URL}`} className="underline font-medium" > DataBlit Console</a>
+
+### 2. Create or Select an Existing Project
+
+A project is basically a core product or platform developed and managed by a company as a distinct business operational unit.
+You can create a new project or work on an existing project if you are adding a new data source.
+
+### 3. Setup Data Sources
+
+Click on + Source button, provide source configuration and description to create a new Source.
+
+We recommend creating separate sources for different applications:
+
+<div className="bg-gray-50 rounded-lg p-6 my-6">
+  <h4 className="font-semibold text-gray-900 mb-3">
+    📱 Source Configuration Examples
+  </h4>
+  <div className="space-y-3">
+    <div className="flex items-center">
+      <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+        <span className="text-blue-600 font-semibold text-sm">A</span>
+      </div>
+      <span className="text-gray-700">Android App → Source: "app-android"</span>
+    </div>
+    <div className="flex items-center">
+      <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+        <span className="text-blue-600 font-semibold text-sm">I</span>
+      </div>
+      <span className="text-gray-700">iOS App → Source: "app-ios"</span>
+    </div>
+    <div className="flex items-center">
+      <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center mr-3">
+        <span className="text-purple-600 font-semibold text-sm">W</span>
+      </div>
+      <span className="text-gray-700">Website → Source: "app-web"</span>
+    </div>
+  </div>
+</div>
+
+### 4. Copy API Key
+
+Once the source is created, you will get the **_API Key_** in the source table. This key is essential for authenticating your SDK. We recommend keeping your source key secure and never expose it in client-side code for better security.
+
+<div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 my-4">
+  <div className="flex">
+    <div className="flex-shrink-0">
+      <svg
+        className="h-5 w-5 text-yellow-400"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+      >
+        <path
+          fillRule="evenodd"
+          d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+          clipRule="evenodd"
+        />
+      </svg>
+    </div>
+    <div className="ml-3">
+      <div className="text-sm text-yellow-700">
+        <strong>Security Note:</strong> Keep your API Key secure and never
+        expose it in client-side code that's publicly accessible.
+      </div>
+    </div>
+  </div>
+</div>
+
+### 5. Integrate Datablit SDK
+
+Now you can collect customer data by implementing Datablit’s tracking SDK as your Source. Install SDK and create separate sources for different applications-
+
+### Sources for collecting data
+
+<div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
+  <a
+    href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sdk/js`}
+    className="block p-4 border border-gray-200 rounded-lg hover:border-blue-300 hover:shadow-md transition-all"
+  >
+    <div className="flex items-center mb-2">
+      <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+        <span className="text-blue-600 font-bold">JS</span>
+      </div>
+      <h3 className="font-semibold text-gray-900">JavaScript</h3>
+    </div>
+    <div className="text-sm text-gray-600">
+      Track customer data from a web applications and browser-based tracking
+    </div>
+  </a>
+
+{" "}
+
+<a
+  href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sdk/swift`}
+  className="block p-4 border border-gray-200 rounded-lg hover:border-blue-300 hover:shadow-md transition-all"
+>
+  <div className="flex items-center mb-2">
+    <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center mr-3">
+      <span className="text-orange-600 font-bold">S</span>
+    </div>
+    <h3 className="font-semibold text-gray-900">Swift</h3>
+  </div>
+  <div className="text-sm text-gray-600">
+    iOS application and Apple ecosystem
+  </div>
+</a>
+
+  <a
+    href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sdk/kotlin`}
+    className="block p-4 border border-gray-200 rounded-lg hover:border-blue-300 hover:shadow-md transition-all"
+  >
+    <div className="flex items-center mb-2">
+      <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mr-3">
+        <span className="text-green-600 font-bold">K</span>
+      </div>
+      <h3 className="font-semibold text-gray-900">Kotlin</h3>
+    </div>
+    <div className="text-sm text-gray-600">
+      android application and mobile app development
+    </div>
+  </a>
+</div>
+
+Datablit SDK will track customer events and upload them in batches after every 1 second. This limits the number of network calls made and helps you to access data in real-time.
+
+### 5. Configure Events
+
+Set up events you want to track in your codebase.
+**Custom Event Tracking**
+You can set up, tie extra pieces of information and actions to the events you track using Datablit SDK. We recommend sending properties specific to your business requirements whenever possible, providing you a complete picture of what your users are doing.
+
+### 5. Test your SDK Integration
+
+Send test events to verify the feasibility of your code and sdk integration. You can test API calls immediately and test events will appear in your dashboard as real data.
+
+## Help Desk
+
+If you encounter any issues during SDK setup and tracking:
+
+1. Check our <a href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sdk`} className="underline text-[#4747ad]">SDK documentation</a> for detailed integration guides
+2. Review the troubleshooting section or ask community for assistance
+3. In case you need personal assistance, contact our support team for guidance or email us at contact@datablit.in

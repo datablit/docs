@@ -13,9 +13,33 @@ export const sidebarItems = [
             Getting Started
           </Link>
         </li>
+      </ul>
+    ),
+  },
+  {
+    title: "Data Ingestion",
+    content: (
+      <ul className="space-y-1">
         <li>
           <Link
-            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/analytics-sdk`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/data-ingestion`}
+            className="hover:text-gray-900"
+          >
+            Data Ingestion
+          </Link>
+        </li>
+        <li>
+          <Link
+            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/data-ingestion/event-properties-conversion`}
+            className="hover:text-gray-900"
+          >
+            Event Properties Conversion
+          </Link>
+        </li>
+
+        <li>
+          <Link
+            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sdk`}
             className="hover:text-gray-900"
           >
             SDK
@@ -23,15 +47,77 @@ export const sidebarItems = [
         </li>
         <li>
           <Link
-            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/getting-started/data-signal`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/data-ingestion/key-concepts`}
             className="hover:text-gray-900"
           >
-            DataSignal
+            Key Concepts
+          </Link>
+        </li>
+      </ul>
+    ),
+  },
+
+  {
+    title: "Datablit SDK",
+    content: (
+      <ul className="space-y-1">
+        <li>
+          <Link
+            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sdk/js`}
+            className="hover:text-gray-900"
+          >
+            Datablit JS
           </Link>
         </li>
         <li>
           <Link
-            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/getting-started/rule`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sdk/kotlin`}
+            className="hover:text-gray-900"
+          >
+            Datablit Kotlin
+          </Link>
+        </li>
+        <li>
+          <Link
+            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sdk/swift`}
+            className="hover:text-gray-900"
+          >
+            Datablit Swift
+          </Link>
+        </li>
+      </ul>
+    ),
+  },
+  {
+    title: "Signal",
+    content: (
+      <ul className="space-y-1">
+        <li>
+          <Link
+            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/signal`}
+            className="hover:text-gray-900"
+          >
+            Signal
+          </Link>
+        </li>
+        <li>
+          <Link
+            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/signal/signal-concepts`}
+            className="hover:text-gray-900"
+          >
+            Key Concepts
+          </Link>
+        </li>
+      </ul>
+    ),
+  },
+  {
+    title: "Rule",
+    content: (
+      <ul className="space-y-1">
+        <li>
+          <Link
+            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/rule`}
             className="hover:text-gray-900"
           >
             Rule
@@ -39,7 +125,7 @@ export const sidebarItems = [
         </li>
         <li>
           <Link
-            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/getting-started/logical-expression`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/rule/logical-expression`}
             className="hover:text-gray-900"
           >
             Logical Expression
@@ -47,49 +133,33 @@ export const sidebarItems = [
         </li>
         <li>
           <Link
-            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/getting-started/event-properties-conversion`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/rule/rule-concepts`}
             className="hover:text-gray-900"
           >
-            Event properties conversion
-          </Link>
-        </li>
-        <li>
-          <Link
-            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/getting-started/experiment`}
-            className="hover:text-gray-900"
-          >
-            Experiment
+            Key Concepts
           </Link>
         </li>
       </ul>
     ),
   },
   {
-    title: "Analytics SDK",
+    title: "Experiment",
     content: (
       <ul className="space-y-1">
         <li>
           <Link
-            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/analytics-sdk/js`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/experiment`}
             className="hover:text-gray-900"
           >
-            Analytics js
+            Experiment
           </Link>
         </li>
         <li>
           <Link
-            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/analytics-sdk/kotlin`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/experiment/experiment-concepts`}
             className="hover:text-gray-900"
           >
-            Analytics kotlin
-          </Link>
-        </li>
-        <li>
-          <Link
-            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/analytics-sdk/swift`}
-            className="hover:text-gray-900"
-          >
-            Analytics swift
+            Key Concepts
           </Link>
         </li>
       </ul>

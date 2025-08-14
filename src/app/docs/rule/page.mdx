@@ -1,16 +1,13 @@
-import { Table } from "../../../../components/Table";
+import { Table } from "../../../components/Table";
 
-# Getting Started with Rules
+# Rules: Make Business Decision Faster Than Ever
 
-- A Rule is a logical expression of signals.
-- It is evaluated at runtime using an API call.
-- It returns either true or false.
+To create new Rule, open the Rule Tab in Events section. Click the three vertical dots to create, edit and delete rule.
 
-## Steps to create a Rule
+## Steps to Create a Rule
 
-1. Click on the Rules tab.
-2. Click on "Create Rule".
-3. Fill in the following properties:
+1. Click on the Add **Rule** button
+2. Fill in the details to create signal instantly:
 
 <Table
   columns={[
@@ -61,7 +58,7 @@ import { Table } from "../../../../components/Table";
           10{" "}
         </b>
         See <a
-          href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/getting-started/logical-expression`}
+          href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/rule/logical-expression`}
         >
           Logical Expression
         </a> for syntax details.
@@ -70,7 +67,7 @@ import { Table } from "../../../../components/Table";
   ]}
 />
 
-## Evaluate a Rule
+## Evaluate Rule
 
 To evaluate a rule, click on the three dots in the rule list and select "Evaluate."
 Next, enter the user_id and submit. This will return the rule evaluation result (true or false) for the specified user.
