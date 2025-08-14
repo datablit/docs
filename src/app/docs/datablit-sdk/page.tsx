@@ -9,7 +9,7 @@ function Page() {
       description:
         "Integrate analytics into your web applications with our powerful JavaScript SDK",
       icon: "⚡",
-      href: `${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/analytics-sdk/js`,
+      href: `${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sdk/js`,
       features: [
         "Browser & Node.js support",
         "TypeScript ready",
@@ -22,7 +22,7 @@ function Page() {
       description:
         "Native Android analytics integration with our Kotlin SDK for mobile apps",
       icon: "🤖",
-      href: `${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/analytics-sdk/kotlin`,
+      href: `${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sdk/kotlin`,
       features: ["Android native", "Coroutines support", "Offline tracking"],
       color: "from-green-500 to-teal-600",
     },
@@ -30,7 +30,7 @@ function Page() {
       name: "Swift SDK",
       description: "iOS and macOS analytics made simple with our Swift SDK",
       icon: "🍎",
-      href: `${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/analytics-sdk/swift`,
+      href: `${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sdk/swift`,
       features: ["iOS & macOS support", "SwiftUI ready", "Background sync"],
       color: "from-orange-500 to-red-600",
     },
@@ -47,7 +47,7 @@ function Page() {
               <span className="text-2xl">📊</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Analytics SDK
+              Datablit SDK
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Choose the perfect SDK for your platform and start tracking user

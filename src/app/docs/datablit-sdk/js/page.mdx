@@ -30,10 +30,7 @@ import Analytics from "@datablit/analytics-js";
 function AnalyticsTest() {
   useEffect(() => {
     Analytics.init({
-      writeKey: "your-write-key",
-      endpoint: "http://api.datablit.com/v1/batch",
-      batchSize: 10,
-      flushInterval: 2000,
+      writeKey: "your-write-key"
     });
   }, []);
 
@@ -72,11 +69,11 @@ Initializes the analytics library. User should initialize this libary once.
 
 #### Parameters:
 
-- `config.writeKey` (string, required) – Your analytics Write key. Get this from `http://datablit.com/events`
-- `config.endpoint` (string, optional) – API endpoint to send data. Default: `http://api.datablit.com/v1/batch`
+- `config.writeKey` (string, required) – Your analytics Write key. Get this from `http://console.datablit.com/events`
+- `config.endpoint` (string, optional) – API endpoint to send data. Default: `http://event.datablit.com/v1/batch`
 - `config.batchSize` (number, optional) – Number of events to batch before sending. Default: `20`
-- `config.flushInterval` (number, optional) – Interval (in milliseconds) to flush events. Default: `30000`
-- `config.enablePageTracking` (boolean, optional) – Enables automatic page tracking. Default: `false`
+- `config.flushInterval` (number, optional) – Interval (in milliseconds) to flush batch events. Default: `30000`
+- `config.enablePageTracking` (boolean, optional) – Enables automatic url path tracking. Default: `false`
 
 ## Analytics.track(eventName, properties)
 
