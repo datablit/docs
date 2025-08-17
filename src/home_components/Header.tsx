@@ -61,8 +61,11 @@ const Header = () => {
       </div>
 
       <div className="flex space-x-6 items-center ">
-        <a href="/signup" className="text-white hover:underline">
-          Login
+        <a
+          href={process.env.NEXT_PUBLIC_DATABLIT_CONSOLE_URL}
+          className="text-white hover:underline"
+        >
+          Sign in to console
         </a>
         <Link href="/bookmeeting">
           <button className="bg-white text-[#4747AD] py-1.5 px-3 rounded-full font-medium hover:bg-gray-200 transition">
