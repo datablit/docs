@@ -210,308 +210,289 @@ const BookMeetingForm = () => {
   };
 
   return (
-    <div className="flex flex-col h-full hide-scrollbar">
-      <div className="flex flex-col lg:flex-row gap-8 ">
-        <div className="flex flex-col justify-center text-white space-y-3 w-full ">
-          <p className="text-gray-200">
-            We are happy to answer questions and get you acquainted with
-            Datablit.
-          </p>
-          <p>
-            <span className="text-[#4747ad] m-2">✓</span>
-            <span className="text-gray-200">Schedule a demo</span>
-          </p>
-          <p>
-            <span className="text-[#4747ad] m-2">✓</span>
-            <span className="text-gray-200">Get billing and tech support</span>
-          </p>
-          <p>
-            <span className="text-[#4747ad] m-2">✓</span>
-            <span className="text-gray-200">
-              Explore use cases for your team
-            </span>
-          </p>
-          <p>
-            <span className="text-gray-200 m-2 flex items-center gap-1.5 ">
-              <Timer size={16} /> Duration: 30 min
-            </span>
-            <span className="text-sm text-gray-400"> Select date and time</span>
-          </p>
+    <div className="flex flex-col lg:flex-row gap-8 ">
+      <div className="flex flex-col justify-center  space-y-3 w-full ">
+        <p>
+          We are happy to answer questions and get you acquainted with Datablit.
+        </p>
+        <p>
+          <span className=" m-2">✓</span>
+          <span>Schedule a demo</span>
+        </p>
+        <p>
+          <span className="] m-2">✓</span>
+          <span>Get billing and tech support</span>
+        </p>
+        <p>
+          <span className=" m-2">✓</span>
+          <span>Explore use cases for your team</span>
+        </p>
+        <p>
+          <span className=" m-2 flex items-center gap-1.5 ">
+            <Timer size={16} /> Duration: 30 min
+          </span>
+          <span className="text-sm "> Select date and time</span>
+        </p>
 
-          <div className="flex flex-row gap-2">
-            <CustomPopout
-              options={monthOptions}
-              value={selectedMonth}
-              onChange={(value) => setSelectedMonth(value)}
-              placeholder="Select a month"
-              size="formsize"
-              className=" placeholder:text-xs w-sm bg-black  border border-white/10 hover:bg-white/10 transition  placeholder:text-gray-400 text-white"
-            />
-            <CustomPopout
-              options={allTimeZones.map((timeZone) => ({
-                label: timeZone,
-                value: timeZone,
-              }))}
-              value={selectedTimeZone}
-              onChange={(value) => setSelectedTimeZone(value)}
-              size="formsize"
-              className="placeholder:text-xs w-sm bg-black  border border-white/10 hover:bg-white/10 transition placeholder:text-gray-400 text-white"
-            />
+        <div className="flex flex-row gap-2">
+          <CustomPopout
+            options={monthOptions}
+            value={selectedMonth}
+            onChange={(value) => setSelectedMonth(value)}
+            placeholder="Select a month"
+            size="formsize"
+            className=" placeholder:text-xs w-sm "
+          />
+          <CustomPopout
+            options={allTimeZones.map((timeZone) => ({
+              label: timeZone,
+              value: timeZone,
+            }))}
+            value={selectedTimeZone}
+            onChange={(value) => setSelectedTimeZone(value)}
+            size="formsize"
+            className="placeholder:text-xs w-sm "
+          />
+        </div>
+
+        {/* Arrow + Day Card Carousel */}
+        <div className="flex items-center justify-between gap-2">
+          {/* Left Arrow */}
+          <button
+            onClick={handlePrev}
+            disabled={startIndex === 0}
+            className=" disabled:opacity-40 text-2xl px-2"
+          >
+            ◀
+          </button>
+
+          {/* Visible 7 Days */}
+          <div className="grid grid-cols-7 gap-2 flex-grow">
+            {allDays.slice(startIndex, startIndex + 7).map(({ date }) => {
+              const isSelected =
+                selectedDay?.toDateString() === date.toDateString();
+              return (
+                <div
+                  key={date.toISOString()}
+                  onClick={() => setSelectedDay(date)}
+                  className={`p-3 text-center rounded-md border cursor-pointer  shadow-sm ${
+                    isSelected ? "border-blue-400 bg-blue-600" : ""
+                  }`}
+                >
+                  <div className="text-lg font-medium">{format(date, "d")}</div>
+                  <div className="text-xs text-gray-400">
+                    {format(date, "EEEE")}
+                  </div>
+                </div>
+              );
+            })}
           </div>
 
-          {/* Arrow + Day Card Carousel */}
-          <div className="flex items-center justify-between gap-2">
-            {/* Left Arrow */}
-            <button
-              onClick={handlePrev}
-              disabled={startIndex === 0}
-              className="text-white disabled:opacity-40 text-2xl px-2"
-            >
-              ◀
-            </button>
-
-            {/* Visible 7 Days */}
-            <div className="grid grid-cols-7 gap-2 flex-grow">
-              {allDays.slice(startIndex, startIndex + 7).map(({ date }) => {
-                const isSelected =
-                  selectedDay?.toDateString() === date.toDateString();
+          {/* Right Arrow */}
+          <button
+            onClick={handleNext}
+            disabled={startIndex + 7 >= allDays.length}
+            className=" disabled:opacity-40 text-2xl px-2"
+          >
+            ▶
+          </button>
+        </div>
+        {selectedDay && (
+          <div>
+            <h3 className="mb-2 text-sm font-semibold text-gray-800">
+              Availability on {format(selectedDay, "MMMM d, yyyy")}
+            </h3>
+            <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2">
+              {timeSlots.map((timeSlot) => {
                 return (
-                  <div
-                    key={date.toISOString()}
-                    onClick={() => setSelectedDay(date)}
-                    className={`p-3 text-center rounded-md border cursor-pointer border-white/10 bg-white/5 shadow-sm ${
-                      isSelected ? "border-blue-400 bg-blue-600" : ""
-                    }`}
+                  <button
+                    key={timeSlot.time}
+                    className={`
+    px-1 py-1 text-center rounded-md border backdrop-blur-sm shadow-sm 
+    text-sm whitespace-nowrap 
+    ${
+      !timeSlot.isAvailable
+        ? "bg-green-600 border-green-400  cursor-not-allowed"
+        : selectedTime == timeSlot.time
+        ? "bg-blue-600 border-blue-400 "
+        : "bg-white/5 hover:bg-blue-600 hover:border-blue-400 border-white/10 "
+    }
+  `}
+                    onClick={() =>
+                      timeSlot.isAvailable && setSelectedTime(timeSlot.time)
+                    }
+                    disabled={!timeSlot.isAvailable}
                   >
-                    <div className="text-lg font-medium">
-                      {format(date, "d")}
-                    </div>
-                    <div className="text-xs text-gray-400">
-                      {format(date, "EEEE")}
-                    </div>
-                  </div>
+                    {timeSlot.time}
+                  </button>
                 );
               })}
             </div>
-
-            {/* Right Arrow */}
-            <button
-              onClick={handleNext}
-              disabled={startIndex + 7 >= allDays.length}
-              className="text-white disabled:opacity-40 text-2xl px-2"
+          </div>
+        )}
+      </div>
+      <div className="flex flex-col justify-center w-full lg:w-1/2 ">
+        <form
+          className=" items-start "
+          noValidate
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <div className=" mb-4 flex flex-col m-4 ">
+            <label htmlFor="name" className="mb-2 block text-md font-medium ">
+              Name
+            </label>
+            <input
+              placeholder=""
+              {...register("name", {
+                required: {
+                  value: true,
+                  message: "name is required",
+                },
+                maxLength: {
+                  value: 100,
+                  message: "maximum 100 characters allowed",
+                },
+                pattern: {
+                  value: /^[A-Za-z]+( [A-Za-z]+)?$/,
+                  message: "Enter one or two words using only A-Z and a-z",
+                },
+              })}
+              className="p-1.5  placeholder:text-sm focus:border-[#4747AD] focus:border-2 focus:outline-none w-sm   "
+            />
+            <p className="text-red-700 text-sm align-text-bottom mt-1">
+              {errors.name?.message}
+            </p>
+          </div>
+          <div className="  flex flex-col m-4 ">
+            <label
+              htmlFor="comp_name"
+              className="mb-2 block text-md font-medium "
             >
-              ▶
+              Company Name
+            </label>
+            <input
+              placeholder=""
+              {...register("comp_name", {
+                required: {
+                  value: true,
+                  message: "company name is required",
+                },
+                maxLength: {
+                  value: 100,
+                  message: "maximum 100 characters allowed",
+                },
+                pattern: {
+                  value: /^[A-Za-z]+( [A-Za-z]+)?$/,
+                  message: "Enter one or two words using only A-Z and a-z",
+                },
+              })}
+              className="p-1.5  placeholder:text-sm focus:border-[#4747AD] focus:border-2  w-sm  "
+            />
+            <p className="text-red-700 text-sm align-text-bottom mt-1">
+              {errors.name?.message}
+            </p>
+          </div>
+          <div className="  flex flex-col m-4 ">
+            <label htmlFor="email" className="mb-2 block text-md font-medium ">
+              Business Email
+            </label>
+            <input
+              placeholder=""
+              {...register("email", {
+                required: "Business email is required",
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: "Invalid email format",
+                },
+              })}
+              className="p-1.5  placeholder:text-sm focus:border-[#4747AD] focus:border-2 focus:outline-none w-sm   "
+            />
+            <p className="text-red-700 text-sm align-text-bottom mt-1">
+              {errors.name?.message}
+            </p>
+          </div>
+          <div className="m-4 flex flex-col">
+            <label
+              htmlFor="emp_count"
+              className="mb-2 block text-md font-medium "
+            >
+              Company size
+            </label>{" "}
+            <Controller
+              name="emp_count"
+              control={control}
+              rules={{ required: "Company size is required" }}
+              render={({ field }) => (
+                <CustomPopout
+                  options={companySizeOptions}
+                  value={field.value}
+                  onChange={(val) => field.onChange(val)}
+                  placeholder="Please select one"
+                  size="formsize"
+                  className="placeholder:text-xs w-sm bg-black  border "
+                />
+              )}
+            />
+            <p className="text-red-700 text-sm align-text-bottom mt-1">
+              {errors.emp_count?.message}
+            </p>
+          </div>
+          <div className="  flex flex-col m-4 ">
+            <label htmlFor="role" className="mb-2 block text-md font-medium ">
+              Role
+            </label>
+            <input
+              placeholder=""
+              {...register("role", {
+                maxLength: {
+                  value: 100,
+                  message: "maximum 100 characters allowed",
+                },
+                pattern: {
+                  value: /^[A-Za-z]+( [A-Za-z]+)?$/,
+                  message: "Enter one or two words using only A-Z and a-z",
+                },
+              })}
+              className="p-1.5  placeholder:text-sm focus:border-[#4747AD] focus:border-2 focus:outline-none w-sm  "
+            />
+            <p className="text-red-700 text-sm align-text-bottom mt-1">
+              {errors.role?.message}
+            </p>
+          </div>
+          <div className="m-4 flex flex-col">
+            <label
+              htmlFor="event_count"
+              className="mb-2 block text-md font-medium "
+            >
+              Estimated Event Volume
+            </label>{" "}
+            <Controller
+              name="event_count"
+              control={control}
+              rules={{
+                required: "Estimated event count is required",
+              }}
+              render={({ field }) => (
+                <CustomPopout
+                  options={eventCountOptions}
+                  value={field.value}
+                  onChange={(val) => field.onChange(val)} // val is a string
+                  placeholder="Please select one"
+                  size="formsize"
+                  className="placeholder:text-xs w-sm "
+                />
+              )}
+            />
+            <p className="text-red-700 text-sm align-text-bottom mt-1">
+              {errors.event_count?.message}
+            </p>
+          </div>
+          <div className="flex justify-end m-4">
+            <button type="submit" className="bg-blue-600  px-4 py-2 rounded">
+              Submit
             </button>
           </div>
-          {selectedDay && (
-            <div>
-              <h3 className="mb-2 text-sm font-semibold text-gray-400">
-                Availability on {format(selectedDay, "MMMM d, yyyy")}
-              </h3>
-              <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2">
-                {timeSlots.map((timeSlot) => {
-                  return (
-                    <button
-                      key={timeSlot.time}
-                      className={`
-        px-1 py-1 text-center rounded-md border backdrop-blur-sm shadow-sm 
-        text-sm whitespace-nowrap 
-        ${
-          !timeSlot.isAvailable
-            ? "bg-green-600 border-green-400 text-white cursor-not-allowed"
-            : selectedTime == timeSlot.time
-            ? "bg-blue-600 border-blue-400 text-white"
-            : "bg-white/5 hover:bg-blue-600 hover:border-blue-400 border-white/10 text-white"
-        }
-      `}
-                      onClick={() =>
-                        timeSlot.isAvailable && setSelectedTime(timeSlot.time)
-                      }
-                      disabled={!timeSlot.isAvailable}
-                    >
-                      {timeSlot.time}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-          )}
-        </div>
-        <div className="flex flex-col justify-center w-full lg:w-1/2 ">
-          <form
-            className=" items-start "
-            noValidate
-            onSubmit={handleSubmit(onSubmit)}
-          >
-            <div className=" mb-4 flex flex-col m-4 ">
-              <label
-                htmlFor="name"
-                className="mb-2 block text-md font-medium text-white"
-              >
-                Name
-              </label>
-              <input
-                placeholder=""
-                {...register("name", {
-                  required: {
-                    value: true,
-                    message: "name is required",
-                  },
-                  maxLength: {
-                    value: 100,
-                    message: "maximum 100 characters allowed",
-                  },
-                  pattern: {
-                    value: /^[A-Za-z]+( [A-Za-z]+)?$/,
-                    message: "Enter one or two words using only A-Z and a-z",
-                  },
-                })}
-                className="p-1.5  placeholder:text-sm focus:border-[#4747AD] focus:border-2 focus:outline-none w-sm bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition  placeholder:text-gray-400 text-white"
-              />
-              <p className="text-red-700 text-sm align-text-bottom mt-1">
-                {errors.name?.message}
-              </p>
-            </div>
-            <div className="  flex flex-col m-4 ">
-              <label
-                htmlFor="comp_name"
-                className="mb-2 block text-md font-medium text-white"
-              >
-                Company Name
-              </label>
-              <input
-                placeholder=""
-                {...register("comp_name", {
-                  required: {
-                    value: true,
-                    message: "company name is required",
-                  },
-                  maxLength: {
-                    value: 100,
-                    message: "maximum 100 characters allowed",
-                  },
-                  pattern: {
-                    value: /^[A-Za-z]+( [A-Za-z]+)?$/,
-                    message: "Enter one or two words using only A-Z and a-z",
-                  },
-                })}
-                className="p-1.5  placeholder:text-sm focus:border-[#4747AD] focus:border-2 focus:outline-none w-sm bg-white/5  border border-white/10 hover:bg-white/10 transition  placeholder:text-gray-400 text-white"
-              />
-              <p className="text-red-700 text-sm align-text-bottom mt-1">
-                {errors.name?.message}
-              </p>
-            </div>
-            <div className="  flex flex-col m-4 ">
-              <label
-                htmlFor="email"
-                className="mb-2 block text-md font-medium text-white"
-              >
-                Business Email
-              </label>
-              <input
-                placeholder=""
-                {...register("email", {
-                  required: "Business email is required",
-                  pattern: {
-                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                    message: "Invalid email format",
-                  },
-                })}
-                className="p-1.5  placeholder:text-sm focus:border-[#4747AD] focus:border-2 focus:outline-none w-sm bg-white/5 border border-white/10 hover:bg-white/10 transition  placeholder:text-gray-400 text-white"
-              />
-              <p className="text-red-700 text-sm align-text-bottom mt-1">
-                {errors.name?.message}
-              </p>
-            </div>
-            <div className="m-4 flex flex-col">
-              <label
-                htmlFor="emp_count"
-                className="mb-2 block text-md font-medium text-white"
-              >
-                Company size
-              </label>{" "}
-              <Controller
-                name="emp_count"
-                control={control}
-                rules={{ required: "Company size is required" }}
-                render={({ field }) => (
-                  <CustomPopout
-                    options={companySizeOptions}
-                    value={field.value}
-                    onChange={(val) => field.onChange(val)}
-                    placeholder="Please select one"
-                    size="formsize"
-                    className="placeholder:text-xs w-sm bg-black  border border-white/10 hover:bg-white/10 transition placeholder:text-gray-400 text-white"
-                  />
-                )}
-              />
-              <p className="text-red-700 text-sm align-text-bottom mt-1">
-                {errors.emp_count?.message}
-              </p>
-            </div>
-            <div className="  flex flex-col m-4 ">
-              <label
-                htmlFor="role"
-                className="mb-2 block text-md font-medium text-white"
-              >
-                Role
-              </label>
-              <input
-                placeholder=""
-                {...register("role", {
-                  maxLength: {
-                    value: 100,
-                    message: "maximum 100 characters allowed",
-                  },
-                  pattern: {
-                    value: /^[A-Za-z]+( [A-Za-z]+)?$/,
-                    message: "Enter one or two words using only A-Z and a-z",
-                  },
-                })}
-                className="p-1.5  placeholder:text-sm focus:border-[#4747AD] focus:border-2 focus:outline-none w-sm bg-white/5 border border-white/10 hover:bg-white/10 transition  placeholder:text-gray-400 text-white"
-              />
-              <p className="text-red-700 text-sm align-text-bottom mt-1">
-                {errors.role?.message}
-              </p>
-            </div>
-            <div className="m-4 flex flex-col">
-              <label
-                htmlFor="event_count"
-                className="mb-2 block text-md font-medium text-white"
-              >
-                Estimated Event Volume
-              </label>{" "}
-              <Controller
-                name="event_count"
-                control={control}
-                rules={{
-                  required: "Estimated event count is required",
-                }}
-                render={({ field }) => (
-                  <CustomPopout
-                    options={eventCountOptions}
-                    value={field.value}
-                    onChange={(val) => field.onChange(val)} // val is a string
-                    placeholder="Please select one"
-                    size="formsize"
-                    className="placeholder:text-xs w-sm bg-white/5 border border-white/10 hover:bg-white/10 transition placeholder:text-gray-400 text-white"
-                  />
-                )}
-              />
-              <p className="text-red-700 text-sm align-text-bottom mt-1">
-                {errors.event_count?.message}
-              </p>
-            </div>
-            <div className="flex justify-end m-4">
-              <button
-                type="submit"
-                className="bg-blue-600 text-white px-4 py-2 rounded"
-              >
-                Submit
-              </button>
-            </div>
-          </form>
-        </div>
+        </form>
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ export default async function Layout({
   params,
 }: {
   children: React.ReactNode;
-  params: { path: string };
+  params: Promise<{ path: string }>;
 }) {
   const { path } = await params;
   const blog = blogs[path];
