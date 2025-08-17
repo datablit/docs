@@ -16,13 +16,15 @@ const sections = [
   "Pages Router",
   "API Reference",
   "Accessibility",
-  "Introduction",
-  "Getting Started",
-  "App Router",
-  "Architecture",
-  "Pages Router",
-  "API Reference",
-  "Accessibility",
+  "Data Ingestion",
+  "Experiments",
+  "Rules & Signals",
+  "Dashboard",
+  "Analytics",
+  "User Management",
+  "Settings",
+  "Troubleshooting",
+  "Best Practices",
 ];
 
 const SearchModal = ({ isOpen, onClose }: Props) => {
@@ -88,6 +90,7 @@ const SearchModal = ({ isOpen, onClose }: Props) => {
                 key={item}
                 className="flex items-center space-x-2 cursor-pointer hover:bg-gray-100 p-2 rounded"
                 role="option"
+                aria-selected="false"
                 tabIndex={0}
                 onKeyDown={(e) => {
                   if (e.key === "Enter") alert(`You selected: ${item}`);
