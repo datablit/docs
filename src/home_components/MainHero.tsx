@@ -19,11 +19,11 @@ const MainHero = () => {
 
   return (
     <section className="pt-16 text-white flex flex-col justify-center items-center relative px-4">
-      <div className="absolute top-28">
+      {/* <div className="absolute top-28">
         <button className="bg-white/10 text-sm text-white px-4 py-2 rounded-full border border-white/20 backdrop-blur-md">
           🎉 Check our industry specific use cases
         </button>
-      </div>
+      </div> */}
 
       <div className="text-center mt-20 md:mt-32">
         <h2 className="text-xl md:text-4xl font-semibold leading-tight text-gray-200">

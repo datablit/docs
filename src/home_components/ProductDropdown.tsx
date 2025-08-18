@@ -167,23 +167,20 @@ const ProductDropdown = () => {
       {/* Column 3 – FEATURED */}
       <div className=" border-[#4f65d7] border-l-[0.5px] pl-6">
         <h3 className="font-semibold text-[#4f65d7] mb-4">DATABLIT</h3>
-        <div className="bg-gray-100 p-3 rounded mb-5">
-          <p className="text-xs text-gray-600 mb-2 leading-snug">
+        <div className="bg-black p-3 rounded mb-5">
+          <p className="text-xs text-gray-200 mb-2 leading-snug">
             Search everything. Find anything. Say hello to enterprise search.
           </p>
-          <Link href="#" className="text-blue-600 text-sm hover:underline">
+          <Link href="#" className="text-[#4f65d7] text-sm hover:underline">
             Learn more →
           </Link>
         </div>
         <ul className="space-y-2 text-sm text-gray-700">
-          <li>
+          <li className="text-gray-200">
             <Link href="#">What is Datablit?</Link>
           </li>
-          <li>
-            <Link href="#">Slack vs email</Link>
-          </li>
-          <li>
-            <Link href="#">Accessibility</Link>
+          <li className="text-gray-200">
+            <Link href="#">Slack vs segment vs rudderstack</Link>
           </li>
         </ul>
       </div>

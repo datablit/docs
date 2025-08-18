@@ -6,7 +6,7 @@ import { useTheme } from "next-themes";
 import { Moon, Sun } from "lucide-react";
 
 const Footer = () => {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -14,10 +14,10 @@ const Footer = () => {
   }, []);
   if (!mounted) return null;
   return (
-    <footer className="w-full p-1 text-sm  ">
-      <div className="mx-auto flex flex-row justify-between items-center text-sm">
-        <div className="flex items-center space-x-4 ml-2">
-          <button className="text-xs border rounded-full px-2 py-1  transition hidden lg:flex text-darkBackground">
+    <footer className="w-full p-4 text-sm ">
+      <div className="mx-auto  flex flex-row justify-between items-center text-sm">
+        <div className="flex items-center gap-4 mt-3">
+          <button className="text-xs border rounded-full px-2 py-1  transition hidden lg:flex">
             Your Privacy Choices
           </button>
           <button
@@ -32,7 +32,7 @@ const Footer = () => {
             )}
           </button>
         </div>
-        <div className="flex items-center space-x-4 mr-2">
+        <div className="flex items-center gap-4 mt-3">
           <Link href="https://www.linkedin.com/company/datablit/" passHref>
             <span className="cursor-pointer hover:brightness-200 transition">
               <Image

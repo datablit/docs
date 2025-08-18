@@ -10,3 +10,11 @@
   scrollbar-width: none;
   -ms-overflow-style: none; /* IE and Edge */
 }
+
+:root {
+  --color-dark-background: red;
+}
+
+.dark {
+  --color-dark-background: green;
+}

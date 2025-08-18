@@ -15,7 +15,7 @@ const Newsletter = () => {
           <input
             type="email"
             placeholder="Enter a valid email address"
-            className="w-[500px] px-4 py-3 bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/10 hover:bg-white/10 transition"
+            className="w-[400px] px-4 py-3 bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/10 hover:bg-white/10 transition"
           />
           <button
             type="submit"

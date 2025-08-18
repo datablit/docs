@@ -13,7 +13,7 @@ const HomeFooter = () => {
   return (
     <footer className="w-full  bg-black text-gray-400 ">
       <div className=" mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center text-sm ">
-        <div className="flex items-center space-x-3">
+        <div className=" items-center space-x-3 hidden lg:flex">
           <span className=" text-gray-400 ">
             {" "}
             &copy; {currentYear} Datablit. All rights reserved.
