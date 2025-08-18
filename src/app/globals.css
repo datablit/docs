@@ -1,5 +1,26 @@
 @import "tailwindcss";
 
+@theme {
+  --color-dark-background: green;
+  --color-surface: #ffffff;
+  --color-border: #e5e7eb;
+  --color-surface-panel: #f9fafb;
+}
+
+/* Custom utility classes for text colors */
+.text-dark-background {
+  color: var(--color-dark-background);
+}
+.text-surface {
+  color: var(--color-surface);
+}
+.text-border {
+  color: var(--color-border);
+}
+.text-surface-panel {
+  color: var(--color-surface-panel);
+}
+
 /* For Chrome, Safari, and Opera */
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
@@ -11,10 +32,18 @@
   -ms-overflow-style: none; /* IE and Edge */
 }
 
+/* Light theme (default) */
 :root {
-  --color-dark-background: red;
+  --color-dark-background: green;
+  --color-surface: #ffffff;
+  --color-border: #e5e7eb;
+  --color-surface-panel: #f9fafb;
 }
 
+/* Manual dark theme class */
 .dark {
-  --color-dark-background: green;
+  --color-dark-background: red;
+  --color-surface: #1a1a1a;
+  --color-border: #374151;
+  --color-surface-panel: #111827;
 }
