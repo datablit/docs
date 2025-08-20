@@ -25,7 +25,7 @@ function BlogHeader({ blog }: BlogHeaderProps) {
         {blog.title}
       </h1>
       {/* description */}
-      <p className="text-lg text-white/90 max-w-3xl mb-8">{blog.description}</p>
+      <p className="text-lg max-w-3xl mb-8">{blog.description}</p>
       {/* meta info */}
       <div className="flex items-center text-sm text-white/70 gap-2">
         <CalendarDays height={20} width={20} />

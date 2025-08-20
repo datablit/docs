@@ -1,5 +1,45 @@
 @import "tailwindcss";
 
+/* https://tailwindcss.com/docs/theme#theme-variable-namespaces */
+
+@theme {
+  --color-table-header: #1e1e1e;
+  --color-table-hover-rows: #1e1e1e;
+  --color-border: #3c3c3c;
+  --color-surface-panel: #1e1e1e;
+  --color-text-heading: #9ca3af;
+  --color-text-subheading: #4f65d7;
+  --color-text-para: #d4d4d4;
+  --color-surface: #232323;
+  --text-main: #4f65d7;
+}
+
+/* Light theme (default) */
+:root {
+  --color-table-header: #f3f4f6;
+  --color-table-hover-rows: #f3f3f4;
+  --color-border: #cccccc;
+  --color-surface-panel: #ffffff;
+  --color-text-subheading: #4747ad;
+  --color-text-para: #374151;
+  --color-text-heading: #000000;
+  --color-surface: #f7fafc;
+  --text-main: #1f1f4c;
+}
+
+/* Manual dark theme class */
+.dark {
+  --color-table-header: #1e1e1e;
+  --color-table-hover-rows: #1e1e1e;
+  --color-border: #3c3c3c;
+  --color-surface-panel: #1e1e1e;
+  --color-text-heading: #9ca3af;
+  --color-text-subheading: #4f65d7;
+  --color-text-para: #d4d4d4;
+  --color-surface: #232323;
+  --text-main: #4f65d7;
+}
+
 /* For Chrome, Safari, and Opera */
 .hide-scrollbar::-webkit-scrollbar {
   display: none;

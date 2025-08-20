@@ -14,13 +14,13 @@ interface TableProps {
 export function Table({ columns, data, className = "" }: TableProps) {
   return (
     <div className={`w-full ${className}`}>
-      <table className="w-full border border-gray-200 rounded-lg overflow-hidden table-fixed">
-        <thead className="bg-gray-50">
+      <table className="w-full rounded-lg overflow-hidden table-fixed">
+        <thead className="bg-surface ">
           <tr>
             {columns.map((column) => (
               <th
                 key={column.header}
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200"
+                className="px-4 py-2 text-left text-xs font-medium text-text-para uppercase tracking-wider border-b border-border"
                 style={{ width: column.width || `${100 / columns.length}%` }}
               >
                 {column.header}
@@ -28,13 +28,13 @@ export function Table({ columns, data, className = "" }: TableProps) {
             ))}
           </tr>
         </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
+        <tbody className="bg-surface divide-y divide-border">
           {data.map((row, rowIndex) => (
-            <tr key={rowIndex} className="hover:bg-gray-50">
+            <tr key={rowIndex} className="hover:bg-table-hover-rows">
               {row.map((cell, cellIndex) => (
                 <td
                   key={cellIndex}
-                  className="px-6 py-4 text-sm text-gray-900 break-words"
+                  className="px-4 py-2 text-sm text-text-para break-words"
                 >
                   {typeof cell === "string" || typeof cell === "number"
                     ? String(cell)

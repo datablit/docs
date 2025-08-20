@@ -1,0 +1,161 @@
+import { Table } from "../../../components/Table";
+
+# Signals: Tracking Business Metrics with Datablit
+
+To create new Signal, open the Signal Tab in Events section. Click the three vertical dots to create, edit and delete signal.
+
+## Steps to Create a Signal
+
+1. Click on the Add **Signal** button
+2. Fill in the details to create signal instantly:
+
+<Table
+  columns={[
+    { header: "PROPERTY", width: "20%" },
+    { header: "TYPE", width: "15%" },
+    { header: "REQUIRED", width: "10%" },
+    { header: "DESCRIPTION", width: "50%" },
+  ]}
+  data={[
+    [
+      "Key",
+      "String",
+      "Yes",
+      `Signal identifier. Use snake_case format and keep it concise to save space. 
+      Example: Instead of 'user_order_count_last_24hour', use 'usr_order_cnt_24h'`,
+    ],
+    [
+      "Description",
+      "String",
+      "No",
+      `Description to help understand this signal's purpose`,
+    ],
+    [
+      "Tags",
+      "Dropdown",
+      "No",
+      <>
+        Tags to categorize signals. You can manage tags in the{" "}
+        <a
+          href={process.env.NEXT_PUBLIC_DATABLIT_CONSOLE_URL}
+          className="text-blue-600 hover:text-blue-800 underline"
+        >
+          company profile section
+        </a>
+      </>,
+    ],
+    ["Type", "Dropdown", "Yes", `Choose either 'realtime' or 'batch'`],
+  ]}
+/>
+
+### Realtime Signal Configuration
+
+<Table
+  columns={[
+    { header: "PROPERTY", width: "20%" },
+    { header: "TYPE", width: "15%" },
+    { header: "REQUIRED", width: "10%" },
+    { header: "DESCRIPTION", width: "50%" },
+  ]}
+  data={[
+    [
+      "Aggregation Window",
+      "Dropdown",
+      "Yes",
+      `Time period for aggregation (e.g., 1 minute, 1 hour)`,
+    ],
+    [
+      "Aggregation Type",
+      "Dropdown",
+      "Yes",
+      <>
+        Choose aggregation type. Supported values: static, count, sum. See{" "}
+        <a href="#realtime-aggregation-type">Realtime Aggregation Types</a> for
+        details.
+      </>,
+    ],
+    [
+      "Field Name",
+      "String",
+      "No",
+      <>
+        Field name (always in snake_case) used for static and sum aggregation
+        types. See{" "}
+        <a href="#realtime-aggregation-type">Realtime Aggregation Types</a> and{" "}
+        <a
+          href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/data-ingestion/event-properties-conversion`}
+        >
+          Event Property Conversion
+        </a>{" "}
+        for more information.
+      </>,
+    ],
+    [
+      "Filter Expression",
+      "String",
+      "Yes",
+      <>
+        Expression to filter events. For example, to count the{" "}
+        <b>number of orders</b> where the order event is identified by event
+        equals 'ORDER_PLACED', use the filter expression: event=='ORDER_PLACED'.
+        Expression should always return true or false See{" "}
+        <a
+          href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/rule/logical-expression`}
+        >
+          Logical Expression
+        </a>{" "}
+        for syntax details.
+      </>,
+    ],
+  ]}
+/>
+
+### Batch Signal Configuration
+
+<Table
+  columns={[
+    { header: "PROPERTY", width: "20%" },
+    { header: "TYPE", width: "15%" },
+    { header: "REQUIRED", width: "10%" },
+    { header: "DESCRIPTION", width: "50%" },
+  ]}
+  data={[
+    [
+      "Query",
+      "String",
+      "Yes",
+      <>
+        SQL query to be executed based on the provided schedule. This query must
+        select a column named <b>user_id</b>.
+        <br />
+        <strong>Example:</strong> SELECT user_id, device_type FROM events WHERE
+        type='track'
+        <br />
+        This will store the device type for each user.
+      </>,
+    ],
+    [
+      "Schedule (cron)",
+      "String",
+      "Yes",
+      <>
+        Cron schedule expression. For example, to run every 24 hours at 4:00 AM,
+        use <b>0 4 * * *</b>. See{" "}
+        <a href="https://crontab.guru/">Crontab Guru</a> for more details.
+      </>,
+    ],
+  ]}
+/>
+
+## Realtime Aggregation Types
+
+Realtime signals support three types of aggregation:
+
+- **Static:** Extract a specific field (Field Name) from the event (e.g., `os_name`)
+- **Count:** Count the number of events (e.g., number of orders)
+- **Sum:** Sum a specific field (Field Name) from events (e.g., total order value by adding the `order_amount` field of each event)
+
+## Evaluate Signal
+
+To evaluate a signal, click on the three dots in the signal list and select "Evaluate."
+Next, enter the user_id and submit. This will return the signal value for the specified user.

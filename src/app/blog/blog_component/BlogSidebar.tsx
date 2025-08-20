@@ -3,10 +3,10 @@ import Link from "next/link";
 
 const BlogSidebar = () => {
   return (
-    <div className="flex flex-col gap-8 pt-8 text-sm text-gray-700 px-4 lg:px-0">
+    <div className="flex flex-col gap-8 pt-8 px-4 lg:px-0">
       {/* Share section */}
       <div>
-        <h3 className="text-base font-semibold text-gray-900 px-2 mb-4">
+        <h3 className="text-base font-semibold text-text-main px-2 mb-4">
           Share:
         </h3>
         <div className="flex gap-3 mb-6">
@@ -41,12 +41,12 @@ const BlogSidebar = () => {
             </span>
           </Link>
         </div>
-        <hr className="border-gray-200" />
+        <hr className=" border-border border-[0.5px]" />
       </div>
 
       {/* Subscribe section */}
       <div>
-        <p className="mb-4 leading-relaxed">
+        <p className="mb-4 leading-relaxed text-text-para">
           Want to stay updated on Datablit launches, events, and updates?
           Subscribe below to keep in touch.
         </p>
@@ -55,17 +55,17 @@ const BlogSidebar = () => {
           <input
             type="email"
             placeholder="Your work email"
-            className="border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className=" border border-border bg-surface hover:bg-surface-panel shadow-sm text-text-main rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-text-subheading"
           />
           <button
             type="submit"
-            className="bg-[#1f1f4c] text-white text-sm font-medium px-4 py-2 rounded hover:bg-[#4747ad]"
+            className="bg-text-subheading text-gray-100 hover:bg-[#8F8FCB] shadow hover:text-[#1F1F4C] px-4 py-2 rounded-md "
           >
             Subscribe
           </button>
         </form>
 
-        <p className="text-xs text-gray-500 mt-4 leading-relaxed">
+        <p className="text-xs text-gray-400 mt-4 leading-relaxed">
           We’ll share a copy of Datablit guide, content and update on products
           as we continue to build the world’s leading CDP.
         </p>

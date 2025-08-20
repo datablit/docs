@@ -28,10 +28,11 @@ const sizeStyles = {
 
 const variantStyles = {
   primary:
-    "bg-[#1F1F4C] text-gray-100 hover:bg-[#8F8FCB] shadow hover:text-[#1F1F4C] border border-[#8F8FCB] hover:border hover:border-bg[#1F1F4C]",
+    "bg-[#1F1F4C] text-gray-100 hover:bg-[#8F8FCB] shadow hover:text-[#1F1F4C] ",
   secondary:
     "bg-gray-100 text-[#1F1F4C] hover:bg-[#E9E9FC] shadow-sm bg-[#8F8FCB] hover:text-gray-800",
-  outline: "border border-gray-300 hover:bg-gray-50  shadow-sm text-[#1F1F4C]",
+  outline:
+    "border border-border bg-surface hover:bg-surface-panel shadow-sm text-text-main",
   searchbtn:
     "border-[#D9D9D9] border-[0.5px] bg-[#ffffff] rounded-none shadow ",
   toolbtn: "border-none bg-transparent shadow",
