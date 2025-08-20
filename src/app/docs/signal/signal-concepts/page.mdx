@@ -1,0 +1,64 @@
+import { Table } from "../../../../components/Table";
+
+# Key concepts
+
+Signals are data detectives of your product turning raw data into something meaningful. They are custom metrics that you continuously track to trigger actions based on customer data.
+
+A signal is identified by its unique key and is stored at the user level. To evaluate a signal, you need both a user ID and signal key.
+Examples include:
+
+1. Number of orders in the last 24 hours
+2. Average order value per customer
+3. Number of orders cancelled in the last 12 hours
+
+These basic terminologies will help you to create and understand signals in a few clicks.
+
+## Aggregation window
+
+An aggregation window defines the time period over which signals are grouped.For example, if you want to count the number of orders in the last 24 hours, the aggregation window is 24 hours and you can use the signal key as order_count_24h.
+
+## Freshness
+
+It represents the maximum time difference between an event’s occurrence and its signal being recorded — a measure of how up-to-date your signal is relative to when it was generated or last updated in the source system.
+Example: A user opens an app at 8:30, 8:40, 9:00, 9:10, 9:30, etc. If you want to compute the total number of sessions in the last hour and evaluate this every hour (at 8:00, 9:00, etc.), the signal’s freshness would be 1 hour. This means the computed session count will be 1 hour.
+
+In short, the **aggregation window** is about **_grouping_** and **freshness** is about **_delay_**.
+
+## Signal Types
+
+Based on aggregation window and freshness requirements, you can choose how you want to process signal-
+
+**Real time for high freshness(< 1 minute) and instant results** -
+These are ideal for scenarios requiring immediate data updates, making it a solid option for business to personalise at scale and take immediate action. Example: Number of sessions in the last hour
+
+**Batch processing works best when you need in depth analysis at set intervals** -
+As the name suggests, used to process data in batches. If you need to aggregate a large number of data points over longer periods and can tolerate a few hours of freshness.
+Example: Number of orders in the last 10 years with 12-hour freshness
+
+## Comparison of Signal Types
+
+<Table
+  columns={[
+    { header: "Signal Type" },
+    { header: "Aggregation Window" },
+    { header: "Freshness" },
+    { header: "Computation" },
+    { header: "Example Use Case" },
+  ]}
+  data={[
+    [
+      "Realtime Signal",
+      "Short (e.g., 1 hour)",
+      "High (< 1 minute)",
+      "For each event",
+      "Number of sessions in the last hour",
+    ],
+    [
+      "Batch Signal",
+      "Long (e.g., 10 years)",
+      "Lower (few hours)",
+      "After specific duration (e.g., every 6 hours)",
+      "Number of orders in the last 10 years (12-hour freshness)",
+    ],
+  ]}
+/>

@@ -1,0 +1,310 @@
+import { Table } from "../../../../components/Table";
+
+# How to Create Logical Expressions in Datablit?
+
+Logical expressions are combinations of event fields, signals, and operators that always return either `true` or `false`. They are used throughout DataBlit for filtering events, creating rules, and defining conditions.
+
+## Overview
+
+- Logical expressions evaluate to boolean values (`true` or `false`)
+- They can reference event properties, signal values, and parameters
+- Used in signal filters, rule definitions, and conditional logic
+- Based on the [Expr language specification](https://expr-lang.org/docs/language-definition)
+
+## Basic Syntax
+
+Logical expressions follow a simple, readable syntax similar to common programming languages:
+
+```go
+// Basic comparison
+event == 'ORDER_PLACED'
+order_amount > 100
+
+// Multiple conditions
+no_of_orders_24h > 10 && os_name == 'android'
+user_type == 'premium' || total_spent > 500
+```
+
+## Operators
+
+### Comparison Operators
+
+<Table
+  columns={[
+    { header: "Operator" },
+    { header: "Description" },
+    { header: "Example" },
+  ]}
+  data={[
+    ["==", "Equal to", "event == 'PURCHASE'"],
+    ["!=", "Not equal to", "user_type != 'guest'"],
+    [">", "Greater than", "order_amount > 100"],
+    [">=", "Greater than or equal", "age >= 18"],
+    ["<", "Less than", "session_duration < 300"],
+    ["<=", "Less than or equal", "items_in_cart <= 5"],
+  ]}
+/>
+
+### Logical Operators
+
+<Table
+  columns={[
+    { header: "Operator" },
+    { header: "Description" },
+    { header: "Example" },
+  ]}
+  data={[
+    ["&&", "Logical AND", "is_premium && order_count > 5"],
+    ["||", "Logical OR", "is_mobile || is_tablet"],
+    ["!", "Logical NOT", "!is_guest"],
+  ]}
+/>
+
+### String Operations
+
+<Table
+  columns={[
+    { header: "Operation" },
+    { header: "Description" },
+    { header: "Example" },
+  ]}
+  data={[
+    [
+      "contains()",
+      "Check if string contains substring",
+      "device_name.contains('iPhone')",
+    ],
+    [
+      "startsWith()",
+      "Check if string starts with prefix",
+      "url.startsWith('https://')",
+    ],
+    [
+      "endsWith()",
+      "Check if string ends with suffix",
+      "filename.endsWith('.jpg')",
+    ],
+    [
+      "matches()",
+      "Regex pattern matching",
+      "email.matches('^[^@]+@[^@]+\\.[^@]+$')",
+    ],
+  ]}
+/>
+
+### Array Operations
+
+<Table
+  columns={[
+    { header: "Operation" },
+    { header: "Description" },
+    { header: "Example" },
+  ]}
+  data={[
+    [
+      "in",
+      "Check if value exists in array",
+      "category in ['electronics', 'books']",
+    ],
+    ["size()", "Get array length", "tags.size() > 3"],
+    ["all()", "Check if all elements match condition", "prices.all(price > 0)"],
+    [
+      "any()",
+      "Check if any element matches condition",
+      "categories.any(cat == 'electronics')",
+    ],
+  ]}
+/>
+
+## Data Types
+
+### Supported Types
+
+- **String**: Text values (use single quotes: `'value'`)
+- **Number**: Integer and floating-point numbers (`42`, `3.14`)
+- **Boolean**: `true` or `false`
+- **Array**: Lists of values (`[1, 2, 3]`, `['a', 'b']`)
+- **Null**: `null` value
+
+### Type Conversion
+
+Expressions automatically handle type conversions where appropriate:
+
+```go
+// String to number comparison
+'100' > 50  // true
+
+// Number to string comparison
+100 == '100'  // true
+```
+
+## Field References
+
+### Event Properties
+
+Reference event properties directly by their field names:
+
+```go
+// Basic event properties
+event == 'PURCHASE'
+user_id == 'user123'
+timestamp > 1640995200
+
+// Nested properties (if supported)
+user_profile_age > 18
+order_items_count > 0
+```
+
+### Signal Values
+
+Reference signal values using their keys:
+
+```go
+// Signal references
+no_of_orders_24h > 10
+total_spent_7d > 500
+avg_session_duration > 300
+```
+
+### Parameters
+
+Reference parameters passed during evaluation:
+
+```go
+// Parameter references
+os_name == params.os_name
+device_type == params.device_type
+```
+
+## Common Patterns
+
+### User Segmentation
+
+```go
+// High-value customers
+total_spent_30d > 1000 && order_count_30d > 5
+
+// New users
+days_since_signup <= 7 && total_orders == 0
+
+// Inactive users
+days_since_last_activity > 30
+```
+
+### Event Filtering
+
+```go
+// Purchase events with minimum amount
+event == 'PURCHASE' && order_amount >= 50
+
+// Mobile app events
+platform == 'mobile' && (os_name == 'ios' || os_name == 'android')
+
+// Premium user actions
+user_type == 'premium' && event in ['PURCHASE', 'SUBSCRIPTION']
+```
+
+### Complex Conditions
+
+```go
+// Multi-condition logic
+(is_premium && order_amount > 100) ||
+(total_spent_90d > 500 && loyalty_level == 'gold')
+
+// Time-based conditions
+hour_of_day >= 9 && hour_of_day <= 17 &&
+day_of_week in [1, 2, 3, 4, 5]  // Business hours
+```
+
+## Best Practices
+
+### 1. Use Clear Field Names
+
+```go
+// Good
+order_amount > 100
+user_type == 'premium'
+
+// Avoid
+oa > 100
+ut == 'p'
+```
+
+### 2. Use Parentheses for Clarity
+
+```go
+// Good - explicit precedence
+(a && b) || (c && d)
+
+// Avoid - relies on operator precedence
+a && b || c && d
+```
+
+### 3. Test Your Expressions
+
+Always test your logical expressions with sample data to ensure they work as expected.
+
+## Error Handling
+
+### Common Issues
+
+- **Field not found**: Ensure field names match exactly (case-sensitive)
+- **Type mismatch**: Check data types in your expressions
+- **Syntax errors**: Validate expression syntax before saving
+
+### Debugging Tips
+
+1. Start with simple expressions and build complexity gradually
+2. Test with known data values
+3. Use the evaluation feature to test expressions
+4. Check field names and data types
+
+## Examples by Use Case
+
+### E-commerce
+
+```go
+// Abandoned cart detection
+event == 'CART_ADDED' &&
+days_since_last_activity > 1 &&
+cart_value > 0
+
+// High-value product views
+event == 'PRODUCT_VIEW' &&
+product_price > 1000 &&
+user_type == 'premium'
+```
+
+### Gaming
+
+```go
+// Active players
+days_since_last_login <= 7 &&
+total_playtime > 3600
+
+// High-level players
+player_level >= 50 &&
+total_achievements > 20
+```
+
+### SaaS
+
+```go
+// Trial users near expiration
+subscription_status == 'trial' &&
+days_until_expiry <= 3
+
+// Power users
+feature_usage_count > 100 &&
+last_login_days <= 7
+```
+
+## Reference
+
+For more detailed information about the expression language syntax and features, visit the [Expr Language Documentation](https://expr-lang.org/docs/language-definition).
+
+## Next Steps
+
+- Learn about [Data Signals](/docs/signal) to create custom metrics
+- Explore [Rules](/docs/rule) to build complex business logic
+- Understand [Event Property Conversion](/docs/data-ingestion/event-properties-conversion) for data transformation

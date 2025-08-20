@@ -13,10 +13,9 @@ export type Blog = {
 
 export const blogs: Record<string, Blog> = {
   "customer-data": {
-    title:
-      "Data you can depend on: How to turn every interaction into a competitive edge?",
+    title: "How to turn every interaction into a competitive edge?",
     description:
-      "Ingest, unify, build rules and signals, in a single platform to power personalised customer experiences. Take real time personalised action at scale and collaborate better across team for smooth decision",
+      "Ingest, unify & build rules and signals in a single platform to power personalised customer experiences. Take real-time personalised action at scale and collaborate better across team for smooth decision",
     tags: [
       "Customer Data Platform",
       "Data Ingestion",
@@ -30,7 +29,7 @@ export const blogs: Record<string, Blog> = {
   "why-datablit": {
     title: "How to Turn Customer Data into Instant Business Action?",
     description:
-      "With Datablit as the central platform, data engineer, developer and business team can self serve — accessing and acting on data the instant it’s created. The result is faster strategy execution, scalable personalisation and more reliable insights at a fraction of the time and cost.",
+      "With Datablit as the central platform, data engineer, developer, and business team can self serve — accessing and acting on data the instant it’s created. The result is faster strategy execution, scalable personalisation and more reliable insights at a fraction of the time and cost.",
     tags: [
       "Customer Data Platform",
       "Customer Experience",
@@ -48,9 +47,6 @@ export default function BlogList() {
   return (
     <section className="py-10 px-4 max-w-7xl mx-auto">
       <div className="grid gap-6 md:grid-cols-3">
-        {/* {blogs.map((blog) => (
-          <BlogCard key={blog.id} blog={blog} />
-        ))} */}
         {Object.entries(blogs).map(([path, blog]) => (
           <BlogCard key={path} path={path} blog={blog} />
         ))}

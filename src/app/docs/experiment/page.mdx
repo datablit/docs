@@ -1,0 +1,132 @@
+import { Table } from "../../../components/Table";
+
+# Getting Started with A/B Experiments
+
+We can run A/B experients using Datablit experiment platform.
+User need to setup the experiment as follows
+
+## Create Experiment Steps
+
+1. Go to experiment tab in [Datablit console](https://console.datablit.com).
+2. Click on **+Experiment** and Fill the following
+   <Table
+     columns={[
+       { header: "PROPERTY", width: "20%" },
+       { header: "TYPE", width: "15%" },
+       { header: "REQUIRED", width: "10%" },
+       { header: "DESCRIPTION", width: "50%" },
+     ]}
+     data={[
+       [
+         "Experiment name",
+         "String",
+         "Yes",
+         "A string to understand the experiment purpose",
+       ],
+       ["Description", "String", "Yes", "Description of the experiment"],
+       [
+         "Tags",
+         "Dropdown",
+         "No",
+         <>
+           Tags to categorize experiments. You can manage tags in the{" "}
+           <a
+             href={process.env.NEXT_PUBLIC_DATABLIT_CONSOLE_URL}
+             className="text-blue-600 hover:text-blue-800 underline"
+           >
+             company profile section
+           </a>
+         </>,
+       ],
+     ]}
+   />
+3. Click on create.
+4. Now this experiment is created and added experiment list
+5. Click on this experiment. This will redirect to experiment details page.
+6. There we can update following configurations
+
+<Table
+  columns={[
+    { header: "PROPERTY", width: "20%" },
+    { header: "TYPE", width: "15%" },
+    { header: "REQUIRED", width: "10%" },
+    { header: "DESCRIPTION", width: "50%" },
+  ]}
+  data={[
+    [
+      "Status",
+      "Dropdown",
+      "Yes",
+      <>
+        By default its value is active but if we want to disable it change this
+        to disabled, Once experiment is disabled it return <b>control</b>{" "}
+        variant for all entities{" "}
+      </>,
+    ],
+    [
+      "Percentage",
+      "Number",
+      "Yes",
+      <>
+        For What % of entity (user, device etc), Experiement need to be enabled.
+        eg. if percentage is 10, it means this experiment will return some
+        variants of this experiment for 10%, all other 90% cases it will return{" "}
+        <b>control</b> variant
+      </>,
+    ],
+    [
+      "Variants",
+      "Popup",
+      "Yes",
+      <>
+        Click on <b>Create Variant</b> to add new variants, Inorder to create
+        new variants give a unique variant name(except 'control' as its
+        reserved) and its Percentage
+      </>,
+    ],
+    [
+      "Static Allotment",
+      "Dropdown",
+      "No",
+      <>
+        If we want to assign some test entity id to certain variant. write that
+        id and select variant and click assign This will assign given id to the
+        variant mentioned irrespective of this experiment configurations
+      </>,
+    ],
+  ]}
+/>
+
+## Understanding assignment
+
+Let's say we have an experiment configuration as follows
+(Percentage 20% and Variants(v1 and v2 with 60 and 40% respectively))
+
+This experiment is enabled for 20% of users and in that 20%, 60% users will get v1 and 40% as v2.
+Remaining 80% users, it will get **control** variant
+
+## Get Variant
+
+In order to check variant of an entity for given experiment, we need to call following API
+
+```sh
+curl --location 'https://api.datablit.com/api/1.0/experiment/variant?expId=01JVJT9CPXGEJVC7TDSX538Y8F&entityId=1321' \
+--header 'projectId: 01JSWDEZYM0E19ZF3RMHS75PB1'
+```
+
+Note:
+Once we see experiment details page, we can easily extract exp_id and project_id from url
+eg. http://console.datablit.com/events/23as2/experiment/01K0KQZ9FW71J8JJVXG8NZ2XN3
+
+- exp_id: 01K0KQZ9FW71J8JJVXG8NZ2XN3
+- project_id: 23as2
+
+## Get variant api response
+
+```json
+{
+  "expId": "01JVJT9CPXGEJVC7TDSX538Y8F",
+  "entityId": "1321",
+  "variant": "control"
+}
+```
