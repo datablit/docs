@@ -92,7 +92,9 @@ const NavBar = () => {
               </div>
             )}
 
-            <Link href={"/bookmeeting"}>
+            <Link
+              href={process.env.NEXT_PUBLIC_DATABLIT_HOME_URL + "/bookmeeting"}
+            >
               <Button>Contact</Button>
             </Link>
           </div>
@@ -135,8 +137,13 @@ const NavBar = () => {
           </ul>
 
           <div className="mt-12 flex flex-col space-y-4">
-            <Button variant="outline">Feedback</Button>
-            <Button>Contact</Button>
+            <Button variant="outline">Feedback</Button>{" "}
+            {/* TODO: Handle this */}
+            <Link
+              href={process.env.NEXT_PUBLIC_DATABLIT_HOME_URL + "/bookmeeting"}
+            >
+              <Button>Contact</Button>
+            </Link>
           </div>
         </div>
       )}
