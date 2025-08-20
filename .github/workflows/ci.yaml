@@ -2,7 +2,7 @@ name: Build and Deploy
 
 on:
   push:
-    branches: [master, garima/content_fix] # TODO change this to staging
+    branches: [master, staging]
 
 jobs:
   build-push:

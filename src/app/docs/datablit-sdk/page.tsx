@@ -123,31 +123,6 @@ function Page() {
             </div>
           ))}
         </div>
-
-        {/* Bottom CTA Section */}
-        <div className="mt-20 text-center">
-          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-gray-200/50">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              Need Help Getting Started?
-            </h2>
-            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-              Our comprehensive documentation and examples will help you
-              integrate analytics into your application in minutes.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/getting-started`}
-              >
-                <Button variant="primary" size="lg">
-                  View Documentation
-                </Button>
-              </Link>
-              <Button variant="outline" size="lg">
-                Contact Support
-              </Button>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
