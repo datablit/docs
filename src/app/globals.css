@@ -1,24 +1,43 @@
 @import "tailwindcss";
 
+/* https://tailwindcss.com/docs/theme#theme-variable-namespaces */
+
 @theme {
-  --color-dark-background: green;
-  --color-surface: #ffffff;
-  --color-border: #e5e7eb;
-  --color-surface-panel: #f9fafb;
+  --color-table-header: #1e1e1e;
+  --color-table-hover-rows: #1e1e1e;
+  --color-border: #3c3c3c;
+  --color-surface-panel: #1e1e1e;
+  --color-text-heading: #9ca3af;
+  --color-text-subheading: #4f65d7;
+  --color-text-para: #d4d4d4;
+  --color-surface: #232323;
+  --text-main: #4f65d7;
 }
 
-/* Custom utility classes for text colors */
-.text-dark-background {
-  color: var(--color-dark-background);
+/* Light theme (default) */
+:root {
+  --color-table-header: #f3f4f6;
+  --color-table-hover-rows: #f3f3f4;
+  --color-border: #cccccc;
+  --color-surface-panel: #ffffff;
+  --color-text-subheading: #4747ad;
+  --color-text-para: #374151;
+  --color-text-heading: #000000;
+  --color-surface: #f7fafc;
+  --text-main: #1f1f4c;
 }
-.text-surface {
-  color: var(--color-surface);
-}
-.text-border {
-  color: var(--color-border);
-}
-.text-surface-panel {
-  color: var(--color-surface-panel);
+
+/* Manual dark theme class */
+.dark {
+  --color-table-header: #1e1e1e;
+  --color-table-hover-rows: #1e1e1e;
+  --color-border: #3c3c3c;
+  --color-surface-panel: #1e1e1e;
+  --color-text-heading: #9ca3af;
+  --color-text-subheading: #4f65d7;
+  --color-text-para: #d4d4d4;
+  --color-surface: #232323;
+  --text-main: #4f65d7;
 }
 
 /* For Chrome, Safari, and Opera */
@@ -30,20 +49,4 @@
 .hide-scrollbar {
   scrollbar-width: none;
   -ms-overflow-style: none; /* IE and Edge */
-}
-
-/* Light theme (default) */
-:root {
-  --color-dark-background: green;
-  --color-surface: #ffffff;
-  --color-border: #e5e7eb;
-  --color-surface-panel: #f9fafb;
-}
-
-/* Manual dark theme class */
-.dark {
-  --color-dark-background: red;
-  --color-surface: #1a1a1a;
-  --color-border: #374151;
-  --color-surface-panel: #111827;
 }

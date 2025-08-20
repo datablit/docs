@@ -47,9 +47,6 @@ export default function BlogList() {
   return (
     <section className="py-10 px-4 max-w-7xl mx-auto">
       <div className="grid gap-6 md:grid-cols-3">
-        {/* {blogs.map((blog) => (
-          <BlogCard key={blog.id} blog={blog} />
-        ))} */}
         {Object.entries(blogs).map(([path, blog]) => (
           <BlogCard key={path} path={path} blog={blog} />
         ))}

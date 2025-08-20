@@ -31,32 +31,38 @@ export default function CustomAccordion({ sections }: AccordionProps) {
         const sectionIsOpen = isOpen(index);
 
         return (
-          <div key={index} className="mb-4">
-            <div className="w-full flex justify-between items-center py-2 text-left hover:rounded rounded mb-2">
+          <div key={index} className="mb-4 px-3 ">
+            <div className="flex items-start justify-between py-2">
               <button
+                className="flex items-center gap-2 text-left "
                 onClick={() => {
                   if (!sectionIsOpen) toggleOpen(index);
                 }}
-                className="flex-1 text-base font-medium text-[#4747AD] text-left"
               >
-                {section.title}
+                {sectionIsOpen ? (
+                  <ChevronDown
+                    onClick={() => toggleClose(index)}
+                    className="w-5 h-5 text-gray-400 cursor-pointer transition-transform duration-300"
+                  />
+                ) : (
+                  <ChevronRight
+                    onClick={() => toggleOpen(index)}
+                    className="w-5 h-5 text-gray-400 cursor-pointer transition-transform duration-300"
+                  />
+                )}
+                <span className="text-base font-medium text-text-subheading">
+                  {section.title}
+                </span>
               </button>
-              {sectionIsOpen ? (
-                <ChevronDown
-                  onClick={() => toggleClose(index)}
-                  className="w-5 h-5 text-gray-400 cursor-pointer transition-transform duration-300"
-                />
-              ) : (
-                <ChevronRight
-                  onClick={() => toggleOpen(index)}
-                  className="w-5 h-5 text-gray-400 cursor-pointer transition-transform duration-300"
-                />
-              )}
             </div>
             {sectionIsOpen && (
-              <div className="text-gray-600 w-full pl-2">
+              <div className="text-text-para w-full pl-2 ">
                 {Array.isArray(section.content)
-                  ? section.content.map((item, i) => <div key={i}>{item}</div>)
+                  ? section.content.map((item, i) => (
+                      <div key={i} className="mb-4 last:mb-0">
+                        {item}
+                      </div>
+                    ))
                   : section.content}
               </div>
             )}

@@ -13,6 +13,7 @@ import {
 } from "@/utils/datetime";
 import { isSameMinute } from "date-fns";
 import { fromZonedTime, toZonedTime } from "date-fns-tz";
+import Button from "@/app/ui-components/Button";
 
 interface TimeSlot {
   time: string;
@@ -210,29 +211,32 @@ const BookMeetingForm = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row gap-8 ">
-      <div className="flex flex-col justify-center  space-y-3 w-full ">
+    <div className="flex flex-col lg:flex-row gap-8 bg-surface-panel">
+      <div className="flex flex-col justify-center  space-y-3 w-full text-text-para ">
         <p>
           We are happy to answer questions and get you acquainted with Datablit.
         </p>
         <p>
-          <span className=" m-2">✓</span>
+          <span className=" m-1">✓</span>
           <span>Schedule a demo</span>
         </p>
         <p>
-          <span className="] m-2">✓</span>
+          <span className="] m-1">✓</span>
           <span>Get billing and tech support</span>
         </p>
         <p>
-          <span className=" m-2">✓</span>
+          <span className=" m-1">✓</span>
           <span>Explore use cases for your team</span>
         </p>
         <p>
-          <span className=" m-2 flex items-center gap-1.5 ">
+          <span className=" m-1 flex items-center gap-1.5 ">
             <Timer size={16} /> Duration: 30 min
           </span>
-          <span className="text-sm "> Select date and time</span>
         </p>
+        <span className="mt-4 text-text-subheading ">
+          {" "}
+          Select date and time
+        </span>
 
         <div className="flex flex-row gap-2">
           <CustomPopout
@@ -275,14 +279,14 @@ const BookMeetingForm = () => {
                 <div
                   key={date.toISOString()}
                   onClick={() => setSelectedDay(date)}
-                  className={`p-3 text-center rounded-md border cursor-pointer  shadow-sm ${
-                    isSelected ? "border-blue-400 bg-blue-600" : ""
+                  className={`p-3 text-center rounded-md border border-border cursor-pointer shadow-sm ${
+                    isSelected
+                      ? "border-[#4747ad] bg-text-subheading text-gray-100"
+                      : ""
                   }`}
                 >
                   <div className="text-lg font-medium">{format(date, "d")}</div>
-                  <div className="text-xs text-gray-400">
-                    {format(date, "EEEE")}
-                  </div>
+                  <div className="text-xs t">{format(date, "EEEE")}</div>
                 </div>
               );
             })}
@@ -299,7 +303,7 @@ const BookMeetingForm = () => {
         </div>
         {selectedDay && (
           <div>
-            <h3 className="mb-2 text-sm font-semibold text-gray-800">
+            <h3 className="mb-4 mt-2 text-sm font-semibold text-text-para">
               Availability on {format(selectedDay, "MMMM d, yyyy")}
             </h3>
             <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2">
@@ -308,14 +312,14 @@ const BookMeetingForm = () => {
                   <button
                     key={timeSlot.time}
                     className={`
-    px-1 py-1 text-center rounded-md border backdrop-blur-sm shadow-sm 
+    px-1 py-1 text-center rounded-md border border-border backdrop-blur-sm shadow-sm 
     text-sm whitespace-nowrap 
     ${
       !timeSlot.isAvailable
-        ? "bg-green-600 border-green-400  cursor-not-allowed"
+        ? "bg-text-subheading border-[#4747ad] cursor-not-allowed text-white"
         : selectedTime == timeSlot.time
-        ? "bg-blue-600 border-blue-400 "
-        : "bg-white/5 hover:bg-blue-600 hover:border-blue-400 border-white/10 "
+        ? "bg-text-subheading border-[#4747ad] text-white"
+        : "bg-white/5 hover:bg-surface hover:border-border  "
     }
   `}
                     onClick={() =>
@@ -338,7 +342,10 @@ const BookMeetingForm = () => {
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className=" mb-4 flex flex-col m-4 ">
-            <label htmlFor="name" className="mb-2 block text-md font-medium ">
+            <label
+              htmlFor="name"
+              className="mb-2 block text-md font-medium text-text-para"
+            >
               Name
             </label>
             <input
@@ -357,7 +364,7 @@ const BookMeetingForm = () => {
                   message: "Enter one or two words using only A-Z and a-z",
                 },
               })}
-              className="p-1.5  placeholder:text-sm focus:border-[#4747AD] focus:border-2 focus:outline-none w-sm   "
+              className="p-1.5 placeholder:text-sm focus:border-text-subheading focus:border-2 focus:outline-none w-sm bg-surface border border-border rounded-sm "
             />
             <p className="text-red-700 text-sm align-text-bottom mt-1">
               {errors.name?.message}
@@ -366,7 +373,7 @@ const BookMeetingForm = () => {
           <div className="  flex flex-col m-4 ">
             <label
               htmlFor="comp_name"
-              className="mb-2 block text-md font-medium "
+              className="mb-2 block text-md font-medium text-text-para"
             >
               Company Name
             </label>
@@ -386,14 +393,17 @@ const BookMeetingForm = () => {
                   message: "Enter one or two words using only A-Z and a-z",
                 },
               })}
-              className="p-1.5  placeholder:text-sm focus:border-[#4747AD] focus:border-2  w-sm  "
+              className="p-1.5 placeholder:text-sm focus:border-text-subheading focus:border-2 focus:outline-none w-sm bg-surface border border-border rounded-sm   "
             />
             <p className="text-red-700 text-sm align-text-bottom mt-1">
               {errors.name?.message}
             </p>
           </div>
           <div className="  flex flex-col m-4 ">
-            <label htmlFor="email" className="mb-2 block text-md font-medium ">
+            <label
+              htmlFor="email"
+              className="mb-2 block text-md font-medium text-text-para"
+            >
               Business Email
             </label>
             <input
@@ -405,7 +415,7 @@ const BookMeetingForm = () => {
                   message: "Invalid email format",
                 },
               })}
-              className="p-1.5  placeholder:text-sm focus:border-[#4747AD] focus:border-2 focus:outline-none w-sm   "
+              className="p-1.5 placeholder:text-sm focus:border-text-subheading focus:border-2 focus:outline-none w-sm bg-surface border border-border rounded-sm  "
             />
             <p className="text-red-700 text-sm align-text-bottom mt-1">
               {errors.name?.message}
@@ -414,7 +424,7 @@ const BookMeetingForm = () => {
           <div className="m-4 flex flex-col">
             <label
               htmlFor="emp_count"
-              className="mb-2 block text-md font-medium "
+              className="mb-2 block text-md font-medium text-text-para"
             >
               Company size
             </label>{" "}
@@ -429,7 +439,7 @@ const BookMeetingForm = () => {
                   onChange={(val) => field.onChange(val)}
                   placeholder="Please select one"
                   size="formsize"
-                  className="placeholder:text-xs w-sm bg-black  border "
+                  className="placeholder:text-xs border border-border rounded-sm"
                 />
               )}
             />
@@ -438,7 +448,10 @@ const BookMeetingForm = () => {
             </p>
           </div>
           <div className="  flex flex-col m-4 ">
-            <label htmlFor="role" className="mb-2 block text-md font-medium ">
+            <label
+              htmlFor="role"
+              className="mb-2 block text-md font-medium text-text-para"
+            >
               Role
             </label>
             <input
@@ -453,7 +466,7 @@ const BookMeetingForm = () => {
                   message: "Enter one or two words using only A-Z and a-z",
                 },
               })}
-              className="p-1.5  placeholder:text-sm focus:border-[#4747AD] focus:border-2 focus:outline-none w-sm  "
+              className="p-1.5 placeholder:text-sm focus:border-text-subheading focus:border-2 focus:outline-none w-sm bg-surface border border-border rounded-sm  "
             />
             <p className="text-red-700 text-sm align-text-bottom mt-1">
               {errors.role?.message}
@@ -462,7 +475,7 @@ const BookMeetingForm = () => {
           <div className="m-4 flex flex-col">
             <label
               htmlFor="event_count"
-              className="mb-2 block text-md font-medium "
+              className="mb-2 block text-md font-medium text-text-para"
             >
               Estimated Event Volume
             </label>{" "}
@@ -479,7 +492,7 @@ const BookMeetingForm = () => {
                   onChange={(val) => field.onChange(val)} // val is a string
                   placeholder="Please select one"
                   size="formsize"
-                  className="placeholder:text-xs w-sm "
+                  className="placeholder:text-xs border border-border rounded-sm"
                 />
               )}
             />
@@ -488,9 +501,7 @@ const BookMeetingForm = () => {
             </p>
           </div>
           <div className="flex justify-end m-4">
-            <button type="submit" className="bg-blue-600  px-4 py-2 rounded">
-              Submit
-            </button>
+            <Button>Submit</Button>
           </div>
         </form>
       </div>

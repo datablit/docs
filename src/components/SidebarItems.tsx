@@ -8,7 +8,7 @@ export const sidebarItems = [
         <li>
           <Link
             href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/getting-started`}
-            className="hover:text-gray-900"
+            className="hover:text-gray-500 text-text-para"
           >
             Getting Started
           </Link>
@@ -23,7 +23,7 @@ export const sidebarItems = [
         <li>
           <Link
             href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/data-ingestion`}
-            className="hover:text-gray-900"
+            className="hover:text-gray-500 text-text-para"
           >
             Data Ingestion
           </Link>
@@ -31,7 +31,7 @@ export const sidebarItems = [
         <li>
           <Link
             href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/data-ingestion/event-properties-conversion`}
-            className="hover:text-gray-900"
+            className="hover:text-gray-500 text-text-para"
           >
             Event Properties Conversion
           </Link>
@@ -40,7 +40,7 @@ export const sidebarItems = [
         <li>
           <Link
             href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sdk`}
-            className="hover:text-gray-900"
+            className="hover:text-gray-500 text-text-para"
           >
             SDK
           </Link>
@@ -48,7 +48,7 @@ export const sidebarItems = [
         <li>
           <Link
             href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/data-ingestion/key-concepts`}
-            className="hover:text-gray-900"
+            className="hover:text-gray-500 text-text-para"
           >
             Key Concepts
           </Link>
@@ -64,7 +64,7 @@ export const sidebarItems = [
         <li>
           <Link
             href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sdk/js`}
-            className="hover:text-gray-900"
+            className="hover:text-gray-500 text-text-para"
           >
             Datablit JS
           </Link>
@@ -72,7 +72,7 @@ export const sidebarItems = [
         <li>
           <Link
             href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sdk/kotlin`}
-            className="hover:text-gray-900"
+            className="hover:text-gray-500 text-text-para"
           >
             Datablit Kotlin
           </Link>
@@ -80,7 +80,7 @@ export const sidebarItems = [
         <li>
           <Link
             href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sdk/swift`}
-            className="hover:text-gray-900"
+            className="hover:text-gray-500 text-text-para"
           >
             Datablit Swift
           </Link>
@@ -95,7 +95,7 @@ export const sidebarItems = [
         <li>
           <Link
             href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/signal`}
-            className="hover:text-gray-900"
+            className="hover:text-gray-500 text-text-para"
           >
             Signal
           </Link>
@@ -103,7 +103,7 @@ export const sidebarItems = [
         <li>
           <Link
             href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/signal/signal-concepts`}
-            className="hover:text-gray-900"
+            className="hover:text-gray-500 text-text-para"
           >
             Key Concepts
           </Link>
@@ -118,7 +118,7 @@ export const sidebarItems = [
         <li>
           <Link
             href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/rule`}
-            className="hover:text-gray-900"
+            className="hover:text-gray-500 text-text-para"
           >
             Rule
           </Link>
@@ -126,7 +126,7 @@ export const sidebarItems = [
         <li>
           <Link
             href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/rule/logical-expression`}
-            className="hover:text-gray-900"
+            className="hover:text-gray-500 text-text-para"
           >
             Logical Expression
           </Link>
@@ -134,7 +134,7 @@ export const sidebarItems = [
         <li>
           <Link
             href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/rule/rule-concepts`}
-            className="hover:text-gray-900"
+            className="hover:text-gray-500 text-text-para"
           >
             Key Concepts
           </Link>
@@ -149,7 +149,7 @@ export const sidebarItems = [
         <li>
           <Link
             href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/experiment`}
-            className="hover:text-gray-900"
+            className="hover:text-gray-500 text-text-para"
           >
             Experiment
           </Link>
@@ -157,7 +157,7 @@ export const sidebarItems = [
         <li>
           <Link
             href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/experiment/experiment-concepts`}
-            className="hover:text-gray-900"
+            className="hover:text-gray-500 text-text-para"
           >
             Key Concepts
           </Link>

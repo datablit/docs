@@ -16,17 +16,17 @@ function CodeBlock({ children }: any) {
   };
 
   return (
-    <div className="relative bg-gray-100 rounded-md p-4 my-4 overflow-auto">
-      <div className="absolute top-2 left-3 text-xs font-mono text-gray-500">
+    <div className="relative bg-surface rounded-md p-4 my-4 overflow-auto ">
+      <div className="absolute top-2 left-3 text-xs font-mono text-text-para">
         {language}
       </div>
       <button
         onClick={handleCopy}
-        className="absolute top-2 right-3 text-xs text-gray-600 hover:text-gray-900"
+        className="absolute top-2 right-3 text-xs hover:text-gray-500 text-text-para"
       >
         {copied ? "Copied" : <Copy size={14} />}
       </button>
-      <pre className="mt-6 text-sm text-gray-800 whitespace-pre-wrap">
+      <pre className="mt-6 text-sm text-text-para whitespace-pre-wrap">
         <code className={codeElement?.className}>{code}</code>
       </pre>
     </div>

@@ -20,7 +20,7 @@ const HomeFooter = () => {
           </span>
         </div>
         <div className="flex flex-wrap items-center gap-6 text-gray-400">
-          <button className="text-xs border border-white/30 rounded-full px-2 py-1 hover:text-white hover:border-white transition">
+          <button className="text-xs border border-white/30 rounded-full px-2 py-1 hover:text-white hover:border-white transition ">
             Your Privacy Choices
           </button>
           <Link href="https://www.linkedin.com/company/datablit/" passHref>

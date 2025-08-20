@@ -39,10 +39,12 @@ const NavBar = () => {
 
   return (
     <header className="relative z-50">
-      <div className="flex items-center justify-between p-4 bg-white border-b border-[#D9D9D9]">
+      <div className="flex items-center justify-between p-4  border-b border-border">
         <div className="flex space-x-12 items-center">
           <Link href="/">
-            <span className="text-xl font-bold text-[#4747AD]">Datablit</span>
+            <span className="text-xl font-bold text-text-subheading">
+              Datablit
+            </span>
           </Link>
 
           <ul className="hidden lg:flex space-x-8 items-center text-sm">
@@ -50,7 +52,7 @@ const NavBar = () => {
               <li key={href}>
                 <Link
                   href={href}
-                  className="hover:text-[#4747AD] text-gray-700"
+                  className="hover:text-text-subheading text-text-para"
                 >
                   {label}
                 </Link>
@@ -63,7 +65,7 @@ const NavBar = () => {
           {/* Search - Desktop */}
           <div
             onClick={() => setSearchModalOpen(true)}
-            className="relative hidden md:flex items-center rounded-sm space-x-2 border border-gray-300 hover:bg-gray-50 shadow-sm cursor-pointer"
+            className="relative hidden md:flex items-center rounded-sm space-x-2 border border-border hover:bg-table-header shadow-sm cursor-pointer bg-surface"
           >
             <Search
               size={16}
@@ -76,7 +78,7 @@ const NavBar = () => {
             />
           </div>
 
-          <div className="hidden md:flex items-center space-x-2 ml-4 relative">
+          <div className="hidden md:flex items-center space-x-2 ml-4 relative ">
             <Button
               variant="outline"
               onClick={() => setShowFeedbackPopup(true)}
@@ -95,8 +97,8 @@ const NavBar = () => {
             </Link>
           </div>
 
-          <div className="flex md:flex lg:hidden items-center space-x-4 ml-4">
-            <button onClick={() => setOpen(true)}>
+          <div className="flex md:flex lg:hidden items-center space-x-4 ml-4 text-surface">
+            <button onClick={() => setOpen(true)} className="text-text-para">
               <Menu size={20} />
             </button>
           </div>
@@ -104,20 +106,26 @@ const NavBar = () => {
       </div>
 
       {open && (
-        <div className="fixed inset-0 bg-white z-40 p-6 overflow-y-auto flex flex-col justify-between">
+        <div className="fixed inset-0 bg-surface z-40 p-6 overflow-y-auto flex flex-col justify-between">
           <div className="flex justify-between items-center mb-8">
-            <span className="text-xl font-bold text-[#4747AD]">Datablit</span>
-            <button onClick={() => setOpen(false)} aria-label="Close menu">
+            <span className="text-xl font-bold text-text-subheading">
+              Datablit
+            </span>
+            <button
+              onClick={() => setOpen(false)}
+              aria-label="Close menu"
+              className="text-text-para"
+            >
               <X size={24} />
             </button>
           </div>
 
-          <ul className="space-y-6 text-lg font-medium text-gray-700">
+          <ul className="space-y-6 text-lg font-medium text-text-para">
             {navLinks.map(({ href, label }) => (
               <li key={href}>
                 <Link
                   href={href}
-                  className="block hover:text-[#4747AD]"
+                  className="block hover:text-text-subheading"
                   onClick={() => setOpen(false)}
                 >
                   {label}

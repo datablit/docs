@@ -17,7 +17,7 @@ const Footer = () => {
     <footer className="w-full p-1 text-sm  ">
       <div className="mx-auto flex flex-row justify-between items-center text-sm">
         <div className="flex items-center space-x-4 ml-2">
-          <button className="text-xs border rounded-full px-2 py-1  transition hidden lg:flex text-darkBackground">
+          <button className="text-xs border border-border rounded-full px-2 py-1  transition hidden lg:flex text-text-main">
             Your Privacy Choices
           </button>
           <button
@@ -28,7 +28,7 @@ const Footer = () => {
             {theme === "dark" ? (
               <Sun className="w-5 h-5 text-yellow-400 transition-transform duration-300 rotate-0" />
             ) : (
-              <Moon className="w-5 h-5 text-gray-800 transition-transform duration-300 rotate-0" />
+              <Moon className="w-5 h-5 text-gray-600 transition-transform duration-300 rotate-0" />
             )}
           </button>
         </div>

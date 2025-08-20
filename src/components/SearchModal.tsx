@@ -60,35 +60,35 @@ const SearchModal = ({ isOpen, onClose }: Props) => {
   return (
     <div
       onClick={handleBackdropClick}
-      className="fixed inset-0 z-50 flex items-start justify-center pt-20  bg-white/60"
+      className="fixed inset-0 z-50 flex items-start justify-center pt-20  bg-surface-panel/60"
       aria-modal="true"
       role="dialog"
       aria-labelledby="dialog-title"
       ref={dialogRef}
     >
-      <div className="w-full max-w-2xl rounded-lg bg-white p-4 shadow-lg">
+      <div className="w-full max-w-2xl rounded-lg bg-surface p-4 shadow-lg">
         <input
           type="search"
           placeholder="What are you searching for?"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="w-full border border-gray-300 rounded px-3 py-2 mb-3 focus:outline-none focus:ring focus:ring-blue-200"
+          className="w-full border border-border rounded px-3 py-2 mb-3 focus:outline-none focus:ring focus:ring-text-subheading"
           aria-label="Search"
           autoComplete="off"
         />
 
         <ul
-          className="space-y-2 max-h-60 overflow-y-auto"
+          className="space-y-2 max-h-60 overflow-y-auto hide-scrollbar"
           role="listbox"
           aria-label="Search results"
         >
           {filteredSections.length === 0 ? (
-            <li className="text-gray-500 italic p-2">No results found.</li>
+            <li className="text-text-para italic p-2">No results found.</li>
           ) : (
             filteredSections.map((item) => (
               <li
                 key={item}
-                className="flex items-center space-x-2 cursor-pointer hover:bg-gray-100 p-2 rounded"
+                className="flex items-center space-x-2 cursor-pointer hover:bg-surface-panel p-2 rounded"
                 role="option"
                 aria-selected="false"
                 tabIndex={0}

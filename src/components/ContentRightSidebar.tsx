@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 type Heading = {
   id: string;
   text: string;
+  level: 2 | 3;
 };
 
 const ContentRightSidebar = () => {
@@ -22,12 +23,10 @@ const ContentRightSidebar = () => {
     const main = document.querySelector("main");
     if (!main) return;
 
-    const h2Elements = main.querySelectorAll("h2");
-
-    const parsed: Heading[] = Array.from(h2Elements).map((el) => {
+    const headingElements = main.querySelectorAll("h2, h3");
+    const parsed: Heading[] = Array.from(headingElements).map((el) => {
       let id = el.id;
 
-      // Auto-generate id if not present
       if (!id) {
         id =
           el.textContent
@@ -40,6 +39,7 @@ const ContentRightSidebar = () => {
       return {
         id,
         text: el.textContent || "",
+        level: el.tagName === "H2" ? 2 : 3,
       };
     });
 
@@ -48,9 +48,11 @@ const ContentRightSidebar = () => {
 
   if (!isClient) {
     return (
-      <aside className=" hidden md:flex md:flex-col px-10 h-[calc(100vh-4rem)] ">
+      <aside className=" hidden md:flex md:flex-col px-4 h-[calc(100vh-4rem)] ">
         <nav className="flex flex-col py-2 ">
-          <h2 className="text-sm font-semibold mb-2">On this page</h2>
+          <h2 className="text-sm font-semibold mb-2 text-text-subheading">
+            On this page
+          </h2>
           <ul className="space-y-1">{/* Empty state while loading */}</ul>
         </nav>
       </aside>
@@ -58,15 +60,22 @@ const ContentRightSidebar = () => {
   }
 
   return (
-    <aside className=" hidden md:flex md:flex-col px-10 h-[calc(100vh-4rem)] ">
+    <aside className=" hidden md:flex md:flex-col px-4 h-[calc(100vh-4rem)] ">
       <nav className="flex flex-col py-2 ">
-        <h2 className="text-sm font-semibold mb-2">On this page</h2>
-        <ul className="space-y-1">
-          {headings.map(({ id, text }) => (
-            <li key={id}>
+        <h2 className="text-sm font-semibold mb-2 text-text-subheading">
+          On this page
+        </h2>
+        <ul className="space-y-1 ">
+          {headings.map(({ id, text, level }, index) => (
+            <li
+              key={id}
+              className={
+                level === 2 ? "mt-4" : "ml-4 text-sm text-muted-foreground"
+              }
+            >
               <a
                 href={`#${id}`}
-                className="text-gray-700 hover:underline text-sm"
+                className="hover:underline text-text-para block"
               >
                 {text}
               </a>

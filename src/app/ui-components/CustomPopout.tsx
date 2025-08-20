@@ -67,7 +67,7 @@ export const CustomPopout: React.FC<CustomPopoutProps> = ({
       <button
         type="button"
         onClick={() => setOpen((prev) => !prev)}
-        className={`text-left flex items-center justify-between cursor-pointer ${sizeClasses[size]}`}
+        className={`text-left flex items-center justify-between cursor-pointer bg-surface ${sizeClasses[size]}`}
       >
         {selectedOption ? (
           <div className="flex items-center ">
@@ -96,7 +96,7 @@ export const CustomPopout: React.FC<CustomPopoutProps> = ({
 
       {open && (
         <ul
-          className={`absolute z-[9999] mt-1 bg-black  border border-white/10 transition placeholder:text-gray-400 rounded shadow-lg overflow-y-auto max-h-60 ${dropdownWidthClasses[size]}`}
+          className={`absolute z-[9999] mt-1 bg-surface border border-border transition placeholder:text-text-para rounded shadow-lg overflow-y-auto max-h-60 ${dropdownWidthClasses[size]}`}
         >
           {options.map((option) => (
             <li
@@ -105,7 +105,7 @@ export const CustomPopout: React.FC<CustomPopoutProps> = ({
                 onChange(option.value);
                 setOpen(false);
               }}
-              className="flex items-center gap-2 px-4 py-2 cursor-pointer hover:bg-white/10 text-gray-400"
+              className="flex items-center gap-2 px-4 py-2 cursor-pointer hover:bg-surface-panel text-text-para"
             >
               {option.icon && option.icon}
               {option.label}

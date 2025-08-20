@@ -15,7 +15,7 @@ export default async function Layout({
   if (!blog) return null;
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col bg-surface-panel">
       <div>
         <BlogHeader blog={blog} />
       </div>
@@ -25,7 +25,7 @@ export default async function Layout({
           <BlogData path={path} blog={blog} />
           {children}
         </main>
-        <aside className="w-64 border-r border-white/10 hidden lg:block pr-6">
+        <aside className="w-64 hidden lg:block pr-6">
           <BlogSidebar />
         </aside>
       </div>
