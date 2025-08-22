@@ -9,11 +9,11 @@ import FeedbackPopup from "./FeedbackPopup";
 import SearchModal from "./SearchModal";
 
 const navLinks = [
-  { href: "/products", label: "Products" },
-  { href: "/docs/analytics-sdk", label: "SDK" },
+  { href: "/", label: "Products" },
+  { href: "/docs/datablit-sdk", label: "SDK" },
   { href: "/docs/getting-started", label: "Docs" },
   { href: "/blog", label: "Blog" },
-  { href: "/community", label: "Community" },
+  { href: "/", label: "Community" },
 ];
 
 const NavBar = () => {
@@ -49,7 +49,7 @@ const NavBar = () => {
 
           <ul className="hidden lg:flex space-x-8 items-center text-sm">
             {navLinks.map(({ href, label }) => (
-              <li key={href}>
+              <li key={label}>
                 <Link
                   href={href}
                   className="hover:text-text-subheading text-text-para"

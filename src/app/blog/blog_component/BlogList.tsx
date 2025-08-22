@@ -13,7 +13,7 @@ export type Blog = {
 
 export const blogs: Record<string, Blog> = {
   "customer-data": {
-    title: "How to turn every interaction into a competitive edge?",
+    title: "How to turn every customer interaction into a competitive edge?",
     description:
       "Ingest, unify & build rules and signals in a single platform to power personalised customer experiences. Take real-time personalised action at scale and collaborate better across team for smooth decision",
     tags: [
@@ -22,7 +22,7 @@ export const blogs: Record<string, Blog> = {
       "Collaborate",
       "Personalised Experience",
     ],
-    image: "/graph.png",
+    image: "/dataingestionmain.png",
     date: "August 12, 2025",
     author: "Garima",
   },
@@ -37,7 +37,7 @@ export const blogs: Record<string, Blog> = {
       "Rule & Signal",
       "Business Strategy",
     ],
-    image: "/datasystem.svg",
+    image: "/datablitdatasystem.svg",
     date: "August 11, 2025",
     author: "Garima",
   },
