@@ -62,8 +62,9 @@ const NavBar = () => {
         </div>
 
         <div className="flex items-center">
+          {/* todo */}
           {/* Search - Desktop */}
-          <div
+          {/* <div
             onClick={() => setSearchModalOpen(true)}
             className="relative hidden md:flex items-center rounded-sm space-x-2 border border-border hover:bg-table-header shadow-sm cursor-pointer bg-surface"
           >
@@ -76,7 +77,7 @@ const NavBar = () => {
               className="pl-8 h-full focus:outline-none focus:ring-0 border-none bg-transparent pointer-events-none"
               readOnly
             />
-          </div>
+          </div> */}
 
           <div className="hidden md:flex items-center space-x-2 ml-4 relative ">
             <Button
@@ -108,42 +109,61 @@ const NavBar = () => {
       </div>
 
       {open && (
-        <div className="fixed inset-0 bg-surface z-40 p-6 overflow-y-auto flex flex-col justify-between">
-          <div className="flex justify-between items-center mb-8">
-            <span className="text-xl font-bold text-text-subheading">
-              Datablit
-            </span>
-            <button
-              onClick={() => setOpen(false)}
-              aria-label="Close menu"
-              className="text-text-para"
-            >
-              <X size={24} />
-            </button>
-          </div>
-
-          <ul className="space-y-6 text-lg font-medium text-text-para">
-            {navLinks.map(({ href, label }) => (
-              <li key={href}>
-                <Link
-                  href={href}
-                  className="block hover:text-text-subheading"
+        <div className="fixed inset-0 bg-surface z-40 p-6 ">
+          <div className="justify-between flex flex-col h-full ">
+            <div>
+              <div className="flex justify-between items-center mb-8">
+                <span className="text-xl font-semibold text-text-subheading">
+                  Datablit
+                </span>
+                <button
                   onClick={() => setOpen(false)}
+                  aria-label="Close menu"
+                  className="text-text-para"
                 >
-                  {label}
+                  <X size={20} />
+                </button>
+              </div>
+              <ul className="space-y-6 text-lg font-medium text-text-para">
+                {navLinks.map(({ href, label }) => (
+                  <li key={href}>
+                    <Link
+                      href={href}
+                      className="block hover:text-text-subheading"
+                      onClick={() => setOpen(false)}
+                    >
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <ul className="space-y-2">
+              <li>
+                <Link
+                  href={process.env.NEXT_PUBLIC_DATABLIT_CONSOLE_URL + "/login"}
+                >
+                  <Button onClick={() => setOpen(false)} size="full">
+                    Sign in to console
+                  </Button>
                 </Link>
               </li>
-            ))}
-          </ul>
-
-          <div className="mt-12 flex flex-col space-y-4">
-            <Button variant="outline">Feedback</Button>{" "}
-            {/* TODO: Handle this */}
-            <Link
-              href={process.env.NEXT_PUBLIC_DATABLIT_HOME_URL + "/bookmeeting"}
-            >
-              <Button>Contact</Button>
-            </Link>
+              <li>
+                <Link
+                  href={
+                    process.env.NEXT_PUBLIC_DATABLIT_HOME_URL + "/bookmeeting"
+                  }
+                >
+                  <Button
+                    onClick={() => setOpen(false)}
+                    size="full"
+                    variant="outline"
+                  >
+                    Contact Sales
+                  </Button>
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
       )}
