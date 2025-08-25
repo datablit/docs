@@ -13,7 +13,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     | "sidebarbtn"
     | "board"
     | "boardActive";
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "full";
   loading?: boolean;
 }
 
@@ -24,6 +24,7 @@ const sizeStyles = {
   sm: "px-3 py-1 text-sm h-8 rounded-md w-[90px]",
   md: "px-4 py-2 text-base h-9 rounded-md w-[120px]",
   lg: "px-5 py-3 text-lg h-11 rounded-md w-[150px]",
+  full: "w-full px-4 py-2 rounded-full",
 };
 
 const variantStyles = {
