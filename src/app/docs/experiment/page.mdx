@@ -1,49 +1,77 @@
-import { Table } from "../../../components/Table";
+import { Table } from "@/components/Table";
 
-# Getting Started with A/B Experiments
+# A/B Experiments with Datablit
 
-We can run A/B experients using Datablit experiment platform.
-User need to setup the experiment as follows
+Datablit's experiment platform enables you to run comprehensive A/B tests and feature experiments to optimize user experience and drive data-driven decisions. This guide will walk you through setting up and managing experiments using the Datablit platform.
 
-## Create Experiment Steps
+## Overview
 
-1. Go to experiment tab in [Datablit console](https://console.datablit.com).
-2. Click on **+Experiment** and Fill the following
-   <Table
-     columns={[
-       { header: "PROPERTY", width: "20%" },
-       { header: "TYPE", width: "15%" },
-       { header: "REQUIRED", width: "10%" },
-       { header: "DESCRIPTION", width: "50%" },
-     ]}
-     data={[
-       [
-         "Experiment name",
-         "String",
-         "Yes",
-         "A string to understand the experiment purpose",
-       ],
-       ["Description", "String", "Yes", "Description of the experiment"],
-       [
-         "Tags",
-         "Dropdown",
-         "No",
-         <>
-           Tags to categorize experiments. You can manage tags in the{" "}
-           <a
-             href={process.env.NEXT_PUBLIC_DATABLIT_CONSOLE_URL}
-             className="text-blue-600 hover:text-blue-800 underline"
-           >
-             company profile section
-           </a>
-         </>,
-       ],
-     ]}
-   />
-3. Click on create.
-4. Now this experiment is created and added experiment list
-5. Click on this experiment. This will redirect to experiment details page.
-6. There we can update following configurations
+A/B experiments allow you to test different versions of features, content, or user experiences to determine which performs better. Datablit's experiment platform provides:
+
+- **Variant Management**: Create and manage multiple experiment variants
+- **Traffic Allocation**: Control what percentage of users see each variant
+- **Real-time Results**: Monitor experiment performance in real-time
+- **Statistical Significance**: Built-in statistical analysis for reliable results
+
+## Prerequisites
+
+Before setting up experiments, ensure you have:
+
+- A Datablit account with access to the [Datablit Console](https://console.datablit.com)
+- Integrated Datablit SDK in your application ([Learn more about SDK integration](/docs/datablit-sdk))
+- Basic understanding of A/B testing concepts
+
+## Creating an Experiment
+
+Follow these steps to create and configure your first experiment:
+
+### Step 1: Navigate to Experiments
+
+1. Go to the **Experiments** tab in the [Datablit Console](https://console.datablit.com)
+2. Click on **+ Experiment** to create a new experiment
+
+### Step 2: Basic Configuration
+
+Provide the following information for your experiment:
+
+{" "}
+
+<Table
+  columns={[
+    { header: "PROPERTY", width: "20%" },
+    { header: "TYPE", width: "15%" },
+    { header: "REQUIRED", width: "10%" },
+    { header: "DESCRIPTION", width: "50%" },
+  ]}
+  data={[
+    [
+      "Experiment name",
+      "String",
+      "Yes",
+      "A string to understand the experiment purpose",
+    ],
+    ["Description", "String", "Yes", "Description of the experiment"],
+    [
+      "Tags",
+      "Dropdown",
+      "No",
+      <>
+        Tags to categorize experiments. You can manage tags in the{" "}
+        <a
+          href={process.env.NEXT_PUBLIC_DATABLIT_CONSOLE_URL}
+          className="text-blue-600 hover:text-blue-800 underline"
+        >
+          company profile section
+        </a>
+      </>,
+    ],
+  ]}
+/>
+3. Click **Create** to save your experiment
+
+### Step 3: Advanced Configuration
+
+Once your experiment is created, it will appear in the experiments list. Click on your experiment to access the details page where you can configure advanced settings:
 
 <Table
   columns={[
@@ -58,9 +86,9 @@ User need to setup the experiment as follows
       "Dropdown",
       "Yes",
       <>
-        By default its value is active but if we want to disable it change this
-        to disabled, Once experiment is disabled it return <b>control</b>{" "}
-        variant for all entities{" "}
+        By default, the value is active. To disable the experiment, change this
+        to disabled. Once disabled, the experiment returns the <b>control</b>{" "}
+        variant for all entities.
       </>,
     ],
     [
@@ -68,10 +96,10 @@ User need to setup the experiment as follows
       "Number",
       "Yes",
       <>
-        For What % of entity (user, device etc), Experiement need to be enabled.
-        eg. if percentage is 10, it means this experiment will return some
-        variants of this experiment for 10%, all other 90% cases it will return{" "}
-        <b>control</b> variant
+        Percentage of entities (users, devices, etc.) for which the experiment
+        should be enabled. For example, if percentage is 10, this experiment
+        will return experiment variants for 10% of entities. The remaining 90%
+        will receive the <b>control</b> variant.
       </>,
     ],
     [
@@ -79,9 +107,9 @@ User need to setup the experiment as follows
       "Popup",
       "Yes",
       <>
-        Click on <b>Create Variant</b> to add new variants, Inorder to create
-        new variants give a unique variant name(except 'control' as its
-        reserved) and its Percentage
+        Click on <b>Create Variant</b> to add new variants. To create a new
+        variant, provide a unique variant name (except 'control' as it's
+        reserved) and its percentage allocation.
       </>,
     ],
     [
@@ -89,39 +117,68 @@ User need to setup the experiment as follows
       "Dropdown",
       "No",
       <>
-        If we want to assign some test entity id to certain variant. write that
-        id and select variant and click assign This will assign given id to the
-        variant mentioned irrespective of this experiment configurations
+        Allows you to assign specific test entity IDs to certain variants. Enter
+        the entity ID, select the desired variant, and click assign. This will
+        assign the given ID to the specified variant regardless of the
+        experiment's normal allocation rules.
       </>,
     ],
   ]}
 />
 
-## Understanding assignment
+## Understanding Experiment Assignment
 
-Let's say we have an experiment configuration as follows
-(Percentage 20% and Variants(v1 and v2 with 60 and 40% respectively))
+Traffic allocation in Datablit experiments works on a two-level system:
 
-This experiment is enabled for 20% of users and in that 20%, 60% users will get v1 and 40% as v2.
-Remaining 80% users, it will get **control** variant
+### Example Configuration
 
-## Get Variant
+Let's consider an experiment with the following setup:
 
-In order to check variant of an entity for given experiment, we need to call following API
+- **Overall Percentage**: 20% of total users
+- **Variants**:
+  - `v1` (60% of experiment traffic)
+  - `v2` (40% of experiment traffic)
+
+### Traffic Distribution
+
+- **20% of users** participate in the experiment
+  - 60% of these users (12% of total) receive variant `v1`
+  - 40% of these users (8% of total) receive variant `v2`
+- **80% of users** receive the **control** variant (no experiment)
+
+## Retrieving Experiment Variants
+
+To determine which variant a user should see, you can retrieve the experiment assignment using either the Datablit SDK or direct API calls.
+
+### Method 1: Using Datablit SDK
+
+The recommended approach is to use the Datablit SDK for your platform. Check out the [Datablit SDK documentation](/docs/datablit-sdk) and navigate to your platform's specific implementation.
+
+### Method 2: Direct API Call
 
 ```sh
 curl --location 'https://api.datablit.com/api/1.0/experiment/variant?expId=01JVJT9CPXGEJVC7TDSX538Y8F&entityId=1321' \
---header 'projectId: 01JSWDEZYM0E19ZF3RMHS75PB1'
+--header 'apiKey: 01JSWDEZYM0E19ZF3RMHS75PB1'
 ```
 
-Note:
-Once we see experiment details page, we can easily extract exp_id and project_id from url
-eg. http://console.datablit.com/events/23as2/experiment/01K0KQZ9FW71J8JJVXG8NZ2XN3
+#### Finding Your Experiment ID
 
-- exp_id: 01K0KQZ9FW71J8JJVXG8NZ2XN3
-- project_id: 23as2
+You can find your experiment ID from the Datablit Console:
 
-## Get variant api response
+1. Navigate to your experiment details page
+2. Extract the `expId` from the URL
+
+**Example URL:**
+
+```
+https://console.datablit.com/events/23as2/experiment/01K0KQZ9FW71J8JJVXG8NZ2XN3
+```
+
+**Experiment ID:** `01K0KQZ9FW71J8JJVXG8NZ2XN3`
+
+#### API Response
+
+The API returns the assigned variant for the specified entity:
 
 ```json
 {
