@@ -1,121 +1,263 @@
-# Datablit analytics library
+import { Table } from "@/components/Table";
 
-A JavaScript analytics library for event tracking and user identification.
+# Datablit JavaScript SDK
+
+A comprehensive JavaScript SDK for integrating Datablit's analytics, rules, and experiments into your applications. It offers functionalities such as event tracking, user identification, rule evaluation, and experiment variant retrieval.
 
 ## Installation
 
 Install the package using npm:
 
 ```sh
-npm install @datablit/analytics-js
+npm install @datablit/datablit-js
 ```
 
-Or using yarn:
+## Quick Start
 
-```sh
-yarn add @datablit/analytics-js
-```
+Here's how to get started with the Datablit JavaScript SDK:
 
-## Usage
+```js
+import datablit from "@datablit/datablit-js";
 
-### Importing the Library
+// Initialize the SDK (must be called in an async function)
+async function initializeDatablit() {
+  await datablit.init({
+    apiKey: "your-api-key-here",
+  });
 
-In a React project, import `Analytics` from "`@datablit/analytics-js`"
+  // Track an event
+  datablit.track("Button Clicked", { buttonId: "signup-button" });
 
-```react
-"use client";
-import React, { useEffect } from "react";
-import Analytics from "@datablit/analytics-js";
-
-function AnalyticsTest() {
-  useEffect(() => {
-    Analytics.init({
-      writeKey: "your-write-key"
-    });
-  }, []);
-
-  return (
-    <div className="flex gap-4">
-      <button
-        onClick={() => {
-          Analytics.track("test_event", { name: "John Doe", value: 42 });
-        }}
-      >
-        Track Event
-      </button>
-      <button
-        onClick={() => {
-          Analytics.identify("user_123", {
-            name: "John Doe",
-            email: "john.doe@example.com",
-            age: 30,
-          });
-        }}
-      >
-        Identify User
-      </button>
-    </div>
-  );
+  // Identify a user
+  datablit.identify("user123", { email: "user@example.com", plan: "premium" });
 }
 
-export default AnalyticsTest;
+// Call the initialization function
+initializeDatablit();
 ```
 
-## APIs
+## API Reference
 
-## Analytics.init(config)
+### datablit.init(config)
 
-Initializes the analytics library. User should initialize this libary once.
+Initializes the Datablit SDK. You should initialize this library once before using any other functions.
 
 #### Parameters:
 
-- `config.writeKey` (string, required) – Your analytics Write key. Get this from `http://console.datablit.com/events`
-- `config.endpoint` (string, optional) – API endpoint to send data. Default: `http://event.datablit.com/v1/batch`
-- `config.batchSize` (number, optional) – Number of events to batch before sending. Default: `20`
-- `config.flushInterval` (number, optional) – Interval (in milliseconds) to flush batch events. Default: `30000`
-- `config.enablePageTracking` (boolean, optional) – Enables automatic url path tracking. Default: `false`
+<Table
+  columns={[
+    { header: "Parameter", width: "25%" },
+    { header: "Type", width: "15%" },
+    { header: "Required", width: "10%" },
+    { header: "Description", width: "50%" },
+  ]}
+  data={[
+    [
+      "config.apiKey",
+      "string",
+      "Yes",
+      <>
+        Your Datablit API key. Get this from the{" "}
+        <a
+          href="https://console.datablit.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Datablit console
+        </a>
+      </>,
+    ],
+    [
+      "config.endpoint",
+      "string",
+      "No",
+      "API endpoint to send analytics data. Default: https://event.datablit.com/v1/batch",
+    ],
+    [
+      "config.batchSize",
+      "number",
+      "No",
+      "Number of events to batch before sending. Default: 20",
+    ],
+    [
+      "config.flushInterval",
+      "number",
+      "No",
+      "Interval (in milliseconds) to flush batch events. Default: 30000",
+    ],
+    [
+      "config.enablePageTracking",
+      "boolean",
+      "No",
+      "Enables automatic page view tracking. Default: false",
+    ],
+  ]}
+/>
 
-## Analytics.track(eventName, properties)
+## Analytics API
+
+### datablit.track(eventName, properties)
 
 Tracks an event with associated properties.
 
 #### Parameters:
 
-- `eventName` (string, required) – Name of the event.
-- `properties` (object, optional) – Key-value pairs of event properties.
+<Table
+  columns={[
+    { header: "Parameter", width: "25%" },
+    { header: "Type", width: "15%" },
+    { header: "Required", width: "10%" },
+    { header: "Description", width: "50%" },
+  ]}
+  data={[
+    ["eventName", "string", "Yes", "Name of the event."],
+    ["properties", "object", "No", "Key-value pairs of event properties."],
+  ]}
+/>
 
 #### Example:
 
 ```javascript
-Analytics.track("button_click", { button: "subscribe", user: "user_123" });
+datablit.track("button_click", { button: "subscribe", user: "user_123" });
+
+// More complex example
+datablit.track("Purchase Completed", {
+  productId: "prod_123",
+  amount: 99.99,
+  currency: "USD",
+});
 ```
 
-## Analytics.identify(userId, traits)
+### datablit.identify(userId, traits)
 
 Identifies a user with optional traits.
 
 #### Parameters:
 
-- `userId` (string, required) – Unique user ID.
-- `traits` (object, optional) – Additional user attributes.
+<Table
+  columns={[
+    { header: "Parameter", width: "25%" },
+    { header: "Type", width: "15%" },
+    { header: "Required", width: "10%" },
+    { header: "Description", width: "50%" },
+  ]}
+  data={[
+    ["userId", "string", "Yes", "Unique user ID."],
+    ["traits", "object", "No", "Additional user attributes."],
+  ]}
+/>
 
 #### Example:
 
 ```javascript
-Analytics.identify("user_123", {
+datablit.identify("user_123", {
   name: "John Doe",
   email: "john.doe@example.com",
   age: 30,
+  plan: "premium",
 });
 ```
 
-## Auto track events
+## Rules API
 
-## Page tracking
+### datablit.rule.evalRule(request)
 
-if `config.enablePageTracking` is `true`, sdk will track all page navigations.
+Evaluates a rule for a given user and context. This allows you to make dynamic decisions based on user attributes and rule logic.
 
-eg. if user redirected to `http://localhost:3001/test` sdk will send following track event
+#### Parameters:
+
+<Table
+  columns={[
+    { header: "Parameter", width: "25%" },
+    { header: "Type", width: "15%" },
+    { header: "Required", width: "10%" },
+    { header: "Description", width: "50%" },
+  ]}
+  data={[
+    ["request.key", "string", "Yes", "The rule key identifier."],
+    ["request.userId", "string", "Yes", "Unique user ID."],
+    [
+      "request.params",
+      "object",
+      "No",
+      "Additional parameters for rule evaluation.",
+    ],
+  ]}
+/>
+
+#### Returns:
+
+- Promise that resolves to an object with `result` (boolean) indicating whether the rule passed.
+
+#### Example:
+
+```javascript
+const ruleResult = await datablit.rule.evalRule({
+  key: "feature_flag",
+  userId: "user_123",
+  params: {
+    os_name: "android",
+    user_plan: "premium",
+  },
+});
+
+if (ruleResult.result) {
+  console.log("Rule evaluated to true - show feature");
+} else {
+  console.log("Rule evaluated to false - hide feature");
+}
+```
+
+## Experiments API
+
+### datablit.experiment.getVariant(request)
+
+Retrieves the experiment variant for a user. This is useful for A/B testing and feature experimentation.
+
+#### Parameters:
+
+<Table
+  columns={[
+    { header: "Parameter", width: "25%" },
+    { header: "Type", width: "15%" },
+    { header: "Required", width: "10%" },
+    { header: "Description", width: "50%" },
+  ]}
+  data={[
+    ["request.expId", "string", "Yes", "The experiment ID."],
+    ["request.entityId", "string", "Yes", "Unique entity/user ID."],
+  ]}
+/>
+
+#### Returns:
+
+- Promise that resolves to an object with `variant` (string) indicating the assigned variant.
+
+#### Example:
+
+```javascript
+const variant = await datablit.experiment.getVariant({
+  expId: "01K2JKVXR0J0ZWPX40XY8CAWBS",
+  entityId: "user_123",
+});
+
+console.log("User is in variant:", variant.variant); // "control", "variant_a", etc.
+
+// Use the variant to show different UI
+if (variant.variant === "variant_a") {
+  // Show new feature
+} else {
+  // Show control version
+}
+```
+
+## Auto Track Events
+
+### Page tracking
+
+If `config.enablePageTracking` is `true`, the SDK will automatically track all page navigations.
+
+For example, if a user navigates to `http://localhost:3001/test`, the SDK will send the following track event:
 
 ```json
 {
@@ -148,7 +290,7 @@ eg. if user redirected to `http://localhost:3001/test` sdk will send following t
       "uaFullVersion": "136.0.7103.114"
     },
     "library": {
-      "name": "@datablit/analytics-js",
+      "name": "@datablit/datablit-js",
       "version": "1.0.3"
     },
     "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
@@ -172,4 +314,99 @@ eg. if user redirected to `http://localhost:3001/test` sdk will send following t
 }
 ```
 
-For more information, examples, and contributions, visit the [Datablit Analytics js GitHub repository](https://github.com/datablit/analytics-js).
+## Error Handling
+
+The SDK provides comprehensive error handling mechanisms:
+
+```javascript
+try {
+  const ruleResult = await datablit.rule.evalRule({
+    key: "feature_flag",
+    userId: "user_123",
+  });
+} catch (error) {
+  console.error("Failed to evaluate rule:", error.message);
+}
+
+try {
+  const variant = await datablit.experiment.getVariant({
+    expId: "01K2JKVXR0J0ZWPX40XY8CAWBS",
+    entityId: "user_123",
+  });
+} catch (error) {
+  console.error("Failed to get variant:", error.message);
+}
+
+try {
+  datablit.track("Event", { data: "value" });
+} catch (error) {
+  console.error("Failed to track event:", error.message);
+}
+```
+
+## Features
+
+- **Analytics:**
+
+  - Event Tracking: Monitor user interactions and custom events
+  - User Identification: Link events to specific users
+  - Automatic Page Tracking: Capture page views automatically
+  - Batch Processing: Efficiently batch events with retry logic
+  - Offline Support: Queue events locally when offline
+
+- **Rules:**
+
+  - Rule Evaluation: Assess rules against user context in real-time
+  - Context-based Decisions: Make dynamic decisions based on user attributes
+
+- **Experiments:**
+
+  - A/B Testing: Retrieve experiment variants for users
+  - Context-aware Assignment: Assign variants based on user context
+  - Statistical Analysis: Built-in support for experiment analysis
+
+## Usage in React
+
+Here's how to use the Datablit SDK in a React application:
+
+```react
+"use client";
+import React, { useEffect } from "react";
+import datablit from "@datablit/datablit-js";
+
+function DatablitTest() {
+  useEffect(() => {
+    datablit.init({
+      apiKey: "your-api-key-here",
+      enablePageTracking: true,
+    });
+  }, []);
+
+  return (
+    <div className="flex gap-4">
+      <button
+        onClick={() => {
+          datablit.track("test_event", { name: "John Doe", value: 42 });
+        }}
+      >
+        Track Event
+      </button>
+      <button
+        onClick={() => {
+          datablit.identify("user_123", {
+            name: "John Doe",
+            email: "john.doe@example.com",
+            age: 30,
+          });
+        }}
+      >
+        Identify User
+      </button>
+    </div>
+  );
+}
+
+export default DatablitTest;
+```
+
+For more information and examples, visit the [Datablit JavaScript SDK documentation](https://github.com/datablit/datablit-js).

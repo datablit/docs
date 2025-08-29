@@ -19,7 +19,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </h3>
     ),
     p: ({ children }) => (
-      <p className="text-text-para font-normal mb-4 leading-relaxed">
+      <p className="text-text-para font-normal my-2 leading-relaxed">
         {children}
       </p>
     ),

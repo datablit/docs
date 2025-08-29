@@ -13,7 +13,7 @@ interface TableProps {
 
 export function Table({ columns, data, className = "" }: TableProps) {
   return (
-    <div className={`w-full ${className}`}>
+    <div className={`w-full my-2 ${className}`}>
       <table className="w-full rounded-lg overflow-hidden table-fixed">
         <thead className="bg-surface ">
           <tr>
