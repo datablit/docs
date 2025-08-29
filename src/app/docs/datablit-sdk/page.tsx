@@ -7,31 +7,40 @@ function Page() {
     {
       name: "JavaScript SDK",
       description:
-        "Integrate analytics into your web applications with our powerful JavaScript SDK",
+        "Complete analytics solution for web apps with event tracking, rule evaluation, and A/B testing",
       icon: "⚡",
       href: `${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sdk/js`,
       features: [
-        "Browser & Node.js support",
-        "TypeScript ready",
-        "Real-time tracking",
+        "Event tracking & user identification",
+        "Feature flags & rule evaluation",
+        "A/B testing & experiments",
       ],
       color: "from-blue-500 to-purple-600",
     },
     {
       name: "Kotlin SDK",
       description:
-        "Native Android analytics integration with our Kotlin SDK for mobile apps",
+        "Lightweight Android SDK with automatic batching, lifecycle tracking, and offline support",
       icon: "🤖",
       href: `${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sdk/kotlin`,
-      features: ["Android native", "Coroutines support", "Offline tracking"],
+      features: [
+        "Automatic batching & offline queue",
+        "App lifecycle event tracking",
+        "Rule evaluation & experiments",
+      ],
       color: "from-green-500 to-teal-600",
     },
     {
       name: "Swift SDK",
-      description: "iOS and macOS analytics made simple with our Swift SDK",
+      description:
+        "Type-safe iOS and macOS SDK with SwiftUI support, automatic lifecycle tracking, and Codable integration",
       icon: "🍎",
       href: `${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sdk/swift`,
-      features: ["iOS & macOS support", "SwiftUI ready", "Background sync"],
+      features: [
+        "Swift Package Manager ready",
+        "SwiftUI & Codable support",
+        "Thread-safe with async/await",
+      ],
       color: "from-orange-500 to-red-600",
     },
   ];
@@ -63,14 +72,14 @@ function Page() {
           {sdkData.map((sdk, index) => (
             <div
               key={index}
-              className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden"
+              className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden h-full flex flex-col"
             >
               {/* Gradient overlay */}
               <div
                 className={`absolute inset-0 bg-gradient-to-br ${sdk.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}
               ></div>
 
-              <div className="relative p-8">
+              <div className="relative p-8 flex flex-col h-full">
                 {/* Icon */}
                 <div
                   className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r ${sdk.color} rounded-xl mb-6 text-2xl shadow-lg`}
@@ -88,7 +97,7 @@ function Page() {
                 </p>
 
                 {/* Features */}
-                <div className="mb-8">
+                <div className="flex-grow mb-8">
                   <h4 className="text-sm font-semibold text-gray-700 mb-3 uppercase tracking-wide">
                     Key Features
                   </h4>
@@ -106,15 +115,17 @@ function Page() {
                 </div>
 
                 {/* CTA Button */}
-                <Link href={sdk.href} className="block">
-                  <Button
-                    variant="primary"
-                    size="lg"
-                    className="w-full group-hover:scale-105 transition-transform duration-200"
-                  >
-                    Get Started
-                  </Button>
-                </Link>
+                <div className="mt-auto">
+                  <Link href={sdk.href} className="block">
+                    <Button
+                      variant="primary"
+                      size="lg"
+                      className="w-full group-hover:scale-105 transition-transform duration-200"
+                    >
+                      Get Started
+                    </Button>
+                  </Link>
+                </div>
               </div>
 
               {/* Decorative elements */}

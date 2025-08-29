@@ -1,4 +1,4 @@
-import { Table } from "../../../components/Table";
+import { Table } from "@/components/Table";
 
 # Rules: Make Business Decision Faster Than Ever
 
@@ -67,44 +67,57 @@ To create new Rule, open the Rule Tab in Events section. Click the three vertica
   ]}
 />
 
-## Evaluate Rule
+## Evaluating Rules
 
-To evaluate a rule, click on the three dots in the rule list and select "Evaluate."
-Next, enter the user_id and submit. This will return the rule evaluation result (true or false) for the specified user.
+To determine whether a rule evaluates to true or false for a specific user, you can evaluate the rule using either the Datablit SDK or direct API calls.
+
+### Method 1: Using Datablit SDK
+
+The recommended approach is to use the Datablit SDK for your platform. Check out the [Datablit SDK documentation](/docs/datablit-sdk) and navigate to your platform's specific implementation.
+
+### Method 2: Direct API Call
+
+```sh
+curl --location 'https://api.datablit.com/api/1.0/rule/eval' \
+--header 'apiKey: 01JSWDEZYM0E19ZF3RMHS75PB1' \
+--header 'Content-Type: application/json' \
+--data '{
+    "key": "high_value_customer",
+    "user_id": "1",
+    "params": {
+        "os_name": "android"
+    }
+}'
+```
+
+#### Parameters
+
+- `key`: The rule key identifier
+- `user_id`: The user ID to evaluate the rule for
+- `params`: Optional parameters that can be referenced in the rule expression
+
+#### Using Parameters in Rules
 
 You can pass optional parameters in JSON format and reference them inside the rule:
 
 ```json
 {
-  "os_name": "android"
+  "os_name": "android",
+  "user_plan": "premium"
 }
 ```
 
-Inside the rule, you can reference these parameters:
+Inside the rule expression, you can reference these parameters:
 
 ```go
 no_of_orders_24h > 10 && os_name == 'android'
 ```
 
-## Evaluate Rule API
+### Method 3: Console Evaluation
 
-To use the rule in your code, you need to call the following API:
+You can also test rules directly in the Datablit Console:
 
-```sh
-curl --location 'https://api.datablit.com/api/1.0/rule/eval' \
---header 'projectId: 023ac' \
---header 'Content-Type: application/json' \
---data '{
-    "key" : "high_value_customer",
-    "user_id" : "1",
-    "params" : {
-        "os_name" : "android"
-    }
-}'
-```
-
-**Parameters:**
-
-- `key`: The rule key
-- `projectId`: A mandatory header that you can extract from the URL: https://console.datablit.com/events/023ac/rule
-- `023ac` is your projectId
+1. Navigate to the Rules section in your project
+2. Click on the three dots next to your rule and select "Evaluate"
+3. Enter the `user_id` and any optional parameters
+4. Click submit to see the evaluation result (true or false)

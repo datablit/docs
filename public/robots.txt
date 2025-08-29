@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://docs.datablit.com
+
+# Sitemaps
+Sitemap: https://docs.datablit.com/sitemap.xml
