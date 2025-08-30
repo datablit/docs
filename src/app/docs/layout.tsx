@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import Sidebar from "@/components/Sidebar";
 import { sidebarItems } from "@/components/SidebarItems";
 
-import React, { useState } from "react";
+import React from "react";
 
 import NavBar from "@/components/NavBar";
 import CustomAccordion from "../ui-components/CustomAccordion";

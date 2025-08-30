@@ -89,12 +89,12 @@ export const sidebarItems = [
     ),
   },
   {
-    title: "Signal",
+    title: "Rule and Signal",
     content: (
       <ul className="space-y-1">
         <li>
           <Link
-            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/signal`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/rule-signal/signal`}
             className="hover:text-gray-500 text-text-para"
           >
             Signal
@@ -102,22 +102,15 @@ export const sidebarItems = [
         </li>
         <li>
           <Link
-            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/signal/signal-concepts`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/rule-signal/create-signal`}
             className="hover:text-gray-500 text-text-para"
           >
-            Key Concepts
+            Create Signal
           </Link>
         </li>
-      </ul>
-    ),
-  },
-  {
-    title: "Rule",
-    content: (
-      <ul className="space-y-1">
         <li>
           <Link
-            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/rule`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/rule-signal/rule`}
             className="hover:text-gray-500 text-text-para"
           >
             Rule
@@ -125,18 +118,18 @@ export const sidebarItems = [
         </li>
         <li>
           <Link
-            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/rule/logical-expression`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/rule-signal/create-rule`}
             className="hover:text-gray-500 text-text-para"
           >
-            Logical Expression
+            Create Rule
           </Link>
         </li>
         <li>
           <Link
-            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/rule/rule-concepts`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/rule-signal/logical-expression`}
             className="hover:text-gray-500 text-text-para"
           >
-            Key Concepts
+            Logical Expression
           </Link>
         </li>
       </ul>
@@ -151,15 +144,7 @@ export const sidebarItems = [
             href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/experiment`}
             className="hover:text-gray-500 text-text-para"
           >
-            Experiment
-          </Link>
-        </li>
-        <li>
-          <Link
-            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/experiment/experiment-concepts`}
-            className="hover:text-gray-500 text-text-para"
-          >
-            Key Concepts
+            Create Experiment
           </Link>
         </li>
       </ul>
