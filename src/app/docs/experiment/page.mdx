@@ -2,24 +2,16 @@ import { Table } from "@/components/Table";
 
 # Create New Experiment
 
-To create a new Experiment, open the Experiment Tab in Events section.
+To create a new Experiment, open the Experiment Tab in the Events section.
 
 ## Overview
 
-A/B experiments allow you to test different versions of features, content, or user experiences to determine which performs better. Datablit's experiment platform provides:
+Experiment allows you to test different versions of feature, content, or user experience to determine what performs better. Datablit experiment platform provides:
 
 - **Variant Management**: Create and manage multiple experiment variants
 - **Traffic Allocation**: Control what percentage of users see each variant
 - **Real-time Results**: Monitor experiment performance in real-time
 - **Statistical Significance**: Built-in statistical analysis for reliable results
-
-## Prerequisites
-
-Before setting up experiments, ensure you have:
-
-- A Datablit account with access to the [Datablit Console](https://console.datablit.com)
-- Integrated Datablit SDK in your application ([Learn more about SDK integration](/docs/datablit-sdk))
-- Basic understanding of A/B testing concepts
 
 ## Creating an Experiment
 
@@ -67,11 +59,12 @@ Provide the following information for your experiment:
     ],
   ]}
 />
-3. Click **Create** to save your experiment
+
+Click **Create** to save your experiment
 
 ### Step 3: Advanced Configuration
 
-Once your experiment is created, it will appear in the experiments list. Click on your experiment to access the details page where you can configure advanced settings:
+Experiment will get added on experiment list after its created. Click on the experiment to access the details page to configure advance settings:
 
 <Table
   columns={[
@@ -86,9 +79,9 @@ Once your experiment is created, it will appear in the experiments list. Click o
       "Dropdown",
       "Yes",
       <>
-        By default, its value is set to active. To disable it, change the value
-        to disabled. Once the experiment is disabled, it will return the{" "}
-        <b>control</b> variant for all entities.
+        By default, the status is set to Active. To disable the experiment,
+        change the status to Disabled. Once disabled, all entities will receive
+        the <b>control</b> variant.
       </>,
     ],
     [
@@ -117,10 +110,10 @@ Once your experiment is created, it will appear in the experiments list. Click o
       "Dropdown",
       "No",
       <>
-        If you want to assign a specific test entity ID to a particular variant,
-        enter the ID, select the desired variant, and click "Assign." This will
-        force the given ID to always receive the selected variant, regardless of
-        the experiment's configuration or percentage rollout.
+        To assign a specific test entity ID to a particular variant, enter the
+        ID, choose the desired variant, and click "Assign." This ensures that
+        the specified ID consistently receives the selected variant, regardless
+        of the experiment’s configuration or rollout percentage.
       </>,
     ],
   ]}
