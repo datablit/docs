@@ -2,20 +2,20 @@ import { Table } from "../../../../components/Table";
 
 # Signal
 
-With Datablit, you can create Rule and Signals within minutes and get instant results without the need to write code and manage data pipelines.
+With Datablit, you can create Rule and Signal within minutes and get instant results without the need to write code and manage data pipelines.
 
 Signals are the smallest data units and are expressed in key-value pairs.
 A key-value pair consists of two related data elements:
 A key is a constant that defines the data set (e.g., product, gender, price).
-A value is a variable that belongs to the set (e.g., camera, male, >100)
+A value is a variable that belongs to the set (e.g., camera, male, 100)
 Fully formed, a key value pair could look like this:
 
 <Table
-  columns={[{ header: "Key" }, { header: "Value" }, { header: "" }]}
+  columns={[{ header: "Key" }, { header: "User 1" }, { header: "User 2" }]}
   data={[
     ["Product", "Camera", "Apparel"],
     ["Gender", "Male", "Female"],
-    ["Price", ">10000", "<200"],
+    ["Price", "10000", "200"],
     ["Type", "Digital SLR", "Sports"],
   ]}
 />
@@ -24,12 +24,11 @@ Fully formed, a key value pair could look like this:
 
 **A signal is identified by its unique key and is stored at the user level.**
 
-These basic terminologies will help you to create and understand signals in a few
-clicks.
+These basic terminologies will help you to create and understand signals in a few clicks.
 
 ## Aggregation window
 
-An aggregation window defines the time period over which signals are grouped.For example, if you want to count the number of orders in the last 24 hours, the aggregation window is 24 hours and you can use the signal key as order_count_24h.
+An aggregation window defines the time period over which signals are grouped. For example: if you want to count the number of orders in the last 24 hours, the aggregation window is 24 hours and you can use the signal key as order_count_24h.
 
 ## Freshness
 
@@ -40,14 +39,14 @@ In short, the **aggregation window** is about **_grouping_** and **freshness** i
 
 ## Signal Types
 
-Based on aggregation window and freshness requirements, you can choose how you want to process signal-
+Based on aggregation window and freshness requirements, you can choose how you want to process signal -
 
 **Real time for high freshness(< 1 minute) and instant results** -
 These are ideal for scenarios requiring immediate data updates, making it a solid option for business to personalise at scale and take immediate action. Example: Number of sessions in the last hour
 
 **Batch processing works best when you need in depth analysis at set intervals** -
 As the name suggests, used to process data in batches. If you need to aggregate a large number of data points over longer periods and can tolerate a few hours of freshness.
-Example: Number of orders in the last 10 years with 12-hour freshness
+Example: Number of orders in the last 1 year with 12-hour freshness
 
 ## Comparison of Signal Types
 
@@ -69,10 +68,28 @@ Example: Number of orders in the last 10 years with 12-hour freshness
     ],
     [
       "Batch Signal",
-      "Long (e.g., 10 years)",
+      "Long (e.g., 1 years)",
       "Lower (few hours)",
       "After specific duration (e.g., every 6 hours)",
-      "Number of orders in the last 10 years (12-hour freshness)",
+      "Number of orders in the last 1 years (12-hour freshness)",
     ],
+  ]}
+/>
+
+## Realtime Aggregation Types
+
+It refers to how data points or events are grouped.
+Realtime signals support three types of aggregation:
+
+- **Static:** It gives the raw value of the event’s field name (no aggregation)
+- **Count:** The number of times an event occurs
+- **Sum:** Sum a specific field name from events
+
+<Table
+  columns={[{ header: "Aggregation Type" }, { header: "Signal" }]}
+  data={[
+    ["SUM", "total_order_amount"],
+    ["STATIC", "plan_type"],
+    ["COUNT", "no._of_order"],
   ]}
 />

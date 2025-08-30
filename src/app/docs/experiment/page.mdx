@@ -1,8 +1,8 @@
 import { Table } from "@/components/Table";
 
-# A/B Experiments with Datablit
+# Create New Experiment
 
-Datablit's experiment platform enables you to run comprehensive A/B tests and feature experiments to optimize user experience and drive data-driven decisions. This guide will walk you through setting up and managing experiments using the Datablit platform.
+To create a new Experiment, open the Experiment Tab in Events section.
 
 ## Overview
 
@@ -86,9 +86,9 @@ Once your experiment is created, it will appear in the experiments list. Click o
       "Dropdown",
       "Yes",
       <>
-        By default, the value is active. To disable the experiment, change this
-        to disabled. Once disabled, the experiment returns the <b>control</b>{" "}
-        variant for all entities.
+        By default, its value is set to active. To disable it, change the value
+        to disabled. Once the experiment is disabled, it will return the{" "}
+        <b>control</b> variant for all entities.
       </>,
     ],
     [
@@ -96,10 +96,10 @@ Once your experiment is created, it will appear in the experiments list. Click o
       "Number",
       "Yes",
       <>
-        Percentage of entities (users, devices, etc.) for which the experiment
-        should be enabled. For example, if percentage is 10, this experiment
-        will return experiment variants for 10% of entities. The remaining 90%
-        will receive the <b>control</b> variant.
+        Specify the percentage of entities (e.g., users, devices, etc.) for
+        which the experiment should be enabled. For example, if the percentage
+        is set to 10, the experiment will return a test variant for 10% of the
+        entities. The remaining 90% will receive the <b>control</b> variant.
       </>,
     ],
     [
@@ -107,9 +107,9 @@ Once your experiment is created, it will appear in the experiments list. Click o
       "Popup",
       "Yes",
       <>
-        Click on <b>Create Variant</b> to add new variants. To create a new
-        variant, provide a unique variant name (except 'control' as it's
-        reserved) and its percentage allocation.
+        Click "Create Variant" to add a new variant. To create a variant,
+        provide a unique name (note: 'control' is reserved and cannot be used)
+        and assign a percentage value to it.
       </>,
     ],
     [
@@ -117,10 +117,10 @@ Once your experiment is created, it will appear in the experiments list. Click o
       "Dropdown",
       "No",
       <>
-        Allows you to assign specific test entity IDs to certain variants. Enter
-        the entity ID, select the desired variant, and click assign. This will
-        assign the given ID to the specified variant regardless of the
-        experiment's normal allocation rules.
+        If you want to assign a specific test entity ID to a particular variant,
+        enter the ID, select the desired variant, and click "Assign." This will
+        force the given ID to always receive the selected variant, regardless of
+        the experiment's configuration or percentage rollout.
       </>,
     ],
   ]}

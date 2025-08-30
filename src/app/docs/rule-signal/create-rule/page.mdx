@@ -1,13 +1,13 @@
 import { Table } from "@/components/Table";
 
-# Rules: Make Business Decision Faster Than Ever
+# Create New Rule
 
-To create new Rule, open the Rule Tab in Events section. Click the three vertical dots to create, edit and delete rule.
+To create a new Rule, open the Rule Tab in Events section.
 
 ## Steps to Create a Rule
 
 1. Click on the Add **Rule** button
-2. Fill in the details to create signal instantly:
+2. Fill in the details to create rule instantly:
 
 <Table
   columns={[
@@ -28,7 +28,7 @@ To create new Rule, open the Rule Tab in Events section. Click the three vertica
       "Description",
       "String",
       "No",
-      `Description to help understand this rule's purpose`,
+      `Description helps to understand the rule's purpose`,
     ],
     [
       "Tags",
@@ -49,8 +49,8 @@ To create new Rule, open the Rule Tab in Events section. Click the three vertica
       "String",
       "Yes",
       <>
-        Rule expression. For example, if the number of orders in the last 24
-        hours is {">"} 10, we consider it a high-value customer. The rule
+        Rule expression. For example- if the number of orders in the last 24
+        hours is {">"} 10, consider it as high-value customer. The rule
         expression would be:{" "}
         <b>
           {" "}
@@ -58,7 +58,7 @@ To create new Rule, open the Rule Tab in Events section. Click the three vertica
           10{" "}
         </b>
         See <a
-          href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/rule/logical-expression`}
+          href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/rule-signal/logical-expression`}
         >
           Logical Expression
         </a> for syntax details.

@@ -1,8 +1,8 @@
-import { Table } from "../../../components/Table";
+import { Table } from "../../../../components/Table";
 
-# Signals: Tracking Business Metrics with Datablit
+# Create New Signal
 
-To create new Signal, open the Signal Tab in Events section. Click the three vertical dots to create, edit and delete signal.
+To create a new Signal, open the Signal Tab in Events section.
 
 ## Steps to Create a Signal
 
@@ -28,7 +28,7 @@ To create new Signal, open the Signal Tab in Events section. Click the three ver
       "Description",
       "String",
       "No",
-      `Description to help understand this signal's purpose`,
+      `Description helps to understand the signal's purpose`,
     ],
     [
       "Tags",
@@ -69,7 +69,7 @@ To create new Signal, open the Signal Tab in Events section. Click the three ver
       "Dropdown",
       "Yes",
       <>
-        Choose aggregation type. Supported values: static, count, sum. See{" "}
+        Choose aggregation type. Supported values: Static, Count, Sum. See{" "}
         <a href="#realtime-aggregation-type">Realtime Aggregation Types</a> for
         details.
       </>,
@@ -81,7 +81,12 @@ To create new Signal, open the Signal Tab in Events section. Click the three ver
       <>
         Field name (always in snake_case) used for static and sum aggregation
         types. See{" "}
-        <a href="#realtime-aggregation-type">Realtime Aggregation Types</a> and{" "}
+        <a
+          href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/rule-signal/signal`}
+        >
+          Realtime Aggregation Types
+        </a>{" "}
+        and{" "}
         <a
           href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/data-ingestion/event-properties-conversion`}
         >
@@ -100,7 +105,7 @@ To create new Signal, open the Signal Tab in Events section. Click the three ver
         equals 'ORDER_PLACED', use the filter expression: event=='ORDER_PLACED'.
         Expression should always return true or false See{" "}
         <a
-          href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/rule/logical-expression`}
+          href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/rule-signal/logical-expression`}
         >
           Logical Expression
         </a>{" "}
@@ -147,15 +152,10 @@ To create new Signal, open the Signal Tab in Events section. Click the three ver
   ]}
 />
 
-## Realtime Aggregation Types
-
-Realtime signals support three types of aggregation:
-
-- **Static:** Extract a specific field (Field Name) from the event (e.g., `os_name`)
-- **Count:** Count the number of events (e.g., number of orders)
-- **Sum:** Sum a specific field (Field Name) from events (e.g., total order value by adding the `order_amount` field of each event)
-
 ## Evaluate Signal
 
-To evaluate a signal, click on the three dots in the signal list and select "Evaluate."
-Next, enter the user_id and submit. This will return the signal value for the specified user.
+To evaluate a signal:
+
+1. Click the three dots (⋮) next to the signal in the signal list and select "Evaluate."
+2. Enter the user_id and submit
+3. The system will return the signal value for the specified user.

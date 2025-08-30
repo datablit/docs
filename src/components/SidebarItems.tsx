@@ -144,15 +144,7 @@ export const sidebarItems = [
             href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/experiment`}
             className="hover:text-gray-500 text-text-para"
           >
-            Experiment
-          </Link>
-        </li>
-        <li>
-          <Link
-            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/experiment/experiment-concepts`}
-            className="hover:text-gray-500 text-text-para"
-          >
-            Key Concepts
+            Create Experiment
           </Link>
         </li>
       </ul>
