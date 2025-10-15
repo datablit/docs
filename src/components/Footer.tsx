@@ -17,7 +17,7 @@ const Footer = () => {
     <footer className="w-full p-1 text-sm  ">
       <div className="mx-auto flex flex-row justify-between items-center text-sm">
         <div className="flex items-center space-x-4 ml-2">
-          <button className="text-xs border border-border rounded-full px-2 py-1  transition hidden lg:flex text-text-main">
+          <button className="text-xs border border-border rounded-full px-2 py-1  transition hidden lg:flex text-main">
             Your Privacy Choices
           </button>
           <button

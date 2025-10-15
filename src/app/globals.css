@@ -11,7 +11,7 @@
   --color-text-subheading: #4f65d7;
   --color-text-para: #d4d4d4;
   --color-surface: #232323;
-  --text-main: #4f65d7;
+  --color-main: #4f65d7;
 }
 
 /* Light theme (default) */
@@ -24,7 +24,7 @@
   --color-text-para: #374151;
   --color-text-heading: #000000;
   --color-surface: #f7fafc;
-  --text-main: #1f1f4c;
+  --color-main: #1f1f4c;
 }
 
 /* Manual dark theme class */
@@ -37,7 +37,7 @@
   --color-text-subheading: #4f65d7;
   --color-text-para: #d4d4d4;
   --color-surface: #232323;
-  --text-main: #4f65d7;
+  --color-main: #4f65d7;
 }
 
 /* For Chrome, Safari, and Opera */

@@ -1,12 +1,11 @@
 import type { MDXComponents } from "mdx/types";
 import CodeBlock from "./components/CodeBlock";
+import BlogImage from "./components/BlogImage";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     h1: ({ children }) => (
-      <h1 className="text-3xl font-semibold text-text-main mt-8 mb-6">
-        {children}
-      </h1>
+      <h1 className="text-3xl font-semibold text-main mt-8 mb-6">{children}</h1>
     ),
     h2: ({ children }) => (
       <h2 className="text-text-subheading text-xl font-medium mt-6 mb-4 scroll-mt-6">
@@ -38,6 +37,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     li: ({ children }) => (
       <li className="text-text-para font-normal leading-relaxed">{children}</li>
     ),
+    BlogImage,
     ...components,
   };
 }
