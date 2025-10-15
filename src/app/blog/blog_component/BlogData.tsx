@@ -18,7 +18,7 @@ export default async function BlogData({ path, blog }: BlogDataProps) {
   }
 
   return (
-    <article className="prose max-w-none px-10">
+    <article className="prose max-w-none">
       <MDXContent />
     </article>
   );

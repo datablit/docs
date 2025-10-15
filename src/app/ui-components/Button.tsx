@@ -33,7 +33,7 @@ const variantStyles = {
   secondary:
     "bg-gray-100 text-[#1F1F4C] hover:bg-[#E9E9FC] shadow-sm bg-[#8F8FCB] hover:text-gray-800",
   outline:
-    "border border-border bg-surface hover:bg-surface-panel shadow-sm text-text-main",
+    "border border-border bg-surface hover:bg-surface-panel shadow-sm text-main",
   searchbtn:
     "border-[#D9D9D9] border-[0.5px] bg-[#ffffff] rounded-none shadow ",
   toolbtn: "border-none bg-transparent shadow",

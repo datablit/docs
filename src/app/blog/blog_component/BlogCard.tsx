@@ -14,8 +14,10 @@ export default function BlogCard({ path, blog }: BlogCardProps) {
           <Image
             src={blog.image}
             alt={blog.title}
-            fill
-            className="object-cover"
+            width={600}
+            height={338} // Math.round((600 * 9) / 16)
+            // fill
+            // className="object-cover"
           />
         </div>
       )}
