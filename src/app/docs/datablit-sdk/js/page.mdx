@@ -162,7 +162,7 @@ datablit.identify("user_123", {
 
 ## Rules API
 
-### datablit.rule.evalRule(request)
+### datablit.rule.evalRule(key, userId, params)
 
 Evaluates a rule for a given user and context. This allows you to make dynamic decisions based on user attributes and rule logic.
 
@@ -176,10 +176,10 @@ Evaluates a rule for a given user and context. This allows you to make dynamic d
     { header: "Description", width: "50%" },
   ]}
   data={[
-    ["request.key", "string", "Yes", "The rule key identifier."],
-    ["request.userId", "string", "Yes", "Unique user ID."],
+    ["key", "string", "Yes", "The rule key identifier."],
+    ["userId", "string", "Yes", "Unique user ID."],
     [
-      "request.params",
+      "params",
       "object",
       "No",
       "Additional parameters for rule evaluation.",
@@ -194,16 +194,13 @@ Evaluates a rule for a given user and context. This allows you to make dynamic d
 #### Example:
 
 ```javascript
-const ruleResult = await datablit.rule.evalRule({
-  key: "feature_flag",
-  userId: "user_123",
-  params: {
+const ruleResult = await datablit.rule.evalRule("feature_flag", "user_123", {
     os_name: "android",
-    user_plan: "premium",
-  },
-});
+    user_plan: "premium"
+    }
+  );
 
-if (ruleResult.result) {
+if (ruleResult) {
   console.log("Rule evaluated to true - show feature");
 } else {
   console.log("Rule evaluated to false - hide feature");
@@ -212,7 +209,7 @@ if (ruleResult.result) {
 
 ## Experiments API
 
-### datablit.experiment.getVariant(request)
+### datablit.experiment.getVariant(expId, entityId)
 
 Retrieves the experiment variant for a user. This is useful for A/B testing and feature experimentation.
 
@@ -226,8 +223,8 @@ Retrieves the experiment variant for a user. This is useful for A/B testing and 
     { header: "Description", width: "50%" },
   ]}
   data={[
-    ["request.expId", "string", "Yes", "The experiment ID."],
-    ["request.entityId", "string", "Yes", "Unique entity/user ID."],
+    ["expId", "string", "Yes", "The experiment ID."],
+    ["entityId", "string", "Yes", "Unique entity/user ID."],
   ]}
 />
 
@@ -238,15 +235,12 @@ Retrieves the experiment variant for a user. This is useful for A/B testing and 
 #### Example:
 
 ```javascript
-const variant = await datablit.experiment.getVariant({
-  expId: "01K2JKVXR0J0ZWPX40XY8CAWBS",
-  entityId: "user_123",
-});
+const variant = await datablit.experiment.getVariant("01K2JKVXR0J0ZWPX40XY8CAWBS","user_123");
 
-console.log("User is in variant:", variant.variant); // "control", "variant_a", etc.
+console.log("User is in variant:", variant); // "control", "variant_a", etc.
 
 // Use the variant to show different UI
-if (variant.variant === "variant_a") {
+if (variant === "variant_a") {
   // Show new feature
 } else {
   // Show control version
@@ -322,19 +316,13 @@ The SDK provides comprehensive error handling mechanisms:
 
 ```javascript
 try {
-  const ruleResult = await datablit.rule.evalRule({
-    key: "feature_flag",
-    userId: "user_123",
-  });
+  const ruleResult = await datablit.rule.evalRule("feature_flag","user_123");
 } catch (error) {
   console.error("Failed to evaluate rule:", error.message);
 }
 
 try {
-  const variant = await datablit.experiment.getVariant({
-    expId: "01K2JKVXR0J0ZWPX40XY8CAWBS",
-    entityId: "user_123",
-  });
+  const variant = await datablit.experiment.getVariant("01K2JKVXR0J0ZWPX40XY8CAWBS", "user_123");
 } catch (error) {
   console.error("Failed to get variant:", error.message);
 }
