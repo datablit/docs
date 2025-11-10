@@ -43,38 +43,11 @@ export const blogs: Record<string, Blog> = {
   },
   "datablit-rudderstack": {
     title: "Datablit vs Rudderstack",
-    description: (
-      <>
-        <span style={{ display: "inline-flex", alignItems: "center" }}>
-          <img
-            src="/check-circle.svg"
-            alt="check"
-            style={{ marginRight: "10px" }}
-          />
-          Datablit meets
-        </span>
-        <br />
-        <span style={{ display: "inline-flex", alignItems: "center" }}>
-          <img
-            src="/check-circle.svg"
-            alt="check"
-            style={{ marginRight: "10px" }}
-          />
-          Datablit meets
-        </span>
-        <br />
-        <span style={{ display: "inline-flex", alignItems: "center" }}>
-          <img
-            src="/check-circle.svg"
-            alt="check"
-            style={{ marginRight: "10px" }}
-          />
-          Datablit meets
-        </span>
-      </>
-    ),
+    description:
+      "With Datablit as the central platform, data engineer, developer, and business team can self serve — accessing and acting on data the instant it’s created. The result is faster strategy execution, scalable personalisation and more reliable insights at a fraction of the time and cost.",
+
     tags: ["Datablit vs Rudderstack"],
-    image: "/datablitdatasystem.svg",
+    image: "/blog_rudderstack.png",
     date: "August 11, 2025",
     author: "Garima",
   },
@@ -83,7 +56,7 @@ export const blogs: Record<string, Blog> = {
     description:
       "With Datablit as the central platform, data engineer, developer, and business team can self serve — accessing and acting on data the instant it’s created. The result is faster strategy execution, scalable personalisation and more reliable insights at a fraction of the time and cost.",
     tags: ["Datablit vs Rudderstack"],
-    image: "/datablitdatasystem.svg",
+    image: "/blog_mixpanel.png",
     date: "August 11, 2025",
     author: "Garima",
   },
@@ -92,7 +65,7 @@ export const blogs: Record<string, Blog> = {
     description:
       "With Datablit as the central platform, data engineer, developer, and business team can self serve — accessing and acting on data the instant it’s created. The result is faster strategy execution, scalable personalisation and more reliable insights at a fraction of the time and cost.",
     tags: ["Datablit vs Rudderstack"],
-    image: "/datablitdatasystem.svg",
+    image: "/blog_segment.png",
     date: "August 11, 2025",
     author: "Garima",
   },
@@ -101,28 +74,28 @@ export const blogs: Record<string, Blog> = {
     description:
       "With Datablit as the central platform, data engineer, developer, and business team can self serve — accessing and acting on data the instant it’s created. The result is faster strategy execution, scalable personalisation and more reliable insights at a fraction of the time and cost.",
     tags: ["Datablit vs Rudderstack"],
-    image: "/datablitdatasystem.svg",
+    image: "/blog_statsig.png",
     date: "August 11, 2025",
     author: "Garima",
   },
-  "datablit-amplitude": {
-    title: "Datablit vs Amplitude",
-    description:
-      "With Datablit as the central platform, data engineer, developer, and business team can self serve — accessing and acting on data the instant it’s created. The result is faster strategy execution, scalable personalisation and more reliable insights at a fraction of the time and cost.",
-    tags: ["Datablit vs Rudderstack"],
-    image: "/datablitdatasystem.svg",
-    date: "August 11, 2025",
-    author: "Garima",
-  },
-  "datablit-slack": {
-    title: "Datablit vs Slack",
-    description:
-      "With Datablit as the central platform, data engineer, developer, and business team can self serve — accessing and acting on data the instant it’s created. The result is faster strategy execution, scalable personalisation and more reliable insights at a fraction of the time and cost.",
-    tags: ["Datablit vs Rudderstack"],
-    image: "/datablitdatasystem.svg",
-    date: "August 11, 2025",
-    author: "Garima",
-  },
+  // "datablit-amplitude": {
+  //   title: "Datablit vs Amplitude",
+  //   description:
+  //     "With Datablit as the central platform, data engineer, developer, and business team can self serve — accessing and acting on data the instant it’s created. The result is faster strategy execution, scalable personalisation and more reliable insights at a fraction of the time and cost.",
+  //   tags: ["Datablit vs Rudderstack"],
+  //   image: "/datablitdatasystem.svg",
+  //   date: "August 11, 2025",
+  //   author: "Garima",
+  // },
+  // "datablit-slack": {
+  //   title: "Datablit vs Slack",
+  //   description:
+  //     "With Datablit as the central platform, data engineer, developer, and business team can self serve — accessing and acting on data the instant it’s created. The result is faster strategy execution, scalable personalisation and more reliable insights at a fraction of the time and cost.",
+  //   tags: ["Datablit vs Rudderstack"],
+  //   image: "/datablitdatasystem.svg",
+  //   date: "August 11, 2025",
+  //   author: "Garima",
+  // },
 };
 
 export default function BlogList() {
