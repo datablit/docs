@@ -6,9 +6,7 @@ const BlogSidebar = () => {
     <div className="flex flex-col gap-8 pt-8 px-4 lg:px-0">
       {/* Share section */}
       <div>
-        <h3 className="text-base font-semibold text-text-main px-2 mb-4">
-          Share:
-        </h3>
+        <h3 className="text-base font-semibold text-main px-2 mb-4">Share:</h3>
         <div className="flex gap-3 mb-6">
           {/* LinkedIn */}
           <Link href="https://www.linkedin.com/company/datablit/" passHref>
@@ -55,7 +53,7 @@ const BlogSidebar = () => {
           <input
             type="email"
             placeholder="Your work email"
-            className=" border border-border bg-surface hover:bg-surface-panel shadow-sm text-text-main rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-text-subheading"
+            className=" border border-border bg-surface hover:bg-surface-panel shadow-sm text-main rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-text-subheading"
           />
           <button
             type="submit"
