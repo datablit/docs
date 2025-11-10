@@ -13,14 +13,14 @@ interface TableProps {
 
 export function Table({ columns, data, className = "" }: TableProps) {
   return (
-    <div className={`w-full my-2 ${className}`}>
+    <div className={`w-full my-3 ${className}`}>
       <table className="w-full rounded-lg overflow-hidden table-fixed">
         <thead className="bg-surface ">
           <tr>
             {columns.map((column) => (
               <th
                 key={column.header}
-                className="px-4 py-2 text-left text-xs font-medium text-text-para uppercase tracking-wider border-b border-border"
+                className="px-4 py-2.5 text-left text-xs font-semibold text-text-para uppercase tracking-wider border-b border-border"
                 style={{ width: column.width || `${100 / columns.length}%` }}
               >
                 {column.header}
@@ -34,7 +34,7 @@ export function Table({ columns, data, className = "" }: TableProps) {
               {row.map((cell, cellIndex) => (
                 <td
                   key={cellIndex}
-                  className="px-4 py-2 text-sm text-text-para break-words"
+                  className="px-4 py-2.5 text-sm text-text-para break-words"
                 >
                   {typeof cell === "string" || typeof cell === "number"
                     ? String(cell)
