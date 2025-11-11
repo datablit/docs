@@ -16,7 +16,7 @@ function CodeBlock({ children }: any) {
   };
 
   return (
-    <div className="relative bg-surface rounded-md p-4 my-4 overflow-auto ">
+    <div className="relative bg-surface rounded-md p-4 my-4">
       <div className="absolute top-2 left-3 text-xs font-mono text-text-para">
         {language}
       </div>
@@ -26,9 +26,11 @@ function CodeBlock({ children }: any) {
       >
         {copied ? "Copied" : <Copy size={14} />}
       </button>
-      <pre className="mt-6 text-sm text-text-para whitespace-pre-wrap">
-        <code className={codeElement?.className}>{code}</code>
-      </pre>
+      <div className="mt-6 overflow-x-auto">
+        <pre className="text-sm text-text-para whitespace-pre-wrap break-all">
+          <code className={codeElement?.className}>{code}</code>
+        </pre>
+      </div>
     </div>
   );
 }

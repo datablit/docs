@@ -8,24 +8,26 @@ interface BlogHeaderProps {
 
 function BlogHeader({ blog }: BlogHeaderProps) {
   return (
-    <div className="bg-[#1f1f4c] text-gray-100 px-10 py-12">
+    <div className="bg-main text-gray-100 px-4 sm:px-6 md:px-10 py-8 sm:py-10 md:py-12">
       {/* tags */}
-      <div className="flex gap-2 mb-4">
-        {blog.tags.map((tag, index) => (
-          <span
-            key={index}
-            className="bg-white/10 text-white text-sm font-medium px-3 py-1 rounded-md"
-          >
-            {tag}
-          </span>
-        ))}
+      <div className="flex gap-2 mb-4 overflow-x-auto hide-scrollbar">
+        <div className="flex gap-2 min-w-max sm:min-w-0 sm:flex-wrap">
+          {blog.tags.map((tag, index) => (
+            <span
+              key={index}
+              className="bg-white/10 text-white text-sm font-medium px-3 py-1 rounded-md whitespace-nowrap flex-shrink-0 sm:flex-shrink"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
       </div>
       {/* title */}
-      <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 leading-tight">
         {blog.title}
       </h1>
       {/* description */}
-      <p className="text-lg max-w-3xl mb-8">{blog.description}</p>
+      <p className="text-base sm:text-lg mb-6 sm:mb-8">{blog.description}</p>
       {/* meta info */}
       <div className="flex items-center text-sm text-white/70 gap-2">
         <CalendarDays height={20} width={20} />

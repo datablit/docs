@@ -1,0 +1,137 @@
+import { Table } from "@/components/Table";
+
+# Preventing Gratification Abuse: A Real-Time Defense Strategy
+
+Imagine you're running a thriving e-commerce platform where customer satisfaction is paramount. You've implemented a generous gratification system—coupons, cashbacks, and discounts—to ensure your customers feel valued when issues arise. But what happens when this goodwill becomes a vulnerability?
+
+## The Hidden Challenge
+
+Every day, thousands of gratification requests flow through your system. While most are legitimate concerns from genuine customers, a small percentage represent something more sinister: **gratification abuse**.
+
+Consider this scenario: Your e-commerce platform has a seamless interface where users can raise gratification requests when they encounter product delivery issues. Your team validates these requests and provides appropriate cashbacks to maintain customer satisfaction. But here's the million-dollar question:
+
+**How do you distinguish between a genuine customer concern and someone systematically exploiting your generosity?**
+
+## 🕵️ The Detective Work: Analyzing User Behavior
+
+Let's examine three different user profiles to understand the patterns that reveal abuse:
+
+<Table
+  columns={[
+    { header: "USER ID" },
+    { header: "ORDERS IN LAST 24 hours" },
+    { header: "CLAIMS IN LAST 24 hours" },
+    { header: "LIFETIME ORDERS" },
+    { header: "LIFETIME CLAIMS" },
+  ]}
+  data={[
+    ["user1", 20, 1, 200, 5],
+    ["user2", 2, 1, 200, 100],
+    ["user3", 10, 8, 200, 5],
+  ]}
+/>
+
+### 🔍 The Analysis
+
+**👤 User 1: The Loyal Customer**
+
+- 20 orders in 24 hours, only 1 claim
+- Lifetime: 200 orders, 5 claims (2.5% claim rate)
+- **Verdict**: **LEGITIMATE** - Genuine customer with normal behavior patterns
+
+**🚨 User 2: The Chronic Abuser**
+
+- Only 2 orders in 24 hours, but 1 claim
+- Lifetime: 200 orders, 100 claims (50% claim rate!)
+- **Verdict**: ❌ Systematic abuse - claiming gratification on nearly half of all orders
+
+**⚡ User 3: The Opportunistic Abuser**
+
+- 10 orders in 24 hours, 8 claims (80% claim rate!)
+- Lifetime: 200 orders, 5 claims (2.5% claim rate)
+- **Verdict**: ❌ Recent abuse pattern - suddenly started exploiting the system today
+
+## 🚀 The Solution: Real-Time Signal Detection
+
+Now comes the critical question: **How can we automatically capture these behavioral signals and make instant decisions to allow or reject gratification claims?**
+
+### The Challenge of Timing
+
+Traditional batch processing won't cut it here. Consider this scenario:
+
+- A user places 5 orders in the last 10 minutes
+- They immediately file 4 gratification claims
+- By the time your hourly batch job runs, the damage is already done
+
+**We need real-time signal detection to prevent abuse as it happens.**
+
+### The Datablit Advantage
+
+With Datablit, you can effortlessly build both real-time and batch signals:
+
+- **🔄 Real-time signals**: Capture abuse patterns within seconds
+- **📊 Batch signals**: Maintain comprehensive lifetime metrics
+- **⚡ High freshness**: Ensure your data is always current and actionable
+
+## 🛠️ Building the Defense System
+
+Let's dive into the technical implementation of our abuse prevention system:
+
+### 📊 Signal 1: orders_24h
+
+**Real-time tracking of orders in the last 24 hours**
+
+<BlogImage src="/orders_24h.png" alt="no of orders in last 24 hours" width={600} />
+
+### 📊 Signal 2: claims_24h
+
+**Real-time tracking of gratification claims in the last 24 hours**
+
+<BlogImage src="/claims_24h.png" alt="no of claims in last 24 hours" width={600} />
+
+### 📊 Signal 3: Lifetime Metrics
+
+**Comprehensive user behavior tracking**
+
+- `user_lifetime_orders`: Total orders placed by the user
+- `user_lifetime_claims`: Total gratification claims made by the user
+
+<BlogImage
+  src="/lifetime_orders_claims.png"
+  alt="user lifetime signals"
+  width={600}
+/>
+
+## 🎯 Setting the Threshold
+
+After analyzing patterns across thousands of users, we've determined that a **40% claim rate** is the optimal threshold for identifying abusive behavior.
+
+**The Logic**: If a user's gratification claims exceed 40% of their total orders, it indicates systematic abuse rather than genuine product issues.
+
+## 🚨 The Anti-Abuse Rule
+
+Here's the powerful rule expression that automatically flags abusive users:
+
+```sql
+(orders_24h > 0 && claims_24h/orders_24h > 0.4) ||
+(user_lifetime_orders > 0 && user_lifetime_claims / user_lifetime_orders > 0.4)
+```
+
+**How it works:**
+
+- **Short-term abuse detection**: Flags users with >40% claim rate in the last 24 hours
+- **Long-term abuse detection**: Flags users with >40% lifetime claim rate
+- **Instant response**: When this rule returns `true`, the application immediately rejects the gratification claim
+
+<BlogImage src="/gratification_abuse.png" alt="gratification abuse" width={600} />
+
+## 🎉 The Result
+
+With this system in place, your platform can now:
+
+- **Protect your bottom line** from systematic abuse
+- **Maintain customer satisfaction** for genuine users
+- **Respond in real-time** to prevent damage before it occurs
+- **Scale effortlessly** as your user base grows
+
+**The abuse prevention system is now live and protecting your gratification program!**
