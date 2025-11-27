@@ -1,14 +1,23 @@
 import Image from "next/image";
-import { Blog } from "./BlogList";
+import { Blog } from "@/types/blog";
+import Link from "next/link";
 
 type BlogCardProps = {
   path: string;
   blog: Blog;
+  basePath?: string;
 };
 
-export default function BlogCard({ path, blog }: BlogCardProps) {
+export default function BlogCard({
+  path,
+  blog,
+  basePath = "/blog",
+}: BlogCardProps) {
   return (
-    <div className="bg-surface rounded-lg shadow hover:shadow-lg transition p-4 flex flex-col ">
+    <Link
+      href={`${basePath}/${path}`}
+      className="bg-surface rounded-lg shadow hover:shadow-lg transition p-4 flex flex-col cursor-pointer"
+    >
       {blog.image && (
         <div className="w-full h-40 relative bg-white/70 rounded-md overflow-hidden mb-4">
           <Image
@@ -26,7 +35,7 @@ export default function BlogCard({ path, blog }: BlogCardProps) {
         {blog.tags.map((tag, i) => (
           <span
             key={i}
-            className="bg-[#1F1F4C] text-gray-100 hover:bg-[#8F8FCB] hover:text-[#1F1F4C] border border-[#8F8FCB] text-xs px-2 py-0.5 rounded whitespace-nowrap transition-all"
+            className="bg-[#1F1F4C] text-gray-100 hover:bg-[#8F8FCB] hover:text-[#1F1F4C] border border-[#8F8FCB] text-xs px-2 py-0.5 rounded whitespace-nowrap transition-all cursor-pointer"
           >
             {tag}
           </span>
@@ -38,12 +47,9 @@ export default function BlogCard({ path, blog }: BlogCardProps) {
       </h3>
       <p className="text-text-para text-sm flex-grow">{blog.description}</p>
 
-      <a
-        href={`/blog/${path}`}
-        className="mt-4 text-text-subheading font-medium inline-flex items-center gap-1 hover:underline"
-      >
+      <div className="mt-4 text-text-subheading font-medium inline-flex items-center gap-1">
         Learn More <span>›</span>
-      </a>
-    </div>
+      </div>
+    </Link>
   );
 }
