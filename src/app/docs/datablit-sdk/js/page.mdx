@@ -162,7 +162,7 @@ datablit.identify("user_123", {
 
 ## Rules API
 
-### datablit.rule.evalRule(key, userId, params)
+### datablit.rule.evalRule(key, entityId, params)
 
 Evaluates a rule for a given user and context. This allows you to make dynamic decisions based on user attributes and rule logic.
 
@@ -177,7 +177,7 @@ Evaluates a rule for a given user and context. This allows you to make dynamic d
   ]}
   data={[
     ["key", "string", "Yes", "The rule key identifier."],
-    ["userId", "string", "Yes", "Unique user ID."],
+    ["entityId", "string", "Yes", "Entity Id value for this rule. eg, user_id, session_id, device_id etc."],
     [
       "params",
       "object",

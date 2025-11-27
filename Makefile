@@ -2,6 +2,10 @@ run:
 	clear
 	sudo npm run dev
 
+build:
+	clear
+	sudo npm run build
+
 docker-build-staging:
 	docker build --build-arg ENV_NAME=staging --platform linux/amd64 -t d1414k/docs:latest .
 

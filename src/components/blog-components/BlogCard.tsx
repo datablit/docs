@@ -46,10 +46,6 @@ export default function BlogCard({
         {blog.title}
       </h3>
       <p className="text-text-para text-sm flex-grow">{blog.description}</p>
-
-      <div className="mt-4 text-text-subheading font-medium inline-flex items-center gap-1">
-        Learn More <span>›</span>
-      </div>
     </Link>
   );
 }
