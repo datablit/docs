@@ -11,6 +11,7 @@ const navLinks = [
   { href: "/", label: "Products" },
   { href: "/docs/datablit-sdk", label: "SDK" },
   { href: "/docs/getting-started", label: "Docs" },
+  { href: "/use-cases", label: "Use Cases" },
   { href: "/blog", label: "Blog" },
   { href: "/", label: "Community" },
 ];

@@ -1,5 +1,5 @@
 import React from "react";
-import { Blog } from "./BlogList";
+import { Blog } from "@/types/blog";
 import { CalendarDays } from "lucide-react";
 
 interface BlogHeaderProps {

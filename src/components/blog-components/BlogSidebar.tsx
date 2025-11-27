@@ -64,8 +64,8 @@ const BlogSidebar = () => {
         </form>
 
         <p className="text-xs text-gray-400 mt-4 leading-relaxed">
-          We’ll share a copy of Datablit guide, content and update on products
-          as we continue to build the world’s leading CDP.
+          We&apos;ll share a copy of Datablit guide, content and update on
+          products as we continue to build the world&apos;s leading CDP.
         </p>
       </div>
     </div>
