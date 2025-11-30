@@ -39,10 +39,10 @@ export const sidebarItems = [
 
         <li>
           <Link
-            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sdk`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sources`}
             className="hover:text-gray-500 text-text-para"
           >
-            SDK
+            Sources
           </Link>
         </li>
         <li>
@@ -58,31 +58,39 @@ export const sidebarItems = [
   },
 
   {
-    title: "Datablit SDK",
+    title: "Datablit Sources",
     content: (
       <ul className="space-y-1">
         <li>
           <Link
-            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sdk/js`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sources/js`}
             className="hover:text-gray-500 text-text-para"
           >
-            Datablit JS
+            Javascript
           </Link>
         </li>
         <li>
           <Link
-            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sdk/kotlin`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sources/kotlin`}
             className="hover:text-gray-500 text-text-para"
           >
-            Datablit Kotlin
+            Kotlin
           </Link>
         </li>
         <li>
           <Link
-            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sdk/swift`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sources/swift`}
             className="hover:text-gray-500 text-text-para"
           >
-            Datablit Swift
+            Swift
+          </Link>
+        </li>
+        <li>
+          <Link
+            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sources/facebook-lead-ads`}
+            className="hover:text-gray-500 text-text-para"
+          >
+            Facebook Lead Ads
           </Link>
         </li>
       </ul>
