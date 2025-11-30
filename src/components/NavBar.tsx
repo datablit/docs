@@ -8,7 +8,7 @@ import FeedbackPopup from "./FeedbackPopup";
 import SearchModal from "./SearchModal";
 
 const navLinks = [
-  { href: "/docs/datablit-sdk", label: "SDK" },
+  { href: "/docs/datablit-sources", label: "Sources" },
   { href: "/docs/getting-started", label: "Docs" },
   { href: "/use-cases", label: "Use Cases" },
   { href: "/blog", label: "Blog" },
