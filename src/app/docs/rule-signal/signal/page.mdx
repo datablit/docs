@@ -1,51 +1,47 @@
 import { Table } from "../../../../components/Table";
 
 # Signal
+Datablit Signals are aggregation(eg. count, sum, avg etc) metrics. 
+Signals are computed over a grouping id called entity id eg. flight_id. device_id, user_id
 
-With Datablit, you can create Rule and Signal within minutes and get instant results without the need to write code and manage data pipelines.
+Eg. No of user orders in last 24hrs
 
-Signals are the smallest data units and are expressed in key-value pairs.
-A key-value pair consists of two related data elements:
-A key is a constant that defines the data set (e.g., product, gender, price).
-A value is a variable that belongs to the set (e.g., camera, male, 100)
-Fully formed, a key value pair could look like this:
+Following basic terminologies will help you to create and understand signals.
 
-<Table
-  columns={[{ header: "Key" }, { header: "User 1" }, { header: "User 2" }]}
-  data={[
-    ["Product", "Camera", "Apparel"],
-    ["Gender", "Male", "Female"],
-    ["Price", "10000", "200"],
-    ["Type", "Digital SLR", "Sports"],
-  ]}
-/>
+## Signal key
+It's unique lowercase string that you can define to use as signal key. 
+We recommed to use shorter length to save memory. You can refer this in rule.
+eg. orders_24h
 
-**Key:** A unique identifier in the key-value pair.
-
-**A signal is identified by its unique key and is stored at the user level.**
-
-These basic terminologies will help you to create and understand signals in a few clicks.
+## Entity ID
+It's grouping key on which signal aggregtion happens. eg. user_id, flight_id
 
 ## Aggregation window
-
-An aggregation window defines the time period over which signals are grouped. For example: if you want to count the number of orders in the last 24 hours, the aggregation window is 24 hours and you can use the signal key as order_count_24h.
+An aggregation window defines the time period over which signals are grouped. 
+For example: if you want to count the number of orders in the last 24 hours, 
+the aggregation window is 24 hours.
 
 ## Freshness
-
-It represents the maximum time difference between an event’s occurrence and its signal being recorded — a measure of how up-to-date your signal is relative to when it was generated or last updated in the source system.
-Example: A user opens an app at 8:30, 8:40, 9:00, 9:10, 9:30, etc. If you want to compute the total number of sessions in the last hour and evaluate this every hour (at 8:00, 9:00, etc.), the signal’s freshness would be 1 hour. This means the computed session count will be 1 hour.
+It represents the maximum time difference between an event’s occurrence and signal computation 
+— a measure of how up-to-date your signal is relative to when it was generated.
+Example: A user opens an app at 8:30, 8:40, 9:00, 9:10, 9:30, etc. If you want to 
+compute the total number of sessions in the last hour and evaluate this every hour 
+(at 8:00, 9:00, etc.), the signal’s freshness would be 1 hour. 
+This means the computed session count will be 1 hour.
 
 In short, the **aggregation window** is about **_grouping_** and **freshness** is about **_delay_**.
 
 ## Signal Types
+Based on aggregation window and freshness requirements, you can choose how you want to create a signal.
 
-Based on aggregation window and freshness requirements, you can choose how you want to process signal -
-
-**Real time for high freshness(< 1 minute) and instant results** -
-These are ideal for scenarios requiring immediate data updates, making it a solid option for business to personalise at scale and take immediate action. Example: Number of sessions in the last hour
+**Real time for high freshness(< 1 minute) and upto 24 hours aggregation window ** -
+These are ideal for scenarios requiring immediate data updates, 
+making it a solid option for business to personalise at scale and take immediate action. 
+Example: Number of sessions in the last hour
 
 **Batch processing works best when you need in depth analysis at set intervals** -
-As the name suggests, used to process data in batches. If you need to aggregate a large number of data points over longer periods and can tolerate a few hours of freshness.
+As the name suggests, used to process data in batches. If you need to aggregate a large number 
+of data points over longer periods and can tolerate a few hours of freshness.
 Example: Number of orders in the last 1 year with 12-hour freshness
 
 ## Comparison of Signal Types
@@ -79,9 +75,8 @@ Example: Number of orders in the last 1 year with 12-hour freshness
 ## Realtime Aggregation Types
 
 It refers to how data points or events are grouped.
-Realtime signals support three types of aggregation:
+Realtime signals support two types of aggregation:
 
-- **Static:** It gives the raw value of the event’s field name (no aggregation)
 - **Count:** The number of times an event occurs
 - **Sum:** Sum a specific field name from events
 
@@ -91,5 +86,40 @@ Realtime signals support three types of aggregation:
     ["SUM", "total_order_amount"],
     ["STATIC", "plan_type"],
     ["COUNT", "no._of_order"],
+  ]}
+/>
+
+## Signal Examples
+
+<Table
+  columns={[
+    { header: "Signal" },
+    { header: "Entity id" },
+    { header: "Signal type" },
+    { header: "Aggregation window" },
+    { header: "Freshness" },
+  ]}
+  data={[
+    [
+      "Number of user orders in last 24hrs",
+      "user_id",
+      "Realtime",
+      "24 hours",
+      "High(< 1 minute)",
+    ],
+    [
+      "Number of flight booked in last 4hrs",
+      "flight_id",
+      "Realtime",
+      "4 hours",
+      "High(< 1 minute)",
+    ],
+    [
+      "Total user order amount in last 30 days",
+      "user_id",
+      "Batch",
+      "30 days",
+      "Low(>= 1 hour)",
+    ],
   ]}
 />

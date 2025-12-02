@@ -5,7 +5,18 @@ Datablit Rule is the fastest way to respond to user behavior and trigger conditi
 
 So what exactly is a rule?
 
-Rule is a condition or pattern you define using [signals](/docs/rule-signal/signal) and [logical expression](/docs/rule-signal/logical-expression). It watches incoming data, user behaviour, signals or system events. Once it’s triggered, it can kick off an immediate action and response to changing user behaviour. You can fetch the outcome instantly using the Rule Evaluate Api in your codebase.
+Rule is a condition or pattern you define using [signals](/docs/rule-signal/signal) 
+and [logical expression](/docs/rule-signal/logical-expression). 
+eg.
+```Go
+orders_24h > 20 && order_amount_6h < 600
+``` 
+
+Here orders_24h and order_amount_6h are realtime signals
+
+It compute these conditions on runtime. You can fetch the outcome instantly using 
+the Rule Evaluate API or Datablit SDK methods in your codebase.  
+
 Think of it like smart assistants that help your product make real time decisions.
 
 1. Rule is created combining logical expressions and signals.
