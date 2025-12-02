@@ -24,16 +24,26 @@ const ContentRightSidebar = () => {
     if (!main) return;
 
     const headingElements = main.querySelectorAll("h2, h3");
-    const parsed: Heading[] = Array.from(headingElements).map((el) => {
-      let id = el.id;
+    let currentH2Id = "";
 
-      if (!id) {
-        id =
-          el.textContent
-            ?.toLowerCase()
-            .replace(/\s+/g, "-") // spaces → dashes
-            .replace(/[^\w\-]/g, "") || ""; // remove non-word chars
+    const parsed: Heading[] = Array.from(headingElements).map((el) => {
+      let id =
+        el.textContent
+          ?.toLowerCase()
+          .replace(/\s+/g, "-")
+          .replace(/[^\w\-]/g, "") || "";
+
+      if (el.tagName === "H2") {
+        // H2 unique globally
         el.id = id;
+        currentH2Id = id;
+      }
+
+      if (el.tagName === "H3") {
+        // H3 unique under H2 (prefix)
+        const uniqueId = `${currentH2Id}-${id}`;
+        el.id = uniqueId;
+        id = uniqueId;
       }
 
       return {
@@ -44,7 +54,7 @@ const ContentRightSidebar = () => {
     });
 
     setHeadings(parsed);
-  }, [pathname, isClient]); // Add isClient as dependency
+  }, [pathname, isClient]);
 
   if (!isClient) {
     return (

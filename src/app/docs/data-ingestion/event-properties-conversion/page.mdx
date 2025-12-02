@@ -1,7 +1,7 @@
 # Getting Started with Event Properties Conversion
 
-- All event property will be converted into snake_case string
-- Nested object will be flatten and key will combined with parent key except fields inside context, properties and traits
+1. All event properties will be converted into snake_case string
+2. Nested object will be flatten and key will combined with parent key except fields inside context, properties and traits
 
 **Sample event**
 
@@ -30,14 +30,13 @@
   "originalTimestamp": "2025-02-24T05:13:03.708Z",
   "event": "Test",
   "properties": {
-    "User Id": "1892906071887585300",
     "User Bucket": "0"
   },
   "traits": null
 }
 ```
 
-**after conversion**
+**After conversion**
 
 ```json
 {
@@ -50,11 +49,11 @@
   "instance_id": "54e25ce3-e14c-4c51-8bd6-eaea9ab4bc66",
   "app_name":"Test app",
   "app_build": "602",
-  "device_id" : "b67cd1a3-9ad1-4df8-8ceb-cfc7e542b56e"
+  "device_id" : "b67cd1a3-9ad1-4df8-8ceb-cfc7e542b56e",
   "received_at": null,
   "timestamp": "2025-02-24T05:13:03.708Z",
   "original_timestamp": "2025-02-24T05:13:03.708Z",
-  "user_id" : "1892906071887585300",
+  "event": "Test",
   "user_bucket": "0",
   "traits": null
 }

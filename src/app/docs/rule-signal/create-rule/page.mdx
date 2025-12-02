@@ -25,6 +25,13 @@ To create a new Rule, open the Rule Tab in Events section.
       Example: high_value_customer`,
     ],
     [
+      "EntityId Field",
+      "String",
+      "Yes",
+      `Its grouping key on which you want aggreagation, eg. device_id, user_id, flight_id, 
+      This will always be in snake case`,
+    ],
+    [
       "Description",
       "String",
       "No",
@@ -62,6 +69,8 @@ To create a new Rule, open the Rule Tab in Events section.
         >
           Logical Expression
         </a> for syntax details.
+        <br/>
+        <b>Note:</b> All signals used in filter expression must have same entity Id field that of this rule.
       </>,
     ],
   ]}
@@ -83,7 +92,7 @@ curl --location 'https://api.datablit.com/api/1.0/rule/eval' \
 --header 'Content-Type: application/json' \
 --data '{
     "key": "high_value_customer",
-    "user_id": "1",
+    "entity_id": "1",
     "params": {
         "os_name": "android"
     }
@@ -93,7 +102,7 @@ curl --location 'https://api.datablit.com/api/1.0/rule/eval' \
 #### Parameters
 
 - `key`: The rule key identifier
-- `user_id`: The user ID to evaluate the rule for
+- `entity_id`: The entity Id value to evaluate the rule for
 - `params`: Optional parameters that can be referenced in the rule expression
 
 #### Using Parameters in Rules

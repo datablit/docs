@@ -25,6 +25,13 @@ To create a new Signal, open the Signal Tab in Events section.
       Example: Instead of 'user_order_count_last_24hour', use 'usr_order_cnt_24h'`,
     ],
     [
+      "Entity Id Field",
+      "String",
+      "Yes",
+      `Its grouping key on which you want aggreagation, eg. device_id, user_id, flight_id, 
+      This will always be in snake case`,
+    ],
+    [
       "Description",
       "String",
       "No",
@@ -75,11 +82,11 @@ To create a new Signal, open the Signal Tab in Events section.
       </>,
     ],
     [
-      "Field Name",
+      "Aggregation Field",
       "String",
       "No",
       <>
-        Field name (always in snake_case) used for static and sum aggregation
+        Aggregation Field (always in snake_case) used for static and sum aggregation
         types. See{" "}
         <a
           href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/rule-signal/signal`}
@@ -140,14 +147,11 @@ To create a new Signal, open the Signal Tab in Events section.
       </>,
     ],
     [
-      "Schedule (cron)",
-      "String",
+      "Execution Frequency",
+      "Dropdown",
       "Yes",
-      <>
-        Cron schedule expression. For example, to run every 24 hours at 4:00 AM,
-        use <b>0 4 * * *</b>. See{" "}
-        <a href="https://crontab.guru/">Crontab Guru</a> for more details.
-      </>,
+      `Its periodic interval at which you want to execute the sql query. 
+      Depending on freshness requirement select values from 1hr tp 24hr`,
     ],
   ]}
 />
@@ -157,5 +161,5 @@ To create a new Signal, open the Signal Tab in Events section.
 To evaluate a signal:
 
 1. Click the three dots (⋮) next to the signal in the signal list and select "Evaluate."
-2. Enter the user_id and submit
+2. Enter the user_id value and submit.
 3. The system will return the signal value for the specified user.
