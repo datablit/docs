@@ -13,6 +13,14 @@ export const sidebarItems = [
             Getting Started
           </Link>
         </li>
+        <li>
+          <Link
+            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/getting-started/key-concepts`}
+            className="hover:text-gray-500 text-text-para"
+          >
+            Key Concepts
+          </Link>
+        </li>
       </ul>
     ),
   },
@@ -36,53 +44,61 @@ export const sidebarItems = [
             Event Properties Conversion
           </Link>
         </li>
-
-        <li>
-          <Link
-            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sdk`}
-            className="hover:text-gray-500 text-text-para"
-          >
-            SDK
-          </Link>
-        </li>
-        <li>
-          <Link
-            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/data-ingestion/key-concepts`}
-            className="hover:text-gray-500 text-text-para"
-          >
-            Key Concepts
-          </Link>
-        </li>
       </ul>
     ),
   },
 
   {
-    title: "Datablit SDK",
+    title: "Datablit Sources",
     content: (
       <ul className="space-y-1">
         <li>
           <Link
-            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sdk/js`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sources`}
             className="hover:text-gray-500 text-text-para"
           >
-            Datablit JS
+            Sources
           </Link>
         </li>
         <li>
           <Link
-            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sdk/kotlin`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sources/js`}
             className="hover:text-gray-500 text-text-para"
           >
-            Datablit Kotlin
+            Javascript
           </Link>
         </li>
         <li>
           <Link
-            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sdk/swift`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sources/kotlin`}
             className="hover:text-gray-500 text-text-para"
           >
-            Datablit Swift
+            Kotlin
+          </Link>
+        </li>
+        <li>
+          <Link
+            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sources/swift`}
+            className="hover:text-gray-500 text-text-para"
+          >
+            Swift
+          </Link>
+        </li>
+        <li>
+          <Link
+            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sources/facebook-lead-ads`}
+            className="hover:text-gray-500 text-text-para"
+          >
+            Facebook Lead Ads
+          </Link>
+        </li>
+
+        <li>
+          <Link
+            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sources/http-api`}
+            className="hover:text-gray-500 text-text-para"
+          >
+            HTTP API
           </Link>
         </li>
       </ul>
@@ -105,7 +121,7 @@ export const sidebarItems = [
             href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/rule-signal/create-signal`}
             className="hover:text-gray-500 text-text-para"
           >
-            Create Signal
+            How to Create Signal?
           </Link>
         </li>
         <li>
@@ -121,7 +137,7 @@ export const sidebarItems = [
             href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/rule-signal/create-rule`}
             className="hover:text-gray-500 text-text-para"
           >
-            Create Rule
+            How to create Rule?
           </Link>
         </li>
         <li>
@@ -144,7 +160,7 @@ export const sidebarItems = [
             href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/experiment`}
             className="hover:text-gray-500 text-text-para"
           >
-            Create Experiment
+            How to create Experiment?
           </Link>
         </li>
       </ul>

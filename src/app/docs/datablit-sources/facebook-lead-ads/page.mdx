@@ -1,0 +1,100 @@
+import { Table } from "../../../../components/Table";
+
+# Facebook Lead Ads Source
+
+[Facebook Lead Ads](https://www.facebook.com/business/ads/ad-objectives/lead-generation) is a popular lead generation marketing tool. It helps you generate leads at scale through forms, calling, and messaging solutions.
+
+This guide will help you set up Facebook Lead Ads as a source in Datablit.
+
+## Prerequisites
+
+1. A Facebook business account.
+2. You must have created a [form](https://www.facebook.com/business/help/761812391313386?id=735435806665862) for your Facebook page from where you want Datablit to ingest the leads data.
+
+## Setup
+1. Go to your [Datablit console](https://console.datablit.com) > Event > Select or Create project > click Add Source. From the list of source type, select **facebook_lead_ads**.
+2. Specify a name for your source and click Create.
+3. Your Facebook Lead Ads source is now configured. Copy the Webhook URL:
+
+## Configure webhook
+
+1. Go to your [Business Tools](https://business.facebook.com/) page and click **All Tools** > **Instant Forms**.
+   <BlogImage src="/facebook-lead-ads-setup.png" alt="Facebook Lead Ads setup" width={800} />
+2. Go to the **CRM setup** tab and search for **Webhook**.
+   <BlogImage src="/facebook-lead-ads-crm-setup.png" alt="Facebook Lead Ads CRM setup" width={800} />
+3. Under **Select source**, select the source from where you want to ingest the lead data. Then, select the required **Ad Account**, **Page**, and **Form** under **Choose settings**.
+   <BlogImage src="/facebook-lead-ads-crm-setup-source-settings.png" alt="Facebook Lead Ads CRM setup source settings" width={800} />
+4. Under **Select destination**, click **Create a new integration**.
+   <BlogImage src="/facebook-lead-ads-crm-setup-destination-settings.png" alt="Facebook Lead Ads CRM setup destination settings" width={800} />
+5. Configure the below settings in the resulting window. You can also configure the other settings as per your requirement. Then, click **Authorize** to proceed.
+   <Table
+     columns={[
+       { header: "Setting" },
+       { header: "Notes" },
+     ]}
+     data={[
+       ["URL", "Your source webhook URL obtained from the Datablit dashboard."],
+       ["Method", <>Set it to <strong>POST</strong>.</>],
+     ]}
+   />
+   <BlogImage src="/facebook-lead-ads-crm-setup-webhook-settings.png" alt="Facebook Lead Ads CRM setup webhook settings" width={800} />
+6. Specify a name for the integration and click **Continue**.
+7. Go back to the **CRM setup** page where you will see the integration set up above. Click **Continue** to proceed.
+8. **Optional**: Add mappings and filters for incoming leads.
+    <BlogImage src="/facebook-lead-ads-crm-setup-complete.png" alt="Facebook Lead Ads CRM setup complete" width={800} />
+9. Click **Test connection** to test this integration. Make any changes to the setup as required, then click **Save & publish**.
+   
+
+## Supported mappings
+
+Datablit ingests the following Facebook Lead Ads properties as identify traits:
+
+<Table
+  columns={[
+    { header: "Facebook Lead Ads property" },
+    { header: "Datablit property" },
+  ]}
+  data={[
+    ["id", "userId"],
+    ["created_time", "originalTimestamp"]
+  ]}
+/>
+
+Datablit maps any other fields apart from the above mappings directly into the `context.traits` object, for example, `marital_status`, `job_title`, `work_email`, `military_status`, `full_name`, etc.
+
+## Sample payload and transformation
+
+This section details how Datablit receives the data from Facebook Lead Ads and creates the resulting payload.
+
+A sample payload sent by Facebook Lead Ads is shown:
+
+```http
+POST /v1/webhook?apiKey=<source_api_key> HTTP/1.1
+Host: <webhook-domain>
+content-type: application/x-www-form-urlencoded
+accept: */*
+
+id=3960271960958574&created_time=02%2F01%2F2025%2010%3A20&first_name=First&last_name=Last&phone_number=%2B910123456789&custome_field=custom&street_address=Blue%20Street&city=Bengaluru&state=Karnataka&country=IN&date_of_birth=01%2F01%2F2000 
+```
+
+Datablit transforms the above payload into the following `identify` payload:
+
+``` json
+{
+  "traits": {
+    "first_name": "First",
+    "last_name": "Last",
+    "phone": "+910123456789",
+    "custome_field": "custom",
+    "street_address": "some street",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "country": "IN",
+    "date_of_birth": "01/01/2000",
+  },
+  "messageId": "message-id",
+  "originalTimestamp": "2025-02-01T10:20:00.000Z",
+  "type": "identify",
+  "userId": "3960271960958574"
+}
+```

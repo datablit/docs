@@ -14,8 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Datablit",
-  description: "CRM platform",
+  title: "Datablit Documentation (Docs & Developer Guide)",
+  description: `Datablit doc(s): Developer documentation, API reference, and integration guides.
+   Explore Datablit documentation.`,
 };
 
 export default function RootLayout({

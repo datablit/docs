@@ -1,0 +1,46 @@
+## Key Concepts
+
+**_Datablit_** is event centric and optimised for very large sets of data, this means that every action end users take in your source is tracked as an event. An event is a data point that represents an interaction between a user and your product. It can contain any number of custom dimensions, interactions or properties that you can set to track.
+
+Event ingestion is the process of collecting and sending customer events from applications(eg. android, iOS, or web) and third party tools(eg. facebook lead ads) to Datablit.
+
+## Prerequisites
+
+- Basic understanding and access to your application's codebase.
+
+## Events
+
+Events are user interactions between user and product, eg. PRODUCT_PREVIEW. 
+In order to understanding more about the interactions we need extra details called event properties. eg. product_id
+
+## Source
+
+A source is a website, server library, mobile SDK, or cloud application which can send data into Datablit, it represents the origin of customer data.
+
+
+## SDK
+
+In a nutshell, Datablit SDK tracks customer interaction about what’s happening in your website or app, transform them and sends them to Datablit warehouse in real-time. Now you can use the data as per your business needs in different ways to deliver customer experience. Monitor performance, create uniquely customised user experience, launch campaigns, take business action, or develop long term strategy.
+
+
+## Context
+
+It's extra information that provides useful context about a events. It's automatically attached to a event when it's sent by the SDK.
+eg. appVersion in following event
+
+```json
+{
+    "event" : "PRODUCT_PREVIEW",
+    "properties": {
+        "productId" : "product-1"
+    }
+    "context" : {
+        "appVersion" : "960"
+    }
+}
+```
+
+
+## Properties
+
+Properties are extra pieces of information you can tie to events you track. They can be anything that will be useful for your business. Datablit recommends attaching properties to the event and use that to create rules and signals. eg. **productId**  in above event

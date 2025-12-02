@@ -8,11 +8,14 @@ import FeedbackPopup from "./FeedbackPopup";
 import SearchModal from "./SearchModal";
 
 const navLinks = [
-  { href: "/", label: "Products" },
-  { href: "/docs/datablit-sdk", label: "SDK" },
+  { href: "/docs/datablit-sources", label: "Sources" },
   { href: "/docs/getting-started", label: "Docs" },
+  { href: "/use-cases", label: "Use Cases" },
   { href: "/blog", label: "Blog" },
-  { href: "/", label: "Community" },
+  {
+    href: process.env.NEXT_PUBLIC_DATABLIT_COMMUNITY_URL || "",
+    label: "Community",
+  },
 ];
 
 const NavBar = () => {
@@ -40,7 +43,7 @@ const NavBar = () => {
     <header className="relative z-50">
       <div className="flex items-center justify-between p-4  border-b border-border">
         <div className="flex space-x-12 items-center">
-          <Link href="/">
+          <Link href={process.env.NEXT_PUBLIC_DATABLIT_HOME_URL || ""}>
             <span className="text-xl font-bold text-text-subheading">
               Datablit
             </span>
@@ -79,7 +82,7 @@ const NavBar = () => {
           </div> */}
 
           <div className="hidden md:flex items-center space-x-2 ml-4 relative ">
-            <Button
+            {/* <Button
               variant="outline"
               onClick={() => setShowFeedbackPopup(true)}
             >
@@ -90,7 +93,7 @@ const NavBar = () => {
               <div className="absolute top-full left-0 mt-2">
                 <FeedbackPopup onClose={() => setShowFeedbackPopup(false)} />
               </div>
-            )}
+            )} */}
 
             <Link
               href={process.env.NEXT_PUBLIC_DATABLIT_HOME_URL + "/bookmeeting"}

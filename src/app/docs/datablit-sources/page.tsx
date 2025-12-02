@@ -8,8 +8,8 @@ function Page() {
       name: "JavaScript SDK",
       description:
         "Complete analytics solution for web apps with event tracking, rule evaluation, and A/B testing",
-      icon: "⚡",
-      href: `${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sdk/js`,
+      icon: "🌐",
+      href: `${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sources/js`,
       features: [
         "Event tracking & user identification",
         "Feature flags & rule evaluation",
@@ -21,8 +21,8 @@ function Page() {
       name: "Kotlin SDK",
       description:
         "Lightweight Android SDK with automatic batching, lifecycle tracking, and offline support",
-      icon: "🤖",
-      href: `${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sdk/kotlin`,
+      icon: "📱",
+      href: `${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sources/kotlin`,
       features: [
         "Automatic batching & offline queue",
         "App lifecycle event tracking",
@@ -35,13 +35,26 @@ function Page() {
       description:
         "Type-safe iOS and macOS SDK with SwiftUI support, automatic lifecycle tracking, and Codable integration",
       icon: "🍎",
-      href: `${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sdk/swift`,
+      href: `${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sources/swift`,
       features: [
         "Swift Package Manager ready",
         "SwiftUI & Codable support",
         "Thread-safe with async/await",
       ],
       color: "from-orange-500 to-red-600",
+    },
+    {
+      name: "Facebook Lead Ads",
+      description:
+        "Seamlessly integrate Facebook Lead Ads to automatically capture and sync lead data from your Facebook campaigns",
+      icon: "🎯",
+      href: `${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sources/facebook-lead-ads`,
+      features: [
+        "Automatic lead data ingestion",
+        "Real-time webhook integration",
+        "CRM setup & configuration",
+      ],
+      color: "from-blue-500 to-indigo-600",
     },
   ];
 
@@ -56,11 +69,11 @@ function Page() {
               <span className="text-2xl">📊</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Datablit SDK
+              Datablit Sources
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Choose the perfect SDK for your platform and start tracking user
-              behavior with powerful, lightweight analytics solutions.
+              Choose the perfect source for your platform and start tracking
+              user behavior with powerful, lightweight analytics solutions.
             </p>
           </div>
         </div>

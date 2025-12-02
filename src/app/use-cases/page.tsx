@@ -1,10 +1,10 @@
 import React from "react";
-import BlogList from "./BlogList";
+import UseCaseList from "./UseCaseList";
 
 const page = () => {
   return (
     <main>
-      <BlogList />
+      <UseCaseList />
     </main>
   );
 };

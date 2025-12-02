@@ -1,17 +1,20 @@
-import { Blog } from "./BlogList";
+import { Blog } from "@/types/blog";
 
 interface BlogDataProps {
   path: string;
-  blog: Blog;
+  dataPath?: "blog" | "use-cases";
 }
 
 // MDX components must be imported inside the server component
-export default async function BlogData({ path, blog }: BlogDataProps) {
+export default async function BlogData({
+  path,
+  dataPath = "blog",
+}: BlogDataProps) {
   let MDXContent;
 
   try {
-    // Dynamically import MDX based on file name
-    const mdxModule = await import(`./../data/${path}.mdx`);
+    // Dynamically import MDX based on file name and data path
+    const mdxModule = await import(`../../app/${dataPath}/data/${path}.mdx`);
     MDXContent = mdxModule.default;
   } catch (error) {
     return <div>Error loading blog content.</div>;
