@@ -1,0 +1,95 @@
+import { Table } from "@/components/Table";
+
+# Event ingestion errors
+
+When you ingest events into Datablit—whether from the SDK, HTTP API, or third-party tools—some events may fail.
+
+All these failures are captured automatically in the **events_error** table
+
+<Table
+  columns={[
+    { header: "COLUMN NAME"},
+    { header: "TYPE" },
+    { header: "DESCRIPTION"},
+  ]}
+  data={[
+    [
+      "msg",
+      "String",
+      "Detailed error message",
+    ],
+    [
+      "data",
+      "String",
+      "Complete batch events as json string where we see the error",
+    ],
+    [
+      "timestamp",
+      "DateTime",
+      "ISO-8601 format date strings in UTC represents server timestamp when ingestion failed",
+    ],
+  ]}
+/>
+
+There could be following type of errors. 
+
+## Schema mismatch
+Datablit auto-generates warehouse schemas based on your event data.
+So if your incoming events change format or conflict, schema mismatch errors can occur.
+[Check event properties conversion doc](/docs/data-ingestion/event-properties-conversion) for details.
+
+There are two common cases:
+
+case 1. Different property names resolve to the same column.
+eg. order_amount and orderAmount both map to order_amount.
+If they send different data types → ingestion fails.
+
+case 2. A field’s data type changes over time.
+eg. amount was a number earlier but now becomes a string.
+
+### Example
+
+<Table
+  columns={[
+    { header: "OLD VALUE"},
+    { header: "NEW VALIE" },
+    { header: "RESULT"},
+    { header: "COLUMN TYPE"}
+  ]}
+  data={[
+    [
+      "1234",
+      "'1234'",
+      "Valid",
+      "Float"
+    ],
+    [
+      "'1234'",
+      "1234",
+      "Valid",
+      "String"
+    ],
+    [
+      "1234",
+      "'abc'",
+      "Error",
+      "N/A"
+    ],
+  ]}
+/>
+
+### Example event_error table value
+<Table
+  columns={[
+    { header: "msg"},
+    { header: "data" },
+    { header: "timestamp"}
+  ]}
+  data={[
+    [
+      `code: 27, message: Cannot parse input: expected '"' before: 'abc","anonymous_id":"b67cd1a3-9ad1-4df8-8ceb-cfc7e542b56e","message_id":"b5f60cba-7f30-4d41-9901-589601e1e539","original_timestamp":"2025-12-01 00:00:00.000","u': (while reading the value of key amount): (at row 1) : While executing ParallelParsingBlockInputFormat`,
+      `[{"anonymous_id":"b67cd1a3-9ad1-4df8-8ceb-cfc7e542b56e","message_id":"b5f60cba-7f30-4d41-9901-589601e1e539","original_timestamp":"2025-12-01 00:00:00.000","user_id":"C001","event":"ORDER_PLACED","type":"track","timestamp":"2025-12-01 00:00:00.000","source_id":"01KBAX3SGTD9FF3D7DK2CPXZW6","amount":"abc"}]`,
+      "2025-12-05T21:32:30Z"
+    ]
+  ]}
+/>
