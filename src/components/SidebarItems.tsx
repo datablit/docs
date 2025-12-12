@@ -44,6 +44,14 @@ export const sidebarItems = [
             Event Properties Conversion
           </Link>
         </li>
+        <li>
+          <Link
+            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/data-ingestion/event-ingestion-errors`}
+            className="hover:text-gray-500 text-text-para"
+          >
+            Event Ingestion Errors
+          </Link>
+        </li>
       </ul>
     ),
   },
