@@ -96,7 +96,7 @@ const NavBar = () => {
             )} */}
 
             <Link
-              href={process.env.NEXT_PUBLIC_DATABLIT_HOME_URL + "/bookmeeting"}
+              href={process.env.NEXT_PUBLIC_DATABLIT_HOME_URL + "/book-meeting"}
             >
               <Button>Contact</Button>
             </Link>
@@ -153,7 +153,7 @@ const NavBar = () => {
               <li>
                 <Link
                   href={
-                    process.env.NEXT_PUBLIC_DATABLIT_HOME_URL + "/bookmeeting"
+                    process.env.NEXT_PUBLIC_DATABLIT_HOME_URL + "/book-meeting"
                   }
                 >
                   <Button
