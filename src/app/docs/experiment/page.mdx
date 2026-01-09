@@ -154,22 +154,7 @@ curl --location 'https://api.datablit.com/api/1.0/experiment/variant?expId=01JVJ
 --header 'apiKey: 01JSWDEZYM0E19ZF3RMHS75PB1'
 ```
 
-#### Finding Your Experiment ID
-
-You can find your experiment ID from the Datablit Console:
-
-1. Navigate to your experiment details page
-2. Extract the `expId` from the URL
-
-**Example URL:**
-
-```
-https://console.datablit.com/events/23as2/experiment/01K0KQZ9FW71J8JJVXG8NZ2XN3
-```
-
-**Experiment ID:** `01K0KQZ9FW71J8JJVXG8NZ2XN3`
-
-#### API Response
+**API Response**
 
 The API returns the assigned variant for the specified entity:
 
@@ -180,3 +165,10 @@ The API returns the assigned variant for the specified entity:
   "variant": "control"
 }
 ```
+
+**Finding Your Experiment ID**
+
+You can find your experiment ID from the Datablit Console:
+
+1. Navigate to your experiment details page
+2. Copy Id
