@@ -30,8 +30,7 @@ curl --location 'https://event.datablit.com/v1/batch' \
             "messageId": "b5f60cba-7f30-4d41-9901-589601e1e539",
             "type": "track",
             "userId": "user1",
-            "context": {},
-            "timestamp": "2025-10-13T02:24:03.708Z",
+            "context": null,
             "originalTimestamp": "2025-10-13T02:24:03.708Z",
             "event": "PRODUCT_PREVIEW", 
             "properties": {
@@ -48,7 +47,7 @@ curl --location 'https://event.datablit.com/v1/batch' \
                 "email": "user1@gmail.com",
                 "name": "User1"
             },
-            "context": {},
+            "context": null,
             "originalTimestamp": "2025-09-20T05:13:03.708Z"
         }
     ]
@@ -66,7 +65,7 @@ curl --location 'https://event.datablit.com/v1/batch' \
   ]}
   data={[
     ["anonymousId", "string", "no", "A pseudo-unique substitute for a User ID, for cases when you don’t have an absolutely unique identifier. A userId or an anonymousId is required"],
-    ["messageId", "string", "no", "Automatically collected by Datablit, a unique identifier for each message that lets you find an individual message across the API."],
+    ["messageId", "string", "no", "A unique identifier for each message, If client do not pass this datablit server will add uuid"],
     ["type", "string", "yes", "Type of event, it can be identity or track"],
     ["userId", "string", "no", "Unique identifier for the user in your database. A userId or an anonymousId is required"],
     ["context", "map<string, any>", "no", "Dictionary of extra information that provides useful context about a message, but is not directly related to the API call like ip address or locale"],
