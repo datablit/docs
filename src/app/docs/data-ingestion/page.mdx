@@ -1,4 +1,41 @@
+export const metadata = {
+  "title": "Event Ingestion Guide",
+  "description": "Learn how to ingest customer data from sources to Datablit. Step-by-step guide to create projects, set up event sources, integrate SDKs, and test your integration.",
+  "alternates": {
+    "canonical": "https://docs.datablit.com/docs/data-ingestion"
+  },
+  "openGraph": {
+    "title": "Event Ingestion Guide",
+    "description": "Learn how to ingest customer data from sources to Datablit. Step-by-step guide to create projects, set up event sources, integrate SDKs, and test your integration.",
+    "url": "https://docs.datablit.com/docs/data-ingestion",
+    "siteName": "Datablit Documentation",
+    "type": "article",
+    "images": [
+      {
+        "url": "/icon.svg",
+        "width": 1200,
+        "height": 630,
+        "alt": "Event Ingestion Guide"
+      }
+    ]
+  },
+  "twitter": {
+    "card": "summary_large_image",
+    "title": "Event Ingestion Guide",
+    "description": "Learn how to ingest customer data from sources to Datablit. Step-by-step guide to create projects, set up event sources, integrate SDKs, and test your integration.",
+    "images": [
+      "/icon.svg"
+    ],
+    "creator": "@Datablit_cdp"
+  },
+  "robots": {
+    "index": true,
+    "follow": true
+  }
+};
+
 import { Table } from "../../../components/Table";
+
 
 # Event Ingestion with Datablit
 
@@ -46,7 +83,7 @@ expose it publicly. Webhook URL is needed to integrate third party tools eg, fac
 
 ### 5. Integrate Datablit Source
 
-Now you can collect customer data by implementing Datablit’s tracking SDK as your Source. 
+Now you can collect customer data by implementing Datablit's tracking SDK as your Source. 
 Install SDK and create separate sources for different applications.
 Datablit SDK will track customer events and upload them in batches after every 30 second. 
 This limits the number of network calls made and helps you to access data in real-time.

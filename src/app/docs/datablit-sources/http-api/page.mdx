@@ -1,25 +1,65 @@
+export const metadata = {
+  "title": "HTTP API Integration",
+  "description": "Integrate Datablit HTTP API to ingest events, evaluate rules, and get experiment variants. Complete API reference with authentication, endpoints, and code examples.",
+  "alternates": {
+    "canonical": "https://docs.datablit.com/docs/datablit-sources/http-api"
+  },
+  "openGraph": {
+    "title": "HTTP API Integration",
+    "description": "Integrate Datablit HTTP API to ingest events, evaluate rules, and get experiment variants. Complete API reference with authentication, endpoints, and code examples.",
+    "url": "https://docs.datablit.com/docs/datablit-sources/http-api",
+    "siteName": "Datablit Documentation",
+    "type": "article",
+    "images": [
+      {
+        "url": "/icon.svg",
+        "width": 1200,
+        "height": 630,
+        "alt": "HTTP API Integration"
+      }
+    ]
+  },
+  "twitter": {
+    "card": "summary_large_image",
+    "title": "HTTP API Integration",
+    "description": "Integrate Datablit HTTP API to ingest events, evaluate rules, and get experiment variants. Complete API reference with authentication, endpoints, and code examples.",
+    "images": [
+      "/icon.svg"
+    ],
+    "creator": "@Datablit_cdp"
+  },
+  "robots": {
+    "index": true,
+    "follow": true
+  }
+};
+
 import { Table } from "../../../../components/Table";
 
-# Datablit API source
+
+# Datablit HTTP API source
 
 Datablit provide HTTP API to ingest events into datablit, evaluate rule and get experiment variant.
 
 ## Prerequisites
+
 1. [Datablit console account](https://console.datablit.com/)
 2. A Datablit project
 3. A source of type **http_api**
 
 ## Events ingestion
+
 Datablit provide segment style batch API to ingest events in Datablit.
 
-
 ### Steps
+
 1. Copy source **api_key** from [Datablit console](https://console.datablit.com/) > Event > [Select a project]
 2. Now use following curl to send event. You can translate this to your language eg. go, python, js etc
 
 ### Sample curl
+
 ```curl
-curl --location 'https://event.datablit.com/v1/batch' \
+curl --location 'https://staging-event.datablit.com/v1/batch' \
 --header 'apiKey: <your_api_key>' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -30,10 +70,9 @@ curl --location 'https://event.datablit.com/v1/batch' \
             "messageId": "b5f60cba-7f30-4d41-9901-589601e1e539",
             "type": "track",
             "userId": "user1",
-            "context": {},
-            "timestamp": "2025-10-13T02:24:03.708Z",
+            "context": null,
             "originalTimestamp": "2025-10-13T02:24:03.708Z",
-            "event": "PRODUCT_PREVIEW", 
+            "event": "PRODUCT_PREVIEW",
             "properties": {
                  "product_id": "12345"
             },
@@ -43,12 +82,12 @@ curl --location 'https://event.datablit.com/v1/batch' \
             "anonymousId": "b67cd1a3-9ad1-4df8-8ceb-cfc7e542b56e",
             "messageId": "b5f60cba-7f30-4d41-9901-589601e1e539",
             "type": "identify",
-            "userId": "user1", 
+            "userId": "user1",
             "traits": {
                 "email": "user1@gmail.com",
                 "name": "User1"
             },
-            "context": {},
+            "context": null,
             "originalTimestamp": "2025-09-20T05:13:03.708Z"
         }
     ]
@@ -65,17 +104,62 @@ curl --location 'https://event.datablit.com/v1/batch' \
     { header: "Description", width: "50%" },
   ]}
   data={[
-    ["anonymousId", "string", "no", "A pseudo-unique substitute for a User ID, for cases when you don’t have an absolutely unique identifier. A userId or an anonymousId is required"],
-    ["messageId", "string", "no", "Automatically collected by Datablit, a unique identifier for each message that lets you find an individual message across the API."],
+    [
+      "anonymousId",
+      "string",
+      "no",
+      "A pseudo-unique substitute for a User ID, for cases when you don’t have an absolutely unique identifier. A userId or an anonymousId is required",
+    ],
+    [
+      "messageId",
+      "string",
+      "no",
+      "A unique identifier for each message, If client do not pass this datablit server will add uuid",
+    ],
     ["type", "string", "yes", "Type of event, it can be identity or track"],
-    ["userId", "string", "no", "Unique identifier for the user in your database. A userId or an anonymousId is required"],
-    ["context", "map<string, any>", "no", "Dictionary of extra information that provides useful context about a message, but is not directly related to the API call like ip address or locale"],
-    ["originalTimestamp", "string", "yes", "Time on the client device when call was invoked OR The timestamp value manually passed in through server-side libraries."],
+    [
+      "userId",
+      "string",
+      "no",
+      "Unique identifier for the user in your database. A userId or an anonymousId is required",
+    ],
+    [
+      "context",
+      "map<string, any>",
+      "no",
+      "Dictionary of extra information that provides useful context about a message, but is not directly related to the API call like ip address or locale",
+    ],
+    [
+      "originalTimestamp",
+      "string",
+      "yes",
+      "Time on the client device when call was invoked OR The timestamp value manually passed in through server-side libraries.",
+    ],
     ["event", "string", "no", "Name of the action that a user has performed."],
-    ["properties", "map<string, any>", "no", "Free-form dictionary of properties of the event, like revenue, product_id etc"],
-    ["traits", "map<string, any>", "no", "Free-form dictionary of traits of the user, like email or name."],
-    ["sentAt", "map<string, any>", "no", "Time on client device when call was sent. OR sentAt value manually passed in."],
-    ["timestamp", "string", "no", "Calculated by Datablit to correct client-device clock skew using the following formula: receivedAt - (sentAt - originalTimestamp). Here receivedAt is time at which server received this batch"],
+    [
+      "properties",
+      "map<string, any>",
+      "no",
+      "Free-form dictionary of properties of the event, like revenue, product_id etc",
+    ],
+    [
+      "traits",
+      "map<string, any>",
+      "no",
+      "Free-form dictionary of traits of the user, like email or name.",
+    ],
+    [
+      "sentAt",
+      "map<string, any>",
+      "no",
+      "Time on client device when call was sent. OR sentAt value manually passed in.",
+    ],
+    [
+      "timestamp",
+      "string",
+      "no",
+      "Calculated by Datablit to correct client-device clock skew using the following formula: receivedAt - (sentAt - originalTimestamp). Here receivedAt is time at which server received this batch",
+    ],
   ]}
 />
 
@@ -86,14 +170,15 @@ Note: All timestamps are [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) date
 You can use following API to evaluate a rule.
 
 ### Steps
+
 1. Copy rule key from [datablit console](https://console.datablit.com) > Event > [Select a project] > Rule
-2. Copy source **api_key** 
+2. Copy source **api_key**
 3. Pass these in following curl.
 
 ### Sample curl
 
-``` curl
-curl --location 'https://console.datablit.com/api/1.0/rule/eval' \
+```curl
+curl --location 'https://staging-console.datablit.com/api/1.0/rule/eval' \
 --header 'apiKey: <your_api_key>' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -102,6 +187,7 @@ curl --location 'https://console.datablit.com/api/1.0/rule/eval' \
     "params" : {}
 }'
 ```
+
 ### Payload details
 
 <Table
@@ -112,9 +198,24 @@ curl --location 'https://console.datablit.com/api/1.0/rule/eval' \
     { header: "Description", width: "50%" },
   ]}
   data={[
-    ["key", "string", "yes", "Rule key, that you want to execute. Get this from datablit console"],
-    ["entityId", "string", "yes", "Entity identifier value for which you want to evalute this rule. This could be user_id, device_id etc. value"],
-    ["params", "map<string, any>", "no", "Optional params that you can pass while calling this api. Only needed if you are using this in rule definition"], 
+    [
+      "key",
+      "string",
+      "yes",
+      "Rule key, that you want to execute. Get this from datablit console",
+    ],
+    [
+      "entityId",
+      "string",
+      "yes",
+      "Entity identifier value for which you want to evalute this rule. This could be user_id, device_id etc. value",
+    ],
+    [
+      "params",
+      "map<string, any>",
+      "no",
+      "Optional params that you can pass while calling this api. Only needed if you are using this in rule definition",
+    ],
   ]}
 />
 
@@ -123,16 +224,18 @@ curl --location 'https://console.datablit.com/api/1.0/rule/eval' \
 You can use datablit experiments api to get variant for given entity.
 
 ### Steps
-1. Copy experiment id from [Datablit console](https://console.datablit.com) > Event > [Select a project]>  Experiment 
-2. Copy source **api_key** 
+
+1. Copy experiment id from [Datablit console](https://console.datablit.com) > Event > [Select a project]> Experiment
+2. Copy source **api_key**
 3. Pass these in following curl.
 
 ### Sample curl
 
 ```curl
-curl --location 'https://console.datablit.com/api/1.0/experiment/variant?expId=01K7T83YWG4XA20565VT1PXD04&entityId=user4' \
+curl --location 'https://staging-console.datablit.com/api/1.0/experiment/variant?expId=01K7T83YWG4XA20565VT1PXD04&entityId=user4' \
 --header 'apiKey: <your_api_key>'
 ```
+
 ### Query params detail
 
 <Table
@@ -143,9 +246,17 @@ curl --location 'https://console.datablit.com/api/1.0/experiment/variant?expId=0
     { header: "Description", width: "50%" },
   ]}
   data={[
-    ["expId", "string", "yes", "Experiment identifier, Get this from datablit console"],
-    ["entityId", "string", "yes", "Entity identifier value for which you want to get variant. This could be user_id, device_id etc. value"],
+    [
+      "expId",
+      "string",
+      "yes",
+      "Experiment identifier, Get this from datablit console",
+    ],
+    [
+      "entityId",
+      "string",
+      "yes",
+      "Entity identifier value for which you want to get variant. This could be user_id, device_id etc. value",
+    ],
   ]}
 />
-
-
