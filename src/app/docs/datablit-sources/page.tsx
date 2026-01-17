@@ -1,6 +1,41 @@
+import { Metadata } from 'next';
 import Button from "@/app/ui-components/Button";
 import Link from "next/link";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: 'Datablit Sources',
+  description: 'Choose the perfect source for your platform and start tracking user behavior with powerful, lightweight analytics solutions. JavaScript, Kotlin, Swift SDKs and Facebook Lead Ads integration.',
+  alternates: {
+    canonical: 'https://docs.datablit.com/docs/datablit-sources',
+  },
+  openGraph: {
+    title: 'Datablit Sources',
+    description: 'Choose the perfect source for your platform and start tracking user behavior with powerful, lightweight analytics solutions.',
+    url: 'https://docs.datablit.com/docs/datablit-sources',
+    siteName: 'Datablit Documentation',
+    type: 'article',
+    images: [
+      {
+        url: '/icon.svg',
+        width: 1200,
+        height: 630,
+        alt: 'Datablit Sources',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Datablit Sources',
+    description: 'Choose the perfect source for your platform and start tracking user behavior with powerful, lightweight analytics solutions.',
+    images: ['/icon.svg'],
+    creator: '@Datablit_cdp',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 function Page() {
   const sdkData = [
@@ -55,6 +90,19 @@ function Page() {
         "CRM setup & configuration",
       ],
       color: "from-blue-500 to-indigo-600",
+    },
+    {
+      name: "HTTP API",
+      description:
+        "RESTful API for server-side integrations. Ingest events, evaluate rules, and get experiment variants from any backend language",
+      icon: "🔌",
+      href: `${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/datablit-sources/http-api`,
+      features: [
+        "RESTful API endpoints",
+        "Event ingestion & batch processing",
+        "Rule evaluation & experiments",
+      ],
+      color: "from-purple-500 to-pink-600",
     },
   ];
 
