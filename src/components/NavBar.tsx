@@ -9,6 +9,7 @@ import SearchModal from "./SearchModal";
 
 const navLinks = [
   { href: "/docs/datablit-sources", label: "Sources" },
+  { href: "/docs/mcp", label: "MCP" },
   { href: "/docs/getting-started", label: "Docs" },
   {
     href: process.env.NEXT_PUBLIC_DATABLIT_COMMUNITY_URL || "",
