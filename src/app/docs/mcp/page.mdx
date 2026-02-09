@@ -1,0 +1,147 @@
+export const metadata = {
+  title: 'Getting Started — Datablit MCP ',
+  description: 'Install and connect the Datablit MCP server using Cursor, Claude Desktop, or other MCP clients. Use get_schema and run_query to explore your event data.',
+  alternates: {
+    canonical: 'https://docs.datablit.com/docs/mcp',
+  },
+  openGraph: {
+    title: 'Getting Started — Datablit MCP ',
+    description: 'Install and connect the Datablit MCP server using Cursor, Claude Desktop, or other MCP clients.',
+    url: 'https://docs.datablit.com/docs/mcp',
+    siteName: 'Datablit Documentation',
+    type: 'article',
+    images: [
+      {
+        url: '/icon.svg',
+        width: 1200,
+        height: 630,
+        alt: 'Datablit MCP Getting Started',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Getting Started — Datablit MCP ',
+    description: 'Install and connect the Datablit MCP server',
+    images: ['/icon.svg'],
+    creator: '@Datablit_cdp',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+import { Table } from "@/components/Table";
+
+# Getting started — Datablit MCP 
+
+This guide walks you through installing and connecting the Datablit MCP server, so you can query your event data from Cursor, Claude Desktop, or any other MCP client.
+
+## Installation
+
+### 1. Create an agent in the Datablit console
+
+- Open [https://console.datablit.com](https://console.datablit.com).
+- Go to **Event** → (Select a project) → **+** (Add agent).
+- Create an agent and copy its **API key**. You will use this as the `apiKey` in your MCP configuration.
+
+### 2. Add the MCP server to your client
+
+Add the following JSON to your MCP server settings in **Cursor**, **Claude Desktop**, or another MCP client:
+
+```json
+{
+  "mcpServers": {
+    "datablit": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://mcp.datablit.com/mcp",
+        "--header",
+        "apiKey: <your-api-key>"
+      ]
+    }
+  }
+}
+```
+
+### 3. Replace the API key
+
+Replace the value after `apiKey:` with **your agent API key** from step 1. The key in the example above is a placeholder and will not work for your project.
+
+### 4. Confirm the connection
+
+Restart or reload your MCP client. Once connected, your MCP client is talking to the Datablit server and you can use the Datablit tools.
+
+### 5. Available tools
+
+After connecting, you can use these tools:
+
+- **get_schema** — Returns Datablit warehouse table schemas (columns, types, keys). If you omit the table name, all tables are returned with their schemas.
+- **run_query** — Validates and runs a read-only Datablit warehouse `SELECT` query with automatic safeguards.
+
+
+## Tool References
+
+### get_schema
+
+Returns table schemas for your project’s Datablit warehouse tables (columns, types, primary/sorting keys).
+
+<Table
+  columns={[
+    { header: "Parameter", width: "20%" },
+    { header: "Type", width: "15%" },
+    { header: "Required", width: "10%" },
+    { header: "Description", width: "55%" },
+  ]}
+  data={[
+    [
+      "table_name",
+      "string",
+      "No",
+      "Table to describe. If omitted, all tables are returned with their schemas.",
+    ],
+  ]}
+/>
+
+**Example:** Get the schema for the `events` table only, or omit `table_name` to list all tables and their schemas.
+
+
+### run_query
+
+Executes a read-only Datablit warehouse `SELECT` query against your project’s data. Queries are validated and run with safety limits.
+
+<Table
+  columns={[
+    { header: "Parameter", width: "20%" },
+    { header: "Type", width: "15%" },
+    { header: "Required", width: "10%" },
+    { header: "Description", width: "55%" },
+  ]}
+  data={[
+    [
+      "query",
+      "string",
+      "Yes",
+      "The Datablit warehouse SELECT SQL query to run.",
+    ],
+  ]}
+/>
+
+**Behavior and safeguards:**
+
+- **Read-only:** Only `SELECT` queries are allowed. Keywords such as `INSERT`, `UPDATE`, `DELETE`, `DROP`, `ALTER`, `TRUNCATE`, `CREATE`, `GRANT`, and `REVOKE` are blocked.
+- **No JOINs:** `JOIN` is not allowed.
+- **No system tables:** Queries on `system.*` tables are not allowed.
+- **Limits:** The server injects limits (e.g. execution time and row limits) for safety.
+- **Default table:** For user-facing analysis, the default table is `events` (your primary event table in the Datablit warehouse).
+- **Time filters:** For better performance, consider including a time filter (e.g. on `timestamp`) in your query. The server may warn if no time filter is detected.
+
+**Example:** Use `run_query` with a `SELECT` that includes a time filter when possible.
+
+
+## Need support?
+
+Questions or issues? Contact Datablit Support: **contact@datablit.com**

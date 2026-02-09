@@ -174,4 +174,19 @@ export const sidebarItems = [
       </ul>
     ),
   },
+  {
+    title: "MCP",
+    content: (
+      <ul className="space-y-1">
+        <li>
+          <Link
+            href={`${process.env.NEXT_PUBLIC_DOCS_BASE_PATH}/mcp`}
+            className="hover:text-gray-500 text-text-para"
+          >
+            Getting Started
+          </Link>
+        </li>
+      </ul>
+    ),
+  },
 ];
