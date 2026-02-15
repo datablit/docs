@@ -1,30 +1,32 @@
 export const metadata = {
-  title: 'Getting Started — Datablit MCP ',
-  description: 'Install and connect the Datablit MCP server using Cursor, Claude Desktop, or other MCP clients. Use get_schema and run_query to explore your event data.',
+  title: "Getting Started — Datablit MCP ",
+  description:
+    "Install and connect the Datablit MCP server using Cursor, Claude Desktop, or other MCP clients. Query event data, manage experiments, signals, and rules with get_schema, run_query, and CRUD tools.",
   alternates: {
-    canonical: 'https://docs.datablit.com/docs/mcp',
+    canonical: "https://docs.datablit.com/docs/mcp",
   },
   openGraph: {
-    title: 'Getting Started — Datablit MCP ',
-    description: 'Install and connect the Datablit MCP server using Cursor, Claude Desktop, or other MCP clients.',
-    url: 'https://docs.datablit.com/docs/mcp',
-    siteName: 'Datablit Documentation',
-    type: 'article',
+    title: "Getting Started — Datablit MCP ",
+    description:
+      "Install and connect the Datablit MCP server. Query event data, manage experiments, signals, and rules.",
+    url: "https://docs.datablit.com/docs/mcp",
+    siteName: "Datablit Documentation",
+    type: "article",
     images: [
       {
-        url: '/icon.svg',
+        url: "/icon.svg",
         width: 1200,
         height: 630,
-        alt: 'Datablit MCP Getting Started',
+        alt: "Datablit MCP Getting Started",
       },
     ],
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Getting Started — Datablit MCP ',
-    description: 'Install and connect the Datablit MCP server',
-    images: ['/icon.svg'],
-    creator: '@Datablit_cdp',
+    card: "summary_large_image",
+    title: "Getting Started — Datablit MCP ",
+    description: "Install and connect the Datablit MCP server",
+    images: ["/icon.svg"],
+    creator: "@Datablit_cdp",
   },
   robots: {
     index: true,
@@ -34,19 +36,17 @@ export const metadata = {
 
 import { Table } from "@/components/Table";
 
-# Getting started — Datablit MCP 
+# Getting started — Datablit MCP
 
 This guide walks you through installing and connecting the Datablit MCP server, so you can query your event data from Cursor, Claude Desktop, or any other MCP client.
 
-## Installation
-
-### 1. Create an agent in the Datablit console
+## 1. Create an agent in the Datablit console
 
 - Open [https://console.datablit.com](https://console.datablit.com).
 - Go to **Event** → (Select a project) → **+** (Add agent).
 - Create an agent and copy its **API key**. You will use this as the `apiKey` in your MCP configuration.
 
-### 2. Add the MCP server to your client
+## 2. Add the MCP server to your client
 
 Add the following JSON to your MCP server settings in **Cursor**, **Claude Desktop**, or another MCP client:
 
@@ -67,80 +67,85 @@ Add the following JSON to your MCP server settings in **Cursor**, **Claude Deskt
 }
 ```
 
-### 3. Replace the API key
+## 3. Replace the API key
 
 Replace the value after `apiKey:` with **your agent API key** from step 1. The key in the example above is a placeholder and will not work for your project.
 
-### 4. Confirm the connection
+## 4. Confirm the connection
 
 Restart or reload your MCP client. Once connected, your MCP client is talking to the Datablit server and you can use the Datablit tools.
 
-### 5. Available tools
+## 5. Available tools
 
-After connecting, you can use these tools:
+After connecting, you can use the following tools, grouped by purpose.
 
-- **get_schema** — Returns Datablit warehouse table schemas (columns, types, keys). If you omit the table name, all tables are returned with their schemas.
-- **run_query** — Validates and runs a read-only Datablit warehouse `SELECT` query with automatic safeguards.
+### Analysis
 
+Query and explore your event data in the Datablit warehouse.
 
-## Tool References
+- **`get_schema`** — Returns Datablit warehouse table schemas (columns, types, keys). If you omit the table name, all tables are returned with their schemas.
+- **`run_query`** — Validates and runs a read-only Datablit warehouse `SELECT` query.
 
-### get_schema
+### Experiments
 
-Returns table schemas for your project’s Datablit warehouse tables (columns, types, primary/sorting keys).
+Create and manage A/B experiments (variants, traffic percentage, static allotment).
 
-<Table
-  columns={[
-    { header: "Parameter", width: "20%" },
-    { header: "Type", width: "15%" },
-    { header: "Required", width: "10%" },
-    { header: "Description", width: "55%" },
-  ]}
-  data={[
-    [
-      "table_name",
-      "string",
-      "No",
-      "Table to describe. If omitted, all tables are returned with their schemas.",
-    ],
-  ]}
-/>
+- **`list_experiments`** — List all experiments for the current project.
+- **`get_experiment`** — Get a single experiment by ID.
+- **`create_experiment`** — Create a new experiment. Requires name; optional description, status (active/disabled), percentage, variants, staticAllotment.
+- **`update_experiment`** — Update an existing experiment by ID. All fields except id are optional.
+- **`delete_experiment`** — Delete an experiment by ID.
 
-**Example:** Get the schema for the `events` table only, or omit `table_name` to list all tables and their schemas.
+### Signals
 
+Define and manage signals (realtime or batch) that compute metrics per entity. Use keys in rules or for analytics.
 
-### run_query
+- **`list_signals`** — List all signals for the current project.
+- **`get_signal`** — Get a single signal by key.
+- **`create_signal`** — Create a new signal. Requires key, type (realtime/batch); optional entityIdField (default user_id), status (default disabled; use update_signal to enable), description, realtime_signal_config or batch_signal_config.
+- **`update_signal`** — Update an existing signal by key. All fields except key are optional.
+- **`delete_signal`** — Delete a signal by key.
+- **`get_signals_value`** — Get computed signal values for an entity. Requires entityId (e.g. user_id, device_id); optional keys (omit for all).
 
-Executes a read-only Datablit warehouse `SELECT` query against your project’s data. Queries are validated and run with safety limits.
+### Rules
 
-<Table
-  columns={[
-    { header: "Parameter", width: "20%" },
-    { header: "Type", width: "15%" },
-    { header: "Required", width: "10%" },
-    { header: "Description", width: "55%" },
-  ]}
-  data={[
-    [
-      "query",
-      "string",
-      "Yes",
-      "The Datablit warehouse SELECT SQL query to run.",
-    ],
-  ]}
-/>
+Define boolean rules over signal values and input params. Expressions use realtime signal keys directly; for batch signals use `key_columnName` (e.g. `user_lifetime_orders`). All signal values are float; the expression must return a bool.
 
-**Behavior and safeguards:**
+- **`list_rules`** — List all rules for the current project.
+- **`get_rule`** — Get a single rule by key.
+- **`create_rule`** — Create a new rule. Requires key (snake_case), expression (bool). Optional: entityIdField (default user_id), description, default_value, and_rules, or_rules.
+- **`update_rule`** — Update an existing rule by key. All fields except key are optional.
+- **`delete_rule`** — Delete a rule by key.
+- **`evaluate_rule`** — Evaluate a rule for a given entity. Requires key, entityId; optional params (map of name to float). Returns `{ key, entityId, result: bool }`.
 
-- **Read-only:** Only `SELECT` queries are allowed. Keywords such as `INSERT`, `UPDATE`, `DELETE`, `DROP`, `ALTER`, `TRUNCATE`, `CREATE`, `GRANT`, and `REVOKE` are blocked.
-- **No JOINs:** `JOIN` is not allowed.
-- **No system tables:** Queries on `system.*` tables are not allowed.
-- **Limits:** The server injects limits (e.g. execution time and row limits) for safety.
-- **Default table:** For user-facing analysis, the default table is `events` (your primary event table in the Datablit warehouse).
-- **Time filters:** For better performance, consider including a time filter (e.g. on `timestamp`) in your query. The server may warn if no time filter is detected.
+## 6. Sample prompts
 
-**Example:** Use `run_query` with a `SELECT` that includes a time filter when possible.
+Try these in your MCP client to explore data and manage experiments, signals, and rules:
 
+**Analysis**
+
+- "What tables do I have in my project? Show me the schema."
+- "Run a query: count events by event name in the last 7 days."
+- "Show me the top 10 events by volume from the events table."
+
+**Experiments**
+
+- "List all experiments in this project."
+- "Create an experiment named 'Checkout button color' with two variants: control and test, 50/50."
+- "Get the experiment with id … and then update its status to disabled."
+
+**Signals**
+
+- "List all signals for this project."
+- "Create a realtime count signal for 'page_viewed' with key page_views and entityIdField user_id."
+- "Get signal values for entityId user_123."
+- "Update the signal with key page_views to set status to active."
+
+**Rules**
+
+- "List all rules."
+- "Create a rule with key high_value_user where expression is orders > 10 (assuming you have an orders signal)."
+- "Evaluate the rule high_value_user for entityId user_456 with params {}."
 
 ## Need support?
 
